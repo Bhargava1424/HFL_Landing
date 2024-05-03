@@ -28,6 +28,7 @@ code {
 
 
 .news-ticker {
+  margin-top: 50px;
   display: flex;
   align-items: center;
   position: relative;
