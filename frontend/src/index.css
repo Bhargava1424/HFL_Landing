@@ -1,3 +1,4 @@
+/* TailwindCSS Imports */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
@@ -6,17 +7,64 @@ body {
   margin: 0;
   padding: 0;
   background-color: white;  /* Set background color to white */
-  color: #333;              /* Set a default text color, if needed */
+  color: #333;              /* Set a default text color */
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@keyframes scroll {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.currency-box {
+  flex: 0 0 auto;
+  height: 72px;
+  width: 72px;
+}
+
+.sticky {
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.sticky > .text-lg {
+  background-color: #ddd;
+  z-index: 20;
+  padding: 0 20px;
+  border-radius: 8px;
+  margin-right: auto;
+  height: 72px;
+  display: flex;
+  align-items: center;
+}
+
+.sticky > button {
+  background-color: #ff4500;
+  color: white;
+  z-index: 20;
+  margin-left: auto;
+  border: none;
+  border-radius: 8px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.sticky .animate-scroll {
+  padding-left: 150px;
+  padding-right: 150px;
 }

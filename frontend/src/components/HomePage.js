@@ -1,12 +1,17 @@
 // src/components/Homepage.js
 
 import React from 'react';
-import ImageSlider from './ImageSlider';
+import CurrencyScroll from './CurrencyScroll';
 
 const Homepage = () => {
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen"> 
-    <ImageSlider/>
+    <div>
+      <header>
+        {/* Navigation bar here */}
+      </header>
+        <CurrencyScroll />
+        {/* Rest of the home page content */}
+      
     </div>
   );
 };
