@@ -23,7 +23,7 @@ const currencies = [
 
 const CurrencyScroll = () => {
   return (
-    <div className="news-ticker" style={{ marginTop: '64px', marginBottom: '5px' }}>
+    <div className="news-ticker" style={{ marginTop: '95px', marginBottom: '5px' }}>
       <div className="content-box">We Buy & We Sell</div>
       <Marquee speed={30}  pauseOnHover direction='right'>
         {currencies.map((currency, index) => (

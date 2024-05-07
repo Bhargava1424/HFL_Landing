@@ -32,9 +32,9 @@ code {
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
-  height: 40px;
+  height: 60px;
   margin: 0 auto;
-  max-width: 1250px;
+  max-width: auto;
   background-color: #f0f0f0;
   padding: 0 0px;
   border-radius: 5px;
@@ -83,7 +83,7 @@ code {
 .ticker-separator {
   position: relative; /* Establishes a positioning context for the pseudo-element */
   margin: 0 10px; /* Maintain the spacing on both sides of the separator */
-  height: 120%; /* Ensures that the separator container fills the parent's height */
+  height: 200%; /* Ensures that the separator container fills the parent's height */
 }
 
 .button-box {

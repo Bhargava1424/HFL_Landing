@@ -42,7 +42,7 @@ const ImageSlider = () => {
 
   return (
     <div>
-      <div className="bg-orange-500 text-white px-4 py-6 sm:px-8 sm:py-10">
+      <div className="bg-orange-500 text-white px-4 py-3 sm:px-8 sm:py-4">
         <div className="container mx-auto">
           <div className="flex flex-col sm:flex-row">
             <div className="w-full sm:border-r sm:border-white sm:w-1/2 sm:pr-4 mb-4 sm:mb-0"> 
