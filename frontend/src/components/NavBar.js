@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import Logo from "../assets/HFLlogo.jpg"
+import Logo from "../assets/HFLlogo.jpg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleMobileDropdown = () => {
+    setMobileDropdownOpen(!mobileDropdownOpen);
   };
 
   return (
@@ -14,10 +19,10 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center">
           <img src={Logo} alt="Logo" className="h-9 w-auto" />
-          <div className="border-r  border-gray-800  h-9 mx-2"></div>
+          <div className="border-r border-gray-800 h-9 mx-2"></div>
           <div>
-          <span className="text-gray-800 font-bold block">Hyderabad Forex</span>
-          <span className='text-gray-800 font-bold'>Limited</span>
+            <span className="text-gray-800 font-bold block">Hyderabad Forex</span>
+            <span className='text-gray-800 font-bold'>Limited</span>
           </div>
         </div>
 
@@ -79,7 +84,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             className="text-gray-800 hover:text-blue-600 focus:outline-none"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={toggleMobileDropdown}
           >
             <svg
               className="w-6 h-6"
@@ -100,7 +105,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      {isOpen && (
+      {mobileDropdownOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <a
