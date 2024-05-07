@@ -17,14 +17,14 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 bg-white z-50">
       <div className="container mx-auto px-4 py-6 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center">
+        <a href='./HomePage' className="flex items-center">
           <img src={Logo} alt="Logo" className="h-9 w-auto" />
           <div className="border-r border-gray-800 h-9 mx-2"></div>
           <div>
             <span className="text-gray-800 font-bold block">Hyderabad Forex</span>
             <span className='text-gray-800 font-bold'>Limited</span>
           </div>
-        </div>
+        </a>
 
         {/* Navigation items */}
         <div className="hidden md:flex items-center space-x-6">
