@@ -5,9 +5,9 @@ import { isMobile } from 'react-device-detect';
 const ImageSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    require('../assets/1.jpg'),
-    require('../assets/2.jpg'),
-    require('../assets/3.jpg'),
+    require('../assets/ImageSlider/1.jpg'),
+    require('../assets/ImageSlider/2.jpg'),
+    require('../assets/ImageSlider/3.jpg'),
   ];
 
   const nextSlide = () => {
