@@ -26,17 +26,12 @@ const Testimony = () => {
   };
 
   useEffect(() => {
-    const slideInterval = setInterval(() => {
-      nextSlide();
-    }, 5000);
-
-    return () => {
-      clearInterval(slideInterval);
-    };
-  },);
+    const slideInterval = setInterval(nextSlide, 5000);
+    return () => clearInterval(slideInterval);
+  }, );
 
   return (
-    <div className="p-6">
+    <div className="p-6 overflow-x-hidden">
       <div className="text-center">
         <h2 className="text-3xl font-bold mb-4">What Our Clients Say ?</h2>
         <p className="text-gray-600">
@@ -56,7 +51,6 @@ const Testimony = () => {
             ))}
           </div>
         </div>
-        {/* Adjust the top property to move the profile pictures higher */}
         <div className="absolute -top-8 left-0 w-full flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
           {slides.map((slide, index) => (
             <div key={index} className="w-full flex-shrink-0 flex justify-center">
@@ -86,6 +80,7 @@ const Testimony = () => {
       </div>
     </div>
   );
+  
 };
 
 export default Testimony;
