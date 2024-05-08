@@ -4,6 +4,7 @@ import React from 'react';
 import CurrencyScroll from './CurrencyScroll';
 import NavBar from './NavBar'
 import ImageSlider from './ImageSlider'
+import StatsDisplay from './StatsDisplay';
 
 const Homepage = () => {
   return (
@@ -14,6 +15,8 @@ const Homepage = () => {
         <CurrencyScroll />
       </header>
       <ImageSlider/>
+      <ImageSlider/>
+      <StatsDisplay/>
         
         {/* Rest of the home page content */}
       

@@ -42,6 +42,7 @@ const ImageSlider = () => {
 
   return (
     <div>
+      <div className='pl-4 pr-4'>
       <div className="bg-orange-500 text-white px-4 py-3 sm:px-8 sm:py-4">
         <div className="container mx-auto">
           <div className="flex flex-col sm:flex-row">
@@ -63,6 +64,7 @@ const ImageSlider = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
       <div className="p-4">
         <div className="relative w-full h-64 sm:h-96 overflow-hidden rounded-2xl">
