@@ -37,15 +37,16 @@ const CurrencyScroll = () => {
   };
 
   return (
-    <div className="flex items-center justify-between overflow-hidden h-20 mx-auto max-w-full bg-gray-100 px-1 rounded-sm shadow-inner mt-24 mb-2">
-      <div className="flex-shrink-0 px-1 py-3 bg-gray-300 z-10 h-16 flex items-center font-semibold mr-auto shadow-inner rounded-lg aspect-680:px-1 aspect-680:text-sm">
+    <div className='pl-4 pr-4 rounded-4xl'>
+    <div className="flex items-center justify-between overflow-hidden h-16 mx-auto max-w-full bg-gray-100 px-1 rounded-sm shadow-inner mt-24 mb-2">
+      <div className="flex-shrink-0 px-1 py-3 bg-gray-300 z-10 h-12 flex items-center font-semibold mr-auto shadow-inner rounded-lg aspect-680:px-1 aspect-680:text-sm">
         We Buy & We Sell
       </div>
       <Marquee speed={60} pauseOnHover direction="right" className="flex overflow-hidden whitespace-nowrap items-center flex-grow mx-5 px-5 py-3">
         {currencies.map((currency, index) => (
           <React.Fragment key={index}>
             <div className="flex items-center mr-3 px-1 py-3">
-              <img src={currency.image} alt={currency.name} className="h-12 w-15" />
+              <img src={currency.image} alt={currency.name} className="h-8 w-15" />
               <div className="whitespace-nowrap font-serif font-light">
                 <b>{currency.name}</b>
               </div>
@@ -61,6 +62,7 @@ const CurrencyScroll = () => {
       >
         Contact Us
       </button>
+    </div>
     </div>
   );
 };
