@@ -43,7 +43,7 @@ const Testimony = () => {
           Our client's delightful smiles are a testament to the exceptional services we provide.
         </p>
       </div>
-      <div className="relative mt-12 mx-16 py-8">
+      <div className="relative mt-12 mx-16 pt-8">
         <div className="overflow-hidden border-solid border-4 border-black">
           <div
             className="flex transition-transform duration-500 ease-in-out"
