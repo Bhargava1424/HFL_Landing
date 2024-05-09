@@ -37,15 +37,15 @@ const CurrencyScroll = () => {
   };
 
   return (
-    <div className='pl-4 pr-4 rounded-4xl'>
-    <div className="flex items-center justify-between overflow-hidden h-16 mx-auto max-w-full bg-gray-100 px-1 rounded-sm shadow-inner mt-24 mb-2">
-      <div className="flex-shrink-0 px-1 py-3 bg-gray-300 z-10 h-12 flex items-center font-semibold mr-auto shadow-inner rounded-lg aspect-680:px-1 aspect-680:text-sm">
+    <div className='pl-4 pr-4'>
+    <div className="flex items-center justify-between overflow-hidden h-12 mx-auto max-w-full bg-gray-100 rounded-xl shadow-inner mt-24 mb-1">
+      <div className="flex-shrink-0 px-1 py-2 bg-gray-300 z-10 h-12 flex items-center font-semibold mr-auto shadow-inner rounded-lg aspect-680:px-1 aspect-680:text-sm">
         We Buy & We Sell
       </div>
-      <Marquee speed={60} pauseOnHover direction="right" className="flex overflow-hidden whitespace-nowrap items-center flex-grow mx-5 px-5 py-3">
+      <Marquee speed={60} pauseOnHover direction="right" className="flex overflow-hidden whitespace-nowrap items-center flex-grow mx-5 px-3 py-3">
         {currencies.map((currency, index) => (
           <React.Fragment key={index}>
-            <div className="flex items-center mr-3 px-1 py-3">
+            <div className="flex items-center mr-3 px-1 py-3 rounded-2xl">
               <img src={currency.image} alt={currency.name} className="h-8 w-15" />
               <div className="whitespace-nowrap font-serif font-light">
                 <b>{currency.name}</b>
@@ -57,7 +57,7 @@ const CurrencyScroll = () => {
         ))}
       </Marquee>
       <button
-        className="flex-shrink-0 bg-orange-500 text-white font-bold border-none px-2 py-3 cursor-pointer outline-none transition duration-300 ease-in-out hover:bg-orange-600 h-16 flex items-center ml-auto shadow-current rounded-lg aspect-680:px-1 aspect-680:text-sm"
+        className="flex-shrink-0 bg-orange-500 text-white font-bold border-none px-2 py-3 cursor-pointer outline-none transition duration-300 ease-in-out hover:bg-orange-600 h-12 flex items-center ml-auto shadow-current rounded-lg aspect-680:px-1 aspect-680:text-sm"
         onClick={handleContactUs}
       >
         Contact Us
