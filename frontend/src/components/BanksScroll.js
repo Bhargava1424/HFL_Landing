@@ -34,9 +34,9 @@ const BankScroll = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center">
-      <h1 className="text-5xl font-bold mt-5 mb-5">We are associated with</h1>
-      <div className="w-full overflow-hidden">
+    // <div className="flex flex-col items-center">
+    //   <h1 className="text-5xl font-bold mt-5 mb-5">We are associated with</h1>
+    //   <div className="w-full overflow-hidden">
         <Marquee speed={20} pauseOnHover loop={0} className="mt-5 mb-5">
           {bankLogos.map((logo, index) => (
             <img
@@ -47,8 +47,8 @@ const BankScroll = () => {
             />
           ))}
         </Marquee>
-      </div>
-    </div>
+    //   </div>
+    // </div>
   );
 };
 
