@@ -8,12 +8,16 @@ import StatsDisplay from './StatsDisplay';
 import Testimony from './Testimony';
 
 
-const Homepage = () => {
+
+const HomePage = () => {
   return (
+    
     <div>
       <header>
-        {/* Navigation bar here */}
-        <NavBar/>
+      
+        
+        <NavBar/>  
+        
         <CurrencyScroll />
       </header>
       <ImageSlider/>
@@ -26,4 +30,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default HomePage;
