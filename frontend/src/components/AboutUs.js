@@ -311,7 +311,10 @@ const AboutUs = () => {
         <div className="flex flex-col items-center w-1/2">
           <div className="flex items-center space-x-2 mt-8 pb-16">
             <img src={phoneIcon} alt="Phone" className="h-10 w-10" />
-            <p>NUMBER</p>
+            <button onClick={handleContactUs} style={{ cursor: 'pointer' }}>
+              NUMBER
+            </button>
+
           </div>
           <div className="flex items-center space-x-2 pb-16">
             <img src={messageIcon} alt="Message" className="h-10 w-10" />
@@ -326,11 +329,14 @@ const AboutUs = () => {
         <div className="flex flex-col items-center w-1/2">
           <div className="flex items-center space-x-2 mt-8 pb-16">
             <img src={phoneIcon} alt="Phone" className="h-10 w-10" />
-            <p>NUMBER</p>
+            <button onClick={handleContactUs} style={{ cursor: 'pointer' }}>
+              NUMBER
+            </button>
           </div>
           <div className="flex items-center space-x-2 pb-16">
             <img src={messageIcon} alt="Message" className="h-10 w-10" />
             <p>NUMBER</p>
+
           </div>
           <div className="flex items-center space-x-2 pb-16">
             <img src={locationIcon} alt="Location" className="h-10 w-10" />
