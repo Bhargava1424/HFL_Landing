@@ -43,7 +43,7 @@ const ImageSlider = () => {
   return (
     <div>
       
-      <div className="p-2">
+      <div className="p-1">
         <div className="relative w-full h-64 sm:h-96 overflow-hidden rounded-2xl">
           <div
             className="flex transition-transform duration-700 ease-in-out"
@@ -71,18 +71,18 @@ const ImageSlider = () => {
           </button>
         </div>
       </div>
-      <div className='pl-4 pr-4'>
+      <div className='px-1 py-1'>
       <div className="bg-orange-500 rounded-xl text-white px-4 py-3 sm:px-8 sm:py-4">
         <div className="container mx-auto">
           <div className="flex flex-col sm:flex-row">
             <div className="w-full sm:border-r sm:border-white sm:w-1/2 sm:pr-4 mb-4 sm:mb-0"> 
-              <h1 className="text-2xl sm:text-4xl font-bold mb-2">Experience seamless currency exchange with best price in HFL</h1>
+              <h1 className="text-lg sm:text-4xl font-bold">Experience seamless currency exchange with best price in HFL</h1>
             </div>
             <div className="w-full sm:w-1/2 sm:pl-4">
               <div className="mb-4">
-                <p className="text-lg">RBI Authorized Money changer</p>
-                <p className="text-lg">2 Decades of seamless service</p>
-                <p className="text-lg">Expert team ensures quick, secure and hassle free services</p>
+                <p className="text-sm">RBI Authorized Money changer</p>
+                <p className="text-sm">2 Decades of seamless service</p>
+                <p className="text-sm">Expert team ensures quick, secure and hassle free services</p>
               </div>
               <button 
                     className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded border border-white"

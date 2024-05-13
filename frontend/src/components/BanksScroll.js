@@ -39,65 +39,73 @@ const BankScroll = () => {
   ];
 
   return (
-    // <div className="flex flex-col items-center">
-    //   <h1 className="text-5xl font-bold mt-5 mb-5">We are associated with</h1>
-    //   <div className="w-full overflow-hidden">
-        <div>
-        <Marquee speed={20} pauseOnHover loop={0} className="mt-5 mb-5">
+    <div className="flex flex-col items-center">
+      
+      <div className="w-full overflow-hidden">
+      <div className="bg-[#ffd686] py-3 m-1 px-4 md:px-0 rounded-2xl">
+        <h1 className="text-2xl md:text-5xl font-bold text-center mb-5">We are associated with</h1>
+        <Marquee speed={20} pauseOnHover loop={0} className="mb-5">
           {bankLogos.map((logo, index) => (
             <img
               key={index}
               src={logo}
               alt={`Bank Logo ${index + 1}`}
-              className="h-20 mx-20 grayscale hover:grayscale-0 transition-all duration-300"
+              className="h-12 md:h-20 mx-6 md:mx-20 grayscale hover:grayscale-0 transition-all duration-300"
             />
           ))}
         </Marquee>
-        <div className="flex flex-col items-center w-full px-10 py-5 bg-white">
-          <h1 className="text-6xl text-center mb-10">Services at HFL AnyMoney</h1>
-          <div className="flex justify-between items-center w-full pl-8 pr-8">
-            <div className="text-center flex flex-col items-center">
-              <img src={buyIcon} alt="We Buy" className="mb-2 h-20 w-20" />
-              <p className='text-xl font-bold'>We BUY</p>   
+      </div>
+        <div className="flex flex-col items-center w-full px-4 md:px-10 py-5 bg-white">
+          <h1 className="text-3xl md:text-6xl text-center mb-10">Services at HFL AnyMoney</h1>
+          <div className="flex flex-wrap justify-between items-stretch w-full pl-4 pr-4 md:pl-8 md:pr-8">
+            <div className="text-center flex flex-col items-center mb-4 md:mb-0 flex-1">
+              <img src={buyIcon} alt="We Buy" className="mb-2 h-8 md:h-20 w-8 md:w-20 mx-auto" />
+              <p className='text-xs md:text-xl font-bold'>We BUY</p>
             </div>
-            <div className="text-center flex flex-col items-center">
-              <img src={sellIcon} alt="We Sell" className="mb-2 h-20 w-20" />
-              <p className='text-xl font-bold'>We SELL</p>    
+            <div className="text-center flex flex-col items-center mb-4 md:mb-0 flex-1">
+              <img src={sellIcon} alt="We Sell" className="mb-2 h-8 md:h-20 w-8 md:w-20 mx-auto" />
+              <p className='text-xs md:text-xl font-bold'>We SELL</p>
             </div>
-            <div className="text-center flex flex-col items-center">
-              <img src={forexIcon} alt="Forex Card" className="mb-2 h-20 w-20" />
-              <p className='text-xl font-bold'>Forex Card</p>       
+            <div className="text-center flex flex-col items-center mb-4 md:mb-0 flex-1">
+              <img src={forexIcon} alt="Forex Card" className="mb-2 h-8 md:h-20 w-8 md:w-20 mx-auto" />
+              <p className='text-xs md:text-xl font-bold'>Forex Card</p>
             </div>
-            <div className="text-center flex flex-col items-center">
-              <img src={tuitionIcon} alt="Tuition Fees" className="mb-2 h-20 w-20" />
-              <p className='text-xl font-bold'>Tuition Fees</p>
+            <div className="text-center flex flex-col items-center flex-1">
+              <img src={tuitionIcon} alt="Tuition Fees" className="mb-2 h-8 md:h-20 w-8 md:w-20 mx-auto" />
+              <p className='text-xs md:text-xl font-bold'>Tuition Fees</p>
             </div>
           </div>
-        </div>
+        </div> 
 
-        <div className='bg-[#FFD686] p-4 m-4 rounded-2xl'>
-            <div className="flex space-x-12">
-              {[1, 2, 3].map((num) => (
-                <div key={num} className="bg-white p-6 rounded-xl shadow-md flex-1">
+        <div className="bg-[#FFD686] p-4 my-4 mx-1 rounded-2xl">
+          <div className="space-y-4 md:space-y-0 md:space-x-12 md:flex md:flex-wrap">
+            {[1, 2, 3].map((num) => (
+              <div key={num} className="bg-white p-4 md:p-6 rounded-xl shadow-md md:flex-1 flex flex-col items-center">
+                <div className="flex items-center mb-2">
                   <img
                     src={cashIcon}
                     alt="Currency Notes"
-                    className="w-16 h-16 mx-auto mb-4"
+                    className="w-7 h-7 md:w-16 md:h-16 mr-2"
                   />
-                  <h3 className="text-xl font-semibold mb-2 text-center">Currency Notes</h3>
-                  <p className="text-black mb-4 text-center">
-                    A sufficient amount of foreign currency notes can always come in handy, especially when you are making your first trip to your college abroad.
-                  </p>
-                  <button className="bg-orange-500 text-white px-4 py-2 rounded-md block mx-auto hover:bg-orange-600 transition-colors duration-300">
-                    Read More
-                  </button>
+                  <h3 className="text-sm font-bold text-center md:text-xl">
+                    Currency Notes
+                  </h3>
                 </div>
-              ))}
-            </div>
+                <p className="text-xs md:text-base mb-2 md:mb-4 text-center">
+                  A sufficient amount of foreign currency notes can always come in handy,
+                  especially when you are making your first trip to your college abroad.
+                </p>
+                <button className="bg-orange-500 text-white text-xs md:text-md px-3 md:px-4 py-1 md:py-2 rounded-md mt-auto hover:bg-orange-600 transition-colors duration-300">
+                  Read More
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      
+      </div>
     </div>
   );
+  
 };
 
 export default BankScroll;

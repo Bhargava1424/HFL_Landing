@@ -29,33 +29,35 @@ function FAQ() {
   };
 
   return (
-    <div className="flex justify-between w-full items-start p-6">
-      <div className="w-1/2">
-        <h1 className="text-2xl font-bold mb-4">FAQs</h1>
+    <div className="flex flex-col md:flex-row justify-between w-full items-start p-4 md:p-6">
+      <div className="w-full md:w-1/2 mb-4 md:mb-0">
+        <h1 className="text-xl md:text-2xl font-bold mb-3">FAQs</h1>
+        {/* <h1 className="text-xl md:text-2xl font-bold mb-3">Popular FAQs</h1> */}
         {faqs.map((faq, index) => (
           <div key={index} className="mb-2">
             <button
               onClick={() => toggleFAQ(index)}
-              className="flex justify-between items-center w-full text-left text-lg p-2 border-b border-gray-300"
+              className="flex justify-between items-center w-full text-left text-sm md:text-lg p-2 border-b border-gray-300 font-semibold"
             >
               {faq.question}
               {activeIndex === index ? (
-                <ChevronUpIcon className="h-5 w-5" />
+                <ChevronUpIcon className="h-4 w-4 md:h-5 md:w-5" />
               ) : (
-                <ChevronDownIcon className="h-5 w-5" />
+                <ChevronDownIcon className="h-4 w-4 md:h-5 md:w-5" />
               )}
             </button>
-            <div className={`${activeIndex === index ? 'block' : 'hidden'} p-2 text-gray-600`}>
+            <div className={`${activeIndex === index ? 'block' : 'hidden'} p-2 text-gray-600 text-xs md:text-sm`}>
               {faq.answer}
             </div>
           </div>
         ))}
       </div>
-      <div className="w-1/2 flex justify-end">
-        <img src={faqImage} alt="FAQ Illustration" className="w-auto max-h-80" />
+      <div className="w-full md:w-1/2 flex justify-end">
+        <img src={faqImage} alt="FAQ Illustration" className="w-auto max-h-60 md:max-h-80" />
       </div>
     </div>
   );
+  
 }
 
 export default FAQ;

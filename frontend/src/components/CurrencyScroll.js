@@ -37,34 +37,38 @@ const CurrencyScroll = () => {
   };
 
   return (
-    <div className='pl-4 pr-4'>
-    <div className="flex items-center justify-between overflow-hidden h-12 mx-auto max-w-full bg-gray-100 rounded-xl shadow-inner mt-24 mb-1">
-      <div className="flex-shrink-0 px-1 py-2 bg-gray-300 z-10 h-12 flex items-center font-semibold mr-auto shadow-inner rounded-lg aspect-680:px-1 aspect-680:text-sm">
-        We Buy & We Sell
-      </div>
-      <Marquee speed={60} pauseOnHover direction="right" className="flex overflow-hidden whitespace-nowrap items-center flex-grow mx-5 px-3 py-3">
-        {currencies.map((currency, index) => (
-          <React.Fragment key={index}>
-            <div className="flex items-center mr-3 px-1 py-3 rounded-2xl">
-              <img src={currency.image} alt={currency.name} className="h-8 w-15" />
-              <div className="whitespace-nowrap font-serif font-light">
-                <b>{currency.name}</b>
+    <div className='px-1'> {/* Consistent padding on left and right */}
+      <div className="flex items-center justify-between overflow-hidden h-12 mx-auto max-w-full bg-gray-100 rounded-xl shadow-inner mt-24 mb-1">
+        <div className="flex-shrink-0 px-1 py-2 bg-gray-300 z-10 h-12 flex flex-col items-center justify-center font-semibold shadow-inner rounded-lg" style={{ fontSize: '10px' }}>
+          <div>We Buy</div>
+          <div>We Sell</div>
+        </div>
+
+        <Marquee speed={60} pauseOnHover direction="right" className="flex overflow-hidden whitespace-nowrap items-center flex-grow mx-3 px-1 py-2">
+          {currencies.map((currency, index) => (
+            <React.Fragment key={index}>
+              <div className="flex items-center mx-1 px-1 py-2 rounded-2xl"> {/* Reduced margin and padding */}
+                <img src={currency.image} alt={currency.name} className="h-6 w-12" /> {/* Adjusted image size */}
+                <div className="whitespace-nowrap font-serif font-light text-xs"> {/* Font size reduced */}
+                  <b>{currency.name}</b>
+                </div>
+                <div className="w-px h-12 bg-gray-500 mx-2"></div> {/* Adjusted divider height and margin */}
               </div>
-              <div className="w-px h-16 bg-gray-500 mx-5"></div>
-            </div>
-            
-          </React.Fragment>
-        ))}
-      </Marquee>
-      <button
-        className="flex-shrink-0 bg-orange-500 text-white font-bold border-none px-2 py-3 cursor-pointer outline-none transition duration-300 ease-in-out hover:bg-orange-600 h-12 flex items-center ml-auto shadow-current rounded-lg aspect-680:px-1 aspect-680:text-sm"
-        onClick={handleContactUs}
-      >
-        Contact Us
-      </button>
-    </div>
+              
+            </React.Fragment>
+          ))}
+        </Marquee>
+        <button
+          className="flex-shrink-0 bg-orange-500 text-white font-bold border-none px-1 py-2 cursor-pointer outline-none transition duration-300 ease-in-out hover:bg-orange-600 h-12 flex items-center shadow-current rounded-lg"
+          style={{ fontSize: '10px' }}
+          onClick={handleContactUs}
+        >
+          Contact Us {/* Button padding and text size reduced */}
+        </button>
+      </div>
     </div>
   );
+  
 };
 
 export default CurrencyScroll;
