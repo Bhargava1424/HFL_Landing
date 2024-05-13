@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import rbiIcon from  '../assets/AboutUs/rbi.png' ;
 
 // Custom hook for animating numbers
 const useCounter = (end, duration = 2000, shouldStart = false) => {
@@ -84,6 +85,25 @@ const StatsDisplay = () => {
           </div>
         </div>
       </div>
+      
+      <div className="flex w-full items-center bg-[#F4A242] h-48 mt-6 rounded-2xl pl-16">
+      <div className="flex-none flex items-center">
+      <img src={rbiIcon} alt="RBI Logo" className='w-30' style={{ height: '12rem' }}/>
+      </div>
+      <div className="flex-1 flex pl-4">
+        <div className="flex flex-col justify-center ml- mr-30">
+          <div className="text-4xl font-semibold text-black">
+            RBI Authorized <br/> Money Changer
+          </div>
+        </div>
+        <div className="flex p-4 ml-72 bg-white rounded-2xl" style={{width:'30rem'}}>
+          <div className="text-black text-xl">
+            To deliver Forex Services in a transparent and hassle-free manner. Hyderabad Forex, as a company, is known for its integrity, innovation, empathy, and passion for delivering the best forex services.
+          </div>
+        </div>
+      </div>
+    </div>
+
     </div>
   );
 }

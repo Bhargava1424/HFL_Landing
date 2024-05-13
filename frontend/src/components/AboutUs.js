@@ -42,15 +42,15 @@ const AboutUs = () => {
     <div>
       <NavBar /> {/* Navbar component */}
       {/* About Us container */}
-      <div className="container mx-auto">
+      <div className="p-4 mb-4 mt-4 w-full">
       <div className="mt-16">
-        <div className="bg-orange-500 p-8 flex justify-center items-center">
+        <div className="bg-orange-500 p-8 flex justify-center items-center rounded-2xl">
           <div className="container mx-auto text-center">
             <h1 className="text-white font-bold text-5xl mt-4">About Us</h1>
           </div>
         </div>
         {/* Empty container with image and written content */}
-        <div className="bg-orange-100 p-8 flex flex-col md:flex-row justify-center items-center">
+        <div className="bg-orange-100 p-8 flex flex-col md:flex-row justify-center items-center rounded-2xl">
           {/* Image container */}
           <div className="w-full md:w-1/2 flex flex-col items-center md:items-start mb-8 md:mb-0 relative">
             {/* First image */}
@@ -108,7 +108,7 @@ const AboutUs = () => {
   <div className="w-full md:w-1/2 p-10">
     <h2 className="text-orange-500 text-4xl md:text-6xl mb-4">Vision</h2>
     <p className="text-black text-lg md:text-3xl mb-4">
-      we aim to offer innovative products in B2B segment in forex market by
+      we aim to offer innovative products in B2C segment in forex market by
       targeting needs of people travelling abroad on holiday, business and on
       higher education
     </p>
@@ -135,7 +135,7 @@ const AboutUs = () => {
   </div>
 </div>
       {/* Company profile section */}
-<div className="bg-orange-100 p-8 decoration-wavy">
+<div className="bg-orange-100 p-8 decoration-wavy rounded-2xl">
   <div className="container mx-auto">
     <div className="flex flex-col md:flex-row items-center">
       <div className="md:w-1/3 mb-8 md:mb-0">
@@ -164,7 +164,7 @@ const AboutUs = () => {
     </div>
   </div>
 </div>
-<div className="bg-orange-500 text-white px-4 py-3 sm:px-8 sm:py-4">
+<div className="bg-orange-500 text-white px-4 py-3 sm:px-8 sm:py-4 rounded-2xl mb-2">
   <div className="container mx-auto">
     <div className="flex flex-col sm:flex-row justify-between items-center">
       <div className="w-full sm:w-auto mb-4 sm:mb-0">
@@ -200,7 +200,7 @@ const AboutUs = () => {
     <img src={Network} alt="People" className="max-w-full h-auto object-contain" />
   </div>
 </div>
-<div className="bg-orange-100 py-8">
+<div className="bg-orange-100 py-8 rounded-2xl">
   <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
     Board Of Directors
   </h1>
@@ -296,7 +296,7 @@ const AboutUs = () => {
                     </div>
                 </div>
 
-                <div className="background-image-list list-disc space-y-2 pl-20 pr-20">
+                <div className="background-image-list  space-y-2 pl-20 pr-20">
                     <li className='p-6' >Corporate Governance practices, Internal Control Systems and Anti-Money Laundering Policy are some of the ongoing practices within Hyderabad Forex.</li>
                     <li className='p-6' >Hyderabad Forex has implemented the principles of good Corporate Governance by adopting standard Corporate Governance practices through continuous improvement of internal systems to ensure customer satisfaction.</li>
                     <li className='p-6' >At Hyderabad Forex, Internal Control Systems that include Operational, Financial and Legal systems have been integrated to ensure that the Company meets its business objectives. These systems are continuously monitored, reviewed, and modified when necessary for better efficiency and effectiveness.</li>
