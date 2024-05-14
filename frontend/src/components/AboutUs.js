@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import NavBar from './NavBar'; // Import Navbar component
 import GBLI from "../assets/officeGBLI.jpg";
 import SMGD from "../assets/officeSMGD.jpg"; // Import the second image
@@ -144,7 +144,7 @@ const AboutUs = () => {
 
 
       {/* Company profile section */}
-      <div className="bg-orange-100 p-8 decoration-wavy rounded-2xl my-2">
+      <div className="bg-orange p-8 decoration-wavy rounded-2xl my-2">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/3 mb-8 md:mb-0 relative opacity-50 md:opacity-100"> {/* Opacity for mobile */}
@@ -217,74 +217,34 @@ const AboutUs = () => {
           <img src={Network} alt="People" className="max-w-full h-auto object-contain" />
         </div>
       </div>
-
-      <div className="bg-orange-100 py-8 rounded-2xl">
-        <h1 className="text-sm sm:text-3xl font-bold text-center text-gray-800 mb-4">
-          Board Of Directors
-        </h1>
-        <p className="text-center text-black-600 mb-8 font-semibold text-xs sm:text-base">
-          Guiding the company's strategic vision and upholding ethical practices in the dynamic financial landscape.
-        </p>
-        <div className="flex flex-wrap justify-center sm:space-x-8">
-          <div className="w-full sm:w-auto text-center sm:mx-2 mb-4 sm:mb-0">
-            <div className="relative bg-white shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-2xl p-2 sm:p-4 mx-4">
-              <img
-                src={Avatar}
-                alt="Director 1"
-                className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
-              />
-              <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
-              <p className="text-xs sm:text-base text-gray-600">Chairman and Managing Director</p>
-              <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
-                Read More
-              </a>
-            </div>
-          </div>
-          <div className="w-full sm:w-auto text-center sm:mx-2 mb-4 sm:mb-0">
-            <div className="relative bg-white shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-2xl p-2 sm:p-4 mx-4">
-              <img
-                src={Avatar}
-                alt="Director 2"
-                className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
-              />
-              <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
-              <p className="text-xs sm:text-base text-gray-600">Chairman and Managing Director</p>
-              <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
-                Read More
-              </a>
-            </div>
-          </div>
-          <div className="w-full sm:w-auto text-center sm:mx-2 mb-4 sm:mb-0">
-            <div className="relative bg-white shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-2xl p-2 sm:p-4 mx-4">
-              <img
-                src={Avatar}
-                alt="Director 3"
-                className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
-              />
-              <h3 className="text-xs sm:text-xl font-bold text-Orange-500">Mr Raghunath Mudumal</h3>
-              <p className="text-xs sm:text-base text-gray-600">Chairman and Managing Director</p>
-              <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
-                Read More
-              </a>
-            </div>
-          </div>
-          <div className="w-full sm:w-auto text-center sm:mx-2 mb-4 sm:mb-0">
-            <div className="relative bg-white shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-2xl p-2 sm:p-4 mx-4">
-              <img
-                src={Avatar}
-                alt="Director 4"
-                className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
-              />
-              <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
-              <p className="text-xs sm:text-base text-gray-600">Chairman and Managing Director</p>
-              <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
-                Read More
-              </a>
-            </div>
-          </div>
-        </div>
+      <div className='bg-light_orange py-2 rounded-2xl'>
+  <div className='text-center '>
+    <h1 className='font-bold text-4xl md:w-96 mx-auto leading-normal'>Board of Directors</h1>
+    <h5 className='font-semibold px-4 mb-4'>Guiding the company's strategic vision and upholding ethical practices in the dynamic financial landscape.</h5>
+    <div className='flex flex-col md:flex-row max-w-5xl mx-auto gap-8 group'>
+      <div className='bg-white group-hover:blur-sm hover:!blur-none cursor-pointer p-12 rounded-xl  m-2'>
+        <img src={Avatar} alt="" className='h-40 mx-auto '/>
+        <h4 className='text-orange-500 uppercase text-xl font-bold'>Raghunath Mudumal</h4>
+        <p className='text-sm leading-7 my-3 font-semibold'>Chairman and Managing Director</p>
       </div>
-
+      <div className='bg-white group-hover:blur-sm hover:!blur-none cursor-pointer p-12 rounded-xl m-2'>
+        <img src={Avatar} alt="" className='h-40 mx-auto'/>
+        <h4 className='text-orange-500 uppercase text-xl font-bold'>Raghunath Mudumal</h4>
+        <p className='text-sm leading-7 my-3 font-semibold'>Chairman and Managing Director</p>
+      </div>
+      <div className='bg-white group-hover:blur-sm hover:!blur-none cursor-pointer p-12 rounded-xl m-2'>
+        <img src={Avatar} alt="" className='h-40 mx-auto'/>
+        <h4 className='text-orange-500 uppercase text-xl font-bold'>Raghunath Mudumal</h4>
+        <p className='text-sm leading-7 my-3 font-semibold'>Chairman and Managing Director</p>
+      </div>
+      <div className='bg-white group-hover:blur-sm hover:!blur-none cursor-pointer p-12 rounded-xl m-2'>
+        <img src={Avatar} alt="" className='h-40 mx-auto'/>
+        <h4 className='text-orange-500 uppercase text-xl font-bold'>Raghunath Mudumal</h4>
+        <p className='text-sm leading-7 my-3 font-semibold'>Chairman and Managing Director</p>
+      </div>
+    </div>
+  </div>
+</div>
   </div>  
   <div>
         <StatsDisplay/>
