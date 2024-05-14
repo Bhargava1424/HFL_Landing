@@ -38,7 +38,7 @@ const CurrencyScroll = () => {
 
   return (
     <div className='px-1'> {/* Consistent padding on left and right */}
-      <div className="flex items-center justify-between overflow-hidden h-12 mx-auto max-w-full bg-gray-100 rounded-xl shadow-inner mt-24 mb-1">
+      <div className="flex items-center justify-between overflow-hidden h-12 mx-auto max-w-full bg-gray-100 rounded-xl shadow-inner mt-16 mb-1 md-margin-top">
         <div className="flex-shrink-0 px-1 py-2 bg-gray-300 z-10 h-12 flex flex-col items-center justify-center font-semibold shadow-inner rounded-lg" style={{ fontSize: '10px' }}>
           <div>We Buy</div>
           <div>We Sell</div>

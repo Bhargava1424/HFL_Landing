@@ -65,7 +65,7 @@ const AboutUs = () => {
           <div className="w-full md:w-1/2 ml-2 md:ml-8 p-2 md:p-4 text-center md:text-left">
               <h2 className="text-orange-500 font-bold text-3xl md:text-5xl mb-2">Mission</h2>
               <div className="flex flex-col items-center md:items-start">
-                  <p className="text-black mb-2 font-semibold text-sm md:text-base">
+                  <p className="text-black mb-2 font-semibold text-sm md:text-base text-justify">
                       To deliver Forex Services in a transparent and hassle-free manner. Hyderabad Forex, as a company, is known for its integrity, innovation, empathy, and passion for delivering the best forex services.
                   </p>
                   {/* Just Dial logo, rating, and anchor tag */}
@@ -114,8 +114,8 @@ const AboutUs = () => {
       <div className="flex flex-col md:flex-row mt-6 my-4">
       <div className="w-full md:w-1/2 p-2 md:p-10">
         <h2 className="text-orange-500 text-xl md:text-6xl mb-4 font-bold bg-slate-300 text-center rounded-2xl">Vision</h2>
-        <p className="text-black text-xs md:text-3xl md:mb- text-center">
-          we aim to offer innovative products in B2C segment in forex market by
+        <p className="text-black text-xs md:text-3xl md:mb- text-center text-justify">
+          <b>W</b>e aim to offer innovative products in B2C segment in forex market by
           targeting needs of people travelling abroad on holiday, business and on
           higher education
         </p>
@@ -157,13 +157,13 @@ const AboutUs = () => {
                 {/* Image next to the heading, only visible on mobile */}
                 <img src={Company} alt="Company" className="w-20 h-20 ml-2 block md:hidden" />
               </div>
-              <p className="text-black mb-4 font-semibold text-sm md:text-base">
+              <p className="text-black mb-4 font-semibold text-sm md:text-base text-justify">
                 <span className='font-bold text-2xl md:text-4xl'>H</span>yderabad Forex Customer base includes a cream of corporates from IT industry, manufacturing units, service industry and of course individuals who travel abroad frequently on business and for holiday. In addition to this, Hyderabad Forex has strong business relationship with various Banks and Travel agencies.
               </p>
-              <p className="text-black font-semibold text-sm md:text-base">
+              <p className="text-black font-semibold text-sm md:text-base text-justify">
                 Hyderabad Forex provides you the widest range of foreign exchange
               </p>
-              <p className='text-black font-semibold text-sm md:text-base'>
+              <p className='text-black font-semibold text-sm md:text-base text-justify'>
                 products and currencies at the best rates.
               </p>
               <div className="mt-8">

@@ -96,9 +96,10 @@ const StatsDisplay = () => {
                 RBI Authorized <br className="lg:hidden" /> Money Changer
             </div>
             <div className="flex-1 bg-white rounded-2xl lg:ml-auto" style={{ width: '100%', maxWidth: '30rem', overflow: 'hidden' }}>
-                <div className="text-sm sm:text-md md:text-lg lg:text-xl p-4">
-                    To deliver Forex Services in a transparent and hassle-free manner. Hyderabad Forex, as a company, is known for its integrity, innovation, empathy, and passion for delivering the best forex services.
-                </div>
+            <div className="text-sm sm:text-md md:text-lg lg:text-xl p-4 text-justify">
+                To deliver Forex Services in a transparent and hassle-free manner. Hyderabad Forex, as a company, is known for its integrity, innovation, empathy, and passion for delivering the best forex services.
+            </div>
+
             </div>
         </div>
       </div>

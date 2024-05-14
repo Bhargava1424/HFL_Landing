@@ -25,3 +25,10 @@ code {
 .animate-scroll {
   animation: scroll-images 10s linear infinite;
 }
+
+/* Custom CSS for specific media query */
+@media (min-width: 770px) and (max-width: 1023px) {
+  .md-margin-top {
+    margin-top: 88px; /* or any other value you prefer */
+  }
+}

@@ -46,7 +46,7 @@ function FAQ() {
                 <ChevronDownIcon className="h-4 w-4 md:h-5 md:w-5" />
               )}
             </button>
-            <div className={`${activeIndex === index ? 'block' : 'hidden'} p-2 text-gray-600 text-xs md:text-sm`}>
+            <div className={`${activeIndex === index ? 'block' : 'hidden'} p-2 text-gray-600 text-xs md:text-sm text-justify`}>
               {faq.answer}
             </div>
           </div>

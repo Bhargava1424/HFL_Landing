@@ -91,7 +91,7 @@ const BankScroll = () => {
                     Currency Notes
                   </h3>
                 </div>
-                <p className="text-xs md:text-base mb-2 md:mb-4 text-center">
+                <p className="text-xs md:text-base mb-2 md:mb-4 text-center text-justify">
                   A sufficient amount of foreign currency notes can always come in handy,
                   especially when you are making your first trip to your college abroad.
                 </p>
