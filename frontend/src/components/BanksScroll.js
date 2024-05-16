@@ -2,18 +2,18 @@ import React from 'react';
 import Marquee from 'react-fast-marquee';
 
 // Import bank logo images
-import bankLogo1 from '../assets/HFLlogo.jpg';
-import bankLogo2 from '../assets/HFLlogo.jpg';
-import bankLogo3 from '../assets/HFLlogo.jpg';
-import bankLogo4 from '../assets/HFLlogo.jpg';
-import bankLogo5 from '../assets/HFLlogo.jpg';
-// import bankLogo6 from '../assets/HFLlogo.jpg';
-// import bankLogo7 from '../assets/HFLlogo.jpg';
-// import bankLogo8 from '../assets/HFLlogo.jpg';
-// import bankLogo9 from '../assets/HFLlogo.jpg';
-// import bankLogo10 from '../assets/HFLlogo.jpg';
-// import bankLogo11 from '../assets/HFLlogo.jpg';
-// import bankLogo12 from '../assets/HFLlogo.jpg';
+import bankLogo1 from '../assets/banks/bankLogo1.png';
+import bankLogo2 from '../assets/banks/bankLogo2.png';
+import bankLogo3 from '../assets/banks/bankLogo3.png';
+import bankLogo4 from '../assets/banks/bankLogo4.png';
+import bankLogo5 from '../assets/banks/bankLogo5.png';
+import bankLogo6 from '../assets/banks/bankLogo6.png';
+import bankLogo7 from '../assets/banks/bankLogo7.png';
+import bankLogo8 from '../assets/banks/bankLogo8.png';
+import bankLogo9 from '../assets/banks/bankLogo9.png';
+import bankLogo10 from '../assets/banks/bankLogo10.png';
+import bankLogo11 from '../assets/banks/bankLogo11.png'
+// import bankLogo12 from '../assets/bankLogo.png';
 // Import other bank logos similarly
 import buyIcon from "../assets/checkout.png" ; 
 import sellIcon from "../assets/payment-method.png";
@@ -28,12 +28,12 @@ const BankScroll = () => {
     bankLogo3,
     bankLogo4,
     bankLogo5,
-    // bankLogo6,
-    // bankLogo7,
-    // bankLogo8,
-    // bankLogo9,
-    // bankLogo10,
-    // bankLogo11,
+    bankLogo6,
+    bankLogo7,
+    bankLogo8,
+    bankLogo9,
+    bankLogo10,
+    bankLogo11,
     // bankLogo12,
     // Add other bank logos here
   ];
@@ -44,7 +44,7 @@ const BankScroll = () => {
       <div className="w-full overflow-hidden">
       <div className="bg-[#ffd686] py-3 m-1 px-4 md:px-0 rounded-2xl">
         <h1 className="text-2xl md:text-5xl font-bold text-center mb-5">We are associated with</h1>
-        <Marquee speed={20} pauseOnHover loop={0} className="mb-5">
+        <Marquee speed={100} pauseOnHover loop={0} className="mb-5">
           {bankLogos.map((logo, index) => (
             <img
               key={index}
@@ -91,7 +91,7 @@ const BankScroll = () => {
                     Currency Notes
                   </h3>
                 </div>
-                <p className="text-xs md:text-base mb-1 md:mb-4 text-center text-justify">
+                <p className="text-xs md:text-base mb-1 md:mb-4 text-center">
                   A sufficient amount of foreign currency notes can always come in handy.
                 </p>
                 <button className="bg-orange-500 text-white text-xs md:text-md px-2 md:px-4 py-1 md:py-2 rounded-md mt-auto hover:bg-orange-600 transition-colors duration-300">
