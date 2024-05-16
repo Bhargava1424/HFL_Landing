@@ -37,6 +37,40 @@ const AboutUs = () => {
         alert(`Please call ${phoneNumber}`);
     }
   };
+
+
+  const handleContactUs2 = () => {
+    const phoneNumber = '9876543210';
+
+    if (isMobile) {
+        // Redirect to the call app with the phone number
+        window.location.href = `tel:${phoneNumber}`;
+    } else {
+        // Show a popup with the phone number
+        alert(`Please call ${phoneNumber}`);
+    }
+  };
+
+  const handleWhatsApp = () => {
+    const message = encodeURIComponent("I Need Anymoney Now !!"); 
+    const whatsappUrl = `https://wa.me/918919443874?text=${message}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleWhatsApp2 = () => {
+    const message = encodeURIComponent("I Need Anymoney Now !!");
+    const whatsappUrl = `https://wa.me/919573691768?text=${message}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+  
+  
+  const handleAddress = () => {
+    window.open('https://maps.app.goo.gl/rLqjofw9Di6RNqnC9', '_blank', 'noopener,noreferrer');
+  };
+
+  const handleAddress2 = () => {
+    window.open('https://maps.app.goo.gl/WRVN1TZicHr2qCoLA', '_blank', 'noopener,noreferrer');
+  };
   
   return (
     <div>
@@ -217,34 +251,76 @@ const AboutUs = () => {
           <img src={Network} alt="People" className="max-w-full h-auto object-contain" />
         </div>
       </div>
-      <div className='bg-light_orange py-2 rounded-2xl'>
-  <div className='text-center '>
-    <h1 className='font-bold text-4xl md:w-96 mx-auto leading-normal'>Board of Directors</h1>
-    <h5 className='font-semibold px-4 mb-4'>Guiding the company's strategic vision and upholding ethical practices in the dynamic financial landscape.</h5>
-    <div className='flex flex-col md:flex-row max-w-5xl mx-auto gap-8 group'>
-      <div className='bg-white group-hover:blur-sm hover:!blur-none cursor-pointer p-12 rounded-xl  m-2'>
-        <img src={Avatar} alt="" className='h-40 mx-auto '/>
-        <h4 className='text-orange-500 uppercase text-xl font-bold'>Raghunath Mudumal</h4>
-        <p className='text-sm leading-7 my-3 font-semibold'>Chairman and Managing Director</p>
+      <div className="bg-orange-100 py-8 rounded-2xl">
+  <h1 className="text-sm sm:text-3xl font-bold text-center text-gray-800 mb-4">
+    Board Of Directors
+  </h1>
+  <p className="text-center text-black-600 mb-4 sm:mb-8 font-semibold text-xs sm:text-base">
+    Guiding the company's strategic vision and upholding ethical practices in the dynamic financial landscape.
+  </p>
+  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 justify-center">
+    <div className="text-center mb-4">
+      <div className="relative bg-white shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-2xl p-1 sm:p-6 max-w-xs mx-1">
+        <img
+          src={Avatar}
+          alt="Director 1"
+          className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
+        />
+        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
+        <p className="text-xs sm:text-base text-gray-600">Chairman and MD</p>
+        <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
+          Read More
+        </a>
       </div>
-      <div className='bg-white group-hover:blur-sm hover:!blur-none cursor-pointer p-12 rounded-xl m-2'>
-        <img src={Avatar} alt="" className='h-40 mx-auto'/>
-        <h4 className='text-orange-500 uppercase text-xl font-bold'>Raghunath Mudumal</h4>
-        <p className='text-sm leading-7 my-3 font-semibold'>Chairman and Managing Director</p>
+    </div>
+    <div className="text-center mb-4">
+      <div className="relative bg-white shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-2xl p-1 sm:p-6 max-w-xs mx-1">
+        <img
+          src={Avatar}
+          alt="Director 2"
+          className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
+        />
+        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
+        <p className="text-xs sm:text-base text-gray-600">Chairman and MD</p>
+        <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
+          Read More
+        </a>
       </div>
-      <div className='bg-white group-hover:blur-sm hover:!blur-none cursor-pointer p-12 rounded-xl m-2'>
-        <img src={Avatar} alt="" className='h-40 mx-auto'/>
-        <h4 className='text-orange-500 uppercase text-xl font-bold'>Raghunath Mudumal</h4>
-        <p className='text-sm leading-7 my-3 font-semibold'>Chairman and Managing Director</p>
+    </div>
+    <div className="text-center mb-4">
+      <div className="relative bg-white shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-2xl p-1 sm:p-6 max-w-xs mx-1">
+        <img
+          src={Avatar}
+          alt="Director 3"
+          className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
+        />
+        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
+        <p className="text-xs sm:text-base text-gray-600">Chairman and MD</p>
+        <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
+          Read More
+        </a>
       </div>
-      <div className='bg-white group-hover:blur-sm hover:!blur-none cursor-pointer p-12 rounded-xl m-2'>
-        <img src={Avatar} alt="" className='h-40 mx-auto'/>
-        <h4 className='text-orange-500 uppercase text-xl font-bold'>Raghunath Mudumal</h4>
-        <p className='text-sm leading-7 my-3 font-semibold'>Chairman and Managing Director</p>
+    </div>
+    <div className="text-center mb-4">
+      <div className="relative bg-white shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-2xl p-1 sm:p-6 max-w-xs mx-1">
+        <img
+          src={Avatar}
+          alt="Director 4"
+          className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
+        />
+        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
+        <p className="text-xs sm:text-base text-gray-600">Chairman and MD</p>
+        <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
+          Read More
+        </a>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
   </div>  
   <div>
         <StatsDisplay/>
@@ -301,43 +377,50 @@ const AboutUs = () => {
         <div>
         <div className="flex flex-col justify-center items-center mt-8">
         <h1 className='text-lg font-bold sm:text-4xl text-center w-full'>Our Branches in Hyderabad</h1>
-      <div className="flex justify-between items-center w-4/5">
-        <div className="flex flex-col items-center w-1/2">
-          <div className="flex items-center space-x-2 mt-8 pb-16">
-            <img src={phoneIcon} alt="Phone" className="h-6 w-6 sm:h-10 sm:w-10" />
-            <button onClick={handleContactUs} style={{ cursor: 'pointer' }}>
-              NUMBER
-            </button>
-
-          </div>
-          <div className="flex items-center space-x-2 pb-16">
-            <img src={messageIcon} alt="Message" className="h-6 w-6 sm:h-10 sm:w-10" />
-            <p>NUMBER</p>
-          </div>
-          <div className="flex items-center space-x-2 pb-16">
-            <img src={locationIcon} alt="Location" className="h-6 w-6 sm:h-10 sm:w-10" />
-            <p>ADDRESS</p>
-          </div>
-        </div>
-        <div className="w-1 bg-gray-800 h-56"></div>
-        <div className="flex flex-col items-center w-1/2">
-          <div className="flex items-center space-x-2 mt-8 pb-16">
-            <img src={phoneIcon} alt="Phone" className="h-6 w-6 sm:h-10 sm:w-10" />
-            <button onClick={handleContactUs} style={{ cursor: 'pointer' }}>
-              NUMBER
-            </button>
-          </div>
-          <div className="flex items-center space-x-2 pb-16">
-            <img src={messageIcon} alt="Message" className="h-6 w-6 sm:h-10 sm:w-10" />
-            <p>NUMBER</p>
-
-          </div>
-          <div className="flex items-center space-x-2 pb-16">
-            <img src={locationIcon} alt="Location" className="h-6 w-6 sm:h-10 sm:w-10" />
-            <p>ADDRESS</p>
-          </div>
-        </div>
+        <div className="flex justify-between items-center w-4/5">
+    <div className="flex flex-col items-center w-1/2">
+      <div className="flex items-center space-x-2 mt-8 pb-16">
+        <img src={phoneIcon} alt="Phone" className="h-6 w-6 sm:h-10 sm:w-10" />
+        <button onClick={handleContactUs} style={{ cursor: 'pointer' }}>
+          NUMBER
+        </button>
       </div>
+      <div className="flex items-center space-x-2 pb-16">
+        <img src={messageIcon} alt="Message" className="h-6 w-6 sm:h-10 sm:w-10" />
+        <button onClick={handleWhatsApp} style={{ cursor: 'pointer' }}>
+          WhatsApp
+        </button>
+      </div>
+      <div className="flex items-center space-x-2 pb-16">
+        <img src={locationIcon} alt="Location" className="h-6 w-6 sm:h-10 sm:w-10" />
+        <button onClick={handleAddress} style={{ cursor: 'pointer' }}>
+          ADDRESS
+        </button>
+      </div>
+    </div>
+    <div className="w-1 bg-gray-800 h-56"></div>
+    <div className="flex flex-col items-center w-1/2">
+      <div className="flex items-center space-x-2 mt-8 pb-16">
+        <img src={phoneIcon} alt="Phone" className="h-6 w-6 sm:h-10 sm:w-10" />
+        <button onClick={handleContactUs2} style={{ cursor: 'pointer' }}>
+          NUMBER
+        </button>
+      </div>
+      <div className="flex items-center space-x-2 pb-16">
+        <img src={messageIcon} alt="Message" className="h-6 w-6 sm:h-10 sm:w-10" />
+        <button onClick={handleWhatsApp2} style={{ cursor: 'pointer' }}>
+          WhatsApp
+        </button>
+      </div>
+      <div className="flex items-center space-x-2 pb-16">
+        <img src={locationIcon} alt="Location" className="h-6 w-6 sm:h-10 sm:w-10" />
+        <button onClick={handleAddress2} style={{ cursor: 'pointer' }}>
+          ADDRESS
+        </button>
+      </div>
+    </div>
+  </div>
+
     </div>
         </div>
         </div>
