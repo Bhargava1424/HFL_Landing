@@ -78,30 +78,32 @@ const BankScroll = () => {
         </div> 
 
         <div className="bg-[#FFD686] p-4 my-4 mx-1 rounded-2xl">
-          <div className="space-y-4 md:space-y-0 md:space-x-12 md:flex md:flex-wrap">
-            {[1, 2, 3].map((num) => (
-              <div key={num} className="bg-white p-4 md:p-6 rounded-xl shadow-md md:flex-1 flex flex-col items-center">
-                <div className="flex items-center mb-2">
+          <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[1, 2, 3, 4, 5, 6].map((num) => (
+              <div key={num} className="bg-white p-2 md:p-6 rounded-xl shadow-md flex flex-col items-center">
+                <div className="flex items-center mb-1 md:mb-2">
                   <img
                     src={cashIcon}
                     alt="Currency Notes"
-                    className="w-7 h-7 md:w-16 md:h-16 mr-2"
+                    className="w-5 h-5 md:w-16 md:h-16 mr-1 md:mr-2"
                   />
-                  <h3 className="text-sm font-bold text-center md:text-xl">
+                  <h3 className="text-xs font-bold text-center md:text-xl">
                     Currency Notes
                   </h3>
                 </div>
-                <p className="text-xs md:text-base mb-2 md:mb-4 text-center text-justify">
-                  A sufficient amount of foreign currency notes can always come in handy,
-                  especially when you are making your first trip to your college abroad.
+                <p className="text-xs md:text-base mb-1 md:mb-4 text-center text-justify">
+                  A sufficient amount of foreign currency notes can always come in handy.
                 </p>
-                <button className="bg-orange-500 text-white text-xs md:text-md px-3 md:px-4 py-1 md:py-2 rounded-md mt-auto hover:bg-orange-600 transition-colors duration-300">
+                <button className="bg-orange-500 text-white text-xs md:text-md px-2 md:px-4 py-1 md:py-2 rounded-md mt-auto hover:bg-orange-600 transition-colors duration-300">
                   Read More
                 </button>
               </div>
             ))}
           </div>
         </div>
+
+
+
       </div>
     </div>
   );
