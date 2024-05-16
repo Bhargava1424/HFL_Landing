@@ -8,6 +8,7 @@ import StatsDisplay from './StatsDisplay';
 import Testimony from './Testimony';
 import BanksScroll from './BanksScroll';
 import FAQ from './Faq';
+import Footer from './Footer';
 
 
 
@@ -27,6 +28,7 @@ const HomePage = () => {
       <Testimony/>
       <BanksScroll/>
       <FAQ/>
+      <Footer/>
 
         
         {/* Rest of the home page content */}
