@@ -32,3 +32,11 @@ code {
     margin-top: 88px; /* or any other value you prefer */
   }
 }
+
+.map-container iframe {
+  pointer-events: none;
+}
+
+.map-container iframe .gm-style .gm-style-iw-c {
+  display: none !important;
+}
