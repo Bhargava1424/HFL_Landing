@@ -1,0 +1,14 @@
+@keyframes glowing {
+    0% {
+      background-color:  rgba(255, 255, 255, 0.985); /* Light orange color with reduced opacity */
+      box-shadow: 0 0 5px rgba(255, 215, 0, 0.1); /* Light orange color with reduced opacity */
+    }
+    50% {
+      background-color: rgba(255, 255, 255, 0.985); /* Dark orange color */
+      box-shadow: 0 0 20px #FFA500; /* Dark orange color */
+    }
+    100% {
+      background-color: rgba(255, 255, 255, 0.985); /* Light orange color with reduced opacity */
+      box-shadow: 0 0 5px rgba(255, 215, 0, 0.1); /* Light orange color with reduced opacity */
+    }
+  }

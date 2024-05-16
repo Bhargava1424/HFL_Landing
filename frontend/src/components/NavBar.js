@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Logo from "../assets/HFLlogo.jpg";
-
+import { motion } from "framer-motion"
+import "./NavBar.css"
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -54,11 +55,18 @@ const Navbar = () => {
 
         {/* Button */}
         <div className={`${isMobile ? 'hidden' : 'relative'}`}>
-          <div className='absolute inset-0.5 px-4 py-2 ml-4 bg-orange-200 rounded-lg blur'></div>
-          <button className="relative bg-white text-black hover:text-orange-500 py-2 px-4 border border-orange-500 rounded-full ml-4 font-semibold">
-            Get AnyMoney Now &rarr;
-          </button>
-        </div>
+      <div className='absolute inset-0.5 px-4 py-2 ml-4 bg-orange-200 rounded-lg blur'></div>
+      <motion.button 
+        whileHover={{ scale: 1.1 }}
+        className="relative bg-white text-black hover: py-2 px-4 border border-orange-500 rounded-full ml-4 font-semibold button" // Add 'button' class for animation
+        style={{ // Add style attribute for custom CSS
+          animation: 'glowing 2000ms infinite', // Apply the glowing animation
+          borderRadius: '60px', // Apply border-radius
+        }}
+      >
+        Get AnyMoney Now &rarr;
+      </motion.button>
+    </div>
 
         {/* Mobile menu button */}
         <div className={`${isMobile ? 'block' : 'hidden'}`}>

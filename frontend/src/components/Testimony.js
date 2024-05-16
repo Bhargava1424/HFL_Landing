@@ -4,16 +4,24 @@ const Testimony = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     {
-      image: require('../assets/Testimony/1.png'),
-      profilePic: require('../assets/Testimony/profile1.jpg'),
+      image: require('../assets/Testimony/testimony-6.png'),
+     
     },
     {
-      image: require('../assets/Testimony/2.png'),
-      profilePic: require('../assets/Testimony/profile2.jpg'),
+      image: require('../assets/Testimony/Testimony-2.png'),
+      
     },
     {
-      image: require('../assets/Testimony/3.png'),
-      profilePic: require('../assets/Testimony/profile3.jpg'),
+      image: require('../assets/Testimony/Testimony-3.png'),
+      
+    },
+    {
+      image: require('../assets/Testimony/Testimony-4.png'),
+      
+    },
+    {
+      image: require('../assets/Testimony/Testimony-5.png'),
+    
     },
   ];
 
@@ -54,13 +62,7 @@ const Testimony = () => {
         <div className="absolute -top-6 sm:-top-8 left-0 w-full flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
           {slides.map((slide, index) => (
             <div key={index} className="w-full flex-shrink-0 flex justify-center">
-              <div className="relative">
-                <img
-                  src={slide.profilePic}
-                  alt={`Profile ${index + 1}`}
-                  className="rounded-full border-4 border-white w-16 h-16 sm:w-36 sm:h-36"
-                />
-              </div>
+              
             </div>
           ))}
         </div>

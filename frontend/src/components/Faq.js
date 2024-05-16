@@ -4,8 +4,24 @@ import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/outline'; // En
 
 const faqs = [
   {
+    question: "What services does Hyderabad Forex Ltd provide?",
+    answer: "Hyderebad Forex Ltd usually works with buying and selling different country currencies. The company also helps with international transactions, travel insurance, etc."
+  },
+  {
     question: "How much foreign exchange can be taken for a trip abroad?",
     answer: "Foreign exchange can be taken under private visit category governed by the overall LRS limit of USD 2,50,000 per traveller in a single financial year, as per regulations. However, only USD 3000 of that amount can be carried as currency notes for a particular trip– the balance has to be in the form of prepaid forex cards."
+  },
+  {
+    question: "Will Hyderabad Forex Ltd help me during banking issues while transferring money abroad?",
+    answer: "Helping customers with their international transactions is one of the significant functions of Hyderabad Forex Ltd. Therefore, you must contact the agent, and they can support you regarding the same."
+  },
+  {
+    question: "In which form will the Hyderabad Forex Ltd give me the currency for the other country?",
+    answer: "Many people prefer using Forex cards because of the convience and features. You also have the option to get cash or a traveller's cheque."
+  },
+  {
+    question: "How early before the trip should i get the currency exchanged?",
+    answer: "You must get the currency exchanged 180 days before the date of the trip."
   },
   {
     question: "What are the various documents required to purchase foreign currency?",
