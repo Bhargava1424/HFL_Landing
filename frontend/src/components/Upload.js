@@ -71,18 +71,27 @@ const Upload = () => {
               Upload {type.charAt(0).toUpperCase() + type.slice(1).replace(/([A-Z])/g, ' $1').trim()}
               {files[type] && <FaCheckCircle className="inline ml-2 text-green-500" />}
             </label>
-            <input
-              type="file"
-              onChange={(e) => onFileChange(e, type)}
-              className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
-            />
-            <button
-              type="button"
-              onClick={() => setShowWebcam({ ...showWebcam, [type]: !showWebcam[type] })}
-              className="ml-2 btn btn-secondary"
-            >
-              <FaCamera />
-            </button>
+            <div className="flex items-center">
+              <input
+                type="file"
+                onChange={(e) => onFileChange(e, type)}
+                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+              />
+              <button
+                type="button"
+                onClick={() => setShowWebcam({ ...showWebcam, [type]: !showWebcam[type] })}
+                className="ml-2 btn btn-secondary text-blue-700"
+              >
+                <FaCamera />
+              </button>
+            </div>
+            {files[type] && (
+              <img
+                src={URL.createObjectURL(files[type])}
+                alt={`${type} preview`}
+                className="mt-2 w-full h-32 object-cover"
+              />
+            )}
             {showWebcam[type] && (
               <div className="mt-2">
                 <Webcam
