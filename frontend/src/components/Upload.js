@@ -1,139 +1,189 @@
 import React, { useState, useRef } from 'react';
-import axios from 'axios';
 import { FaCheckCircle, FaCamera } from 'react-icons/fa';
 import Webcam from 'react-webcam';
 
-const Upload = () => {
+const steps = ['PAN', 'Passport', 'Aadhar', 'Driving License'];
+
+const UploadWizard = () => {
+  const [currentStep, setCurrentStep] = useState(0);
   const [files, setFiles] = useState({
     pan: null,
     passport: null,
     aadhar: null,
     drivingLicense: null,
   });
-  const [uploading, setUploading] = useState(false);
+  const [username, setUsername] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false);
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [uploadError, setUploadError] = useState(null);
-  const [showWebcam, setShowWebcam] = useState({});
+  const [showWebcam, setShowWebcam] = useState(false);
+  const [registrationTime, setRegistrationTime] = useState(null);
 
   const webcamRef = useRef(null);
 
-  const onFileChange = (e, type) => {
-    setFiles({ ...files, [type]: e.target.files[0] });
+  const onFileChange = (e) => {
+    const fileType = steps[currentStep].toLowerCase().replace(' ', '');
+    setFiles({ ...files, [fileType]: e.target.files[0] });
     setUploadSuccess(false);
     setUploadError(null);
   };
 
-  const capture = (type) => {
+  const capture = () => {
+    const fileType = steps[currentStep].toLowerCase().replace(' ', '');
     const imageSrc = webcamRef.current.getScreenshot();
     fetch(imageSrc)
       .then(res => res.blob())
       .then(blob => {
-        const file = new File([blob], `${type}.jpg`, { type: 'image/jpeg' });
-        setFiles({ ...files, [type]: file });
-        setShowWebcam({ ...showWebcam, [type]: false });
+        const file = new File([blob], `${fileType}.jpg`, { type: 'image/jpeg' });
+        setFiles({ ...files, [fileType]: file });
+        setShowWebcam(false);
       });
   };
 
-  const onFileUpload = async () => {
-    const formData = new FormData();
-    formData.append('pan', files.pan);
-    formData.append('passport', files.passport);
-    formData.append('aadhar', files.aadhar);
-    formData.append('drivingLicense', files.drivingLicense);
-
-    setUploading(true);
+  const onRegister = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/upload', formData, {
+      const response = await fetch('http://localhost:5000/api/register', {
+        method: 'POST',
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ username }),
       });
-      console.log('Files uploaded successfully:', response.data);
-      setUploadSuccess(true);
-      setUploadError(null);
+
+      const data = await response.json();
+
+      if (response.status === 201) {
+        console.log('User registered successfully');
+        setRegistrationTime(data.registrationTime);
+        setIsRegistered(true);
+      } else {
+        console.error('Error registering user:', data.message);
+      }
     } catch (error) {
-      console.error('Error uploading files:', error);
-      setUploadError(error.message);
-      setUploadSuccess(false);
-    } finally {
-      setUploading(false);
+      console.error('Error registering user:', error.message);
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl font-semibold text-center mb-4">Upload Documents</h2>
-        
-        {['pan', 'passport', 'aadhar', 'drivingLicense'].map(type => (
-          <div key={type} className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Upload {type.charAt(0).toUpperCase() + type.slice(1).replace(/([A-Z])/g, ' $1').trim()}
-              {files[type] && <FaCheckCircle className="inline ml-2 text-green-500" />}
-            </label>
-            <div className="flex items-center">
-              <input
-                type="file"
-                onChange={(e) => onFileChange(e, type)}
-                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
-              />
-              <button
-                type="button"
-                onClick={() => setShowWebcam({ ...showWebcam, [type]: !showWebcam[type] })}
-                className="ml-2 btn btn-secondary text-blue-700"
-              >
-                <FaCamera />
-              </button>
-            </div>
-            {files[type] && (
-              <img
-                src={URL.createObjectURL(files[type])}
-                alt={`${type} preview`}
-                className="mt-2 w-full h-32 object-cover"
-              />
-            )}
-            {showWebcam[type] && (
-              <div className="mt-2">
-                <Webcam
-                  audio={false}
-                  ref={webcamRef}
-                  screenshotFormat="image/jpeg"
-                  className="rounded-lg"
-                />
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
+      <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-2xl border-2 border-dashed border-gray-400">
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Register & Upload Documents</h2>
+
+        {!isRegistered ? (
+          <div className="mb-8">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+            <button
+              onClick={onRegister}
+              className="mt-4 w-full bg-green-500 text-white py-3 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
+            >
+              Register
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="mb-8">
+              <div className="flex justify-between items-center mb-4">
+                {steps.map((step, index) => (
+                  <div key={index} className="flex flex-col items-center">
+                    <div
+                      className={`w-10 h-10 flex items-center justify-center rounded-full ${
+                        index <= currentStep ? '!bg-green-700' : 'bg-gray-300'
+                      } text-white mb-2`}
+                    >
+                      {index + 1}
+                    </div>
+                    <span className="text-sm text-gray-600">{step}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mb-6">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Upload {steps[currentStep]}
+                  {files[steps[currentStep].toLowerCase().replace(' ', '')] && <FaCheckCircle className="inline ml-2 text-green-500" />}
+                </label>
+                <div className="flex items-center space-x-4">
+                  <label className="block w-full py-2 px-4 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer">
+                    <span className="text-gray-600">Choose file</span>
+                    <input type="file" className="hidden" onChange={onFileChange} />
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setShowWebcam(!showWebcam)}
+                    className="!bg-green-700 text-white py-2 px-16 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
+                  >
+                    <FaCamera className="inline-block mr-2" />
+                    Webcam
+                  </button>
+                </div>
+                {files[steps[currentStep].toLowerCase().replace(' ', '')] && (
+                  <img
+                    src={URL.createObjectURL(files[steps[currentStep].toLowerCase().replace(' ', '')])}
+                    alt={`${steps[currentStep]} preview`}
+                    className="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
+                  />
+                )}
+                {showWebcam && (
+                  <div className="mt-4">
+                    <Webcam
+                      audio={false}
+                      ref={webcamRef}
+                      screenshotFormat="image/jpeg"
+                      className="rounded-lg shadow-md"
+                    />
+                    <button
+                      type="button"
+                      onClick={capture}
+                      className="mt-4 !bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
+                    >
+                      Capture
+                    </button>
+                  </div>
+                )}
+              </div>
+              <div className="flex justify-between">
                 <button
-                  type="button"
-                  onClick={() => capture(type)}
-                  className="mt-2 btn btn-primary"
+                  onClick={() => setCurrentStep(currentStep - 1)}
+                  disabled={currentStep === 0}
+                  className=" bg-sky-700 text-white py-2 px-4 rounded-lg shadow-md hover:bg-sky-800 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Capture
+                  Back
+                </button>
+                <button
+                  onClick={() => setCurrentStep(currentStep + 1)}
+                  className="!bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
+                  disabled={!files[steps[currentStep].toLowerCase().replace(' ', '')] || currentStep >= steps.length - 1}
+                >
+                  {currentStep === steps.length - 1 ? 'Finish' : 'Next'}
                 </button>
               </div>
+            </div>
+            {uploadSuccess && (
+              <div className="mt-4 text-green-600 text-center">
+                Files uploaded successfully!
+              </div>
             )}
-          </div>
-        ))}
-        
-        <button
-          onClick={onFileUpload}
-          className={`btn btn-primary mt-4 w-full ${uploading ? 'loading' : ''}`}
-          disabled={!files.pan || !files.passport || !files.aadhar || !files.drivingLicense || uploading}
-        >
-          {uploading ? 'Uploading...' : 'Upload Files'}
-        </button>
-        
-        {uploadSuccess && (
-          <div className="mt-4 text-green-600">
-            Files uploaded successfully!
-          </div>
-        )}
-        
-        {uploadError && (
-          <div className="mt-4 text-red-600">
-            Error uploading files: {uploadError}
-          </div>
+
+            {uploadError && (
+              <div className="mt-4 text-red-600 text-center">
+                Error uploading files: {uploadError}
+              </div>
+            )}
+            {registrationTime && (
+              <div className="mt-4 text-gray-600 text-center">
+                Registered on: {new Date(registrationTime).toLocaleString()}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>
   );
 };
 
-export default Upload;
+export default UploadWizard;

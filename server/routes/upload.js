@@ -7,7 +7,7 @@ const crypto = require('crypto');
 const path = require('path');
 
 // MongoDB Atlas URI
-const mongoURI = 'mongodb+srv://admin:eVBQQOvplo3wvwq6@cluster0.rqkwzyy.mongodb.net/9erpTest?retryWrites=true&w=majority';
+const mongoURI = 'mongodb+srv://admin:eVBQQOvplo3wvwq6@cluster0.rqkwzyy.mongodb.net/SAT?retryWrites=true&w=majority';
 
 // Create mongo connection
 const conn = mongoose.createConnection(mongoURI, {
