@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import rbiIcon from '../assets/AboutUs/rbi.png';
 
 // Custom hook for animating numbers
 const useCounter = (end, duration = 2000, shouldStart = false) => {
@@ -67,54 +66,47 @@ const StatsDisplay = () => {
 
   return (
     <div ref={ref} className="px-1 sm:px-0">
-      <div className="bg-gray-300 rounded-2xl overflow-hidden px-3 sm:px-5 sm:py-5 my-2">
+      <div className="bg-[#FBF8F1] rounded-b-2xl overflow-hidden px-3 sm:px-5 sm:py-8 shadow-md">
         <div className="text-center">
-          <div className="flex flex-row justify-between items-center text-sm sm:text-lg">
-            <div className="flex-1 mb-1 sm:mb-0">
-              <div className="font-bold text-lg sm:text-xl">{count1}<span style={animatePlus(completed1)}>+</span></div>
+          {/* For larger devices */}
+          <div className="hidden sm:flex flex-row justify-between items-center text-sm sm:text-lg">
+            <div className="flex-1 flex flex-col items-center mb-1 sm:mb-0">
+              <div className="flex items-center gap-x-2">
+                <div className="font-bold text-lg sm:text-4xl">{count1}<span style={animatePlus(completed1)}>+</span></div>
+                <div className="">Years Of Forex <br/> Experience</div>
+              </div>
             </div>
-            <div className="border-l border-gray-800 h-8 sm:h-12 hidden sm:block"></div>
-            <div className="flex-1 mb-1 sm:mb-0">
-              <div className="font-bold text-lg sm:text-xl">{count2}<span style={animatePlus(completed2)}>+</span></div>
+            <div className="border-l border-gray-800 h-8 sm:h-16 hidden sm:block"></div>
+            <div className="flex-1 flex flex-col items-center mb-1 sm:mb-0">
+              <div className="flex items-center gap-x-2">
+                <div className="font-bold text-lg sm:text-4xl">{count2}<span style={animatePlus(completed2)}>+</span></div>
+                <div className="">Happy<br/> Customers</div>
+              </div>
             </div>
-            <div className="border-l border-gray-800 h-8 sm:h-12 hidden sm:block"></div>
-            <div className="flex-1 mb-1 sm:mb-0">
-              <div className="font-bold text-lg sm:text-xl">{count3}<span style={animatePlus(completed3)}>+</span></div>
+            <div className="border-l border-gray-800 h-8 sm:h-16 hidden sm:block"></div>
+            <div className="flex-1 flex flex-col items-center mb-1 sm:mb-0">
+              <div className="flex items-center gap-x-2">
+                <div className="font-bold text-lg sm:text-4xl">{count3}<span style={animatePlus(completed3)}>+</span></div>
+                <div className="">Currencies<br/> Exchanged Everyday</div>
+              </div>
             </div>
           </div>
-          <div className="flex flex-row justify-between items-center text-sm sm:text-lg">
-            <div className="flex-1 text-center mb-1 sm:mb-0">
-              <div>Years Of Forex Experience</div>
+
+          {/* For smaller devices */}
+          <div className="sm:hidden flex flex-col items-center text-sm sm:text-lg">
+            <div className="flex flex-row justify-between w-full mb-2">
+              <div className="flex-1 text-center font-bold text-lg">{count1}<span style={animatePlus(completed1)}>+</span></div>
+              <div className="flex-1 text-center font-bold text-lg">{count2}<span style={animatePlus(completed2)}>+</span></div>
+              <div className="flex-1 text-center font-bold text-lg">{count3}<span style={animatePlus(completed3)}>+</span></div>
             </div>
-            <div className="border-l border-gray-800 h-8 sm:h-12 hidden sm:block"></div>
-            <div className="flex-1 text-center mb-1 sm:mb-0">
-              <div>Happy Customers</div>
-            </div>
-            <div className="border-l border-gray-800 h-8 sm:h-12 hidden sm:block"></div>
-            <div className="flex-1 text-center mb-1 sm:mb-0">
-              <div>Currencies Exchanged Everyday</div>
+            <div className="flex flex-row justify-between w-full">
+              <div className="flex-1 text-center text-xs">Years Of Forex Experience</div>
+              <div className="flex-1 text-center text-xs">Happy Customers</div>
+              <div className="flex-1 text-center text-xs">Currencies Exchanged Everyday</div>
             </div>
           </div>
         </div>
       </div>
-
-
-      <div className="flex flex-col lg:flex-row items-center bg-[#F4A242] h-auto lg:h-48 mt-2 rounded-2xl">
-        <div className="flex flex-row items-center lg:mb-0 pl-4 lg:pl-0">
-            <img src={rbiIcon} alt="RBI Logo" className="w-20 h-20 sm:w-40 sm:h-40" style={{ height: 'auto' }} />
-            <div className="text-xl sm:text-xl lg:text-4xl font-semibold text-black sm:ml-4 lg:ml-24 sm:mt-0 mb-2 md:mb-12 lg:mt-14">
-                RBI Authorized <br className="lg:hidden" /> Money Changer
-            </div>
-        </div>
-        <div className="flex-1 flex flex-col lg:flex-row items-center lg:items-start px-4 py-2 lg:px-6 lg:py-4" style={{ overflow: 'hidden' }}>
-            <div className="flex-1 bg-white rounded-2xl lg:ml-auto" style={{ width: '100%', maxWidth: '30rem', overflow: 'hidden' }}>
-                <div className="text-sm sm:text-md md:text-lg lg:text-xl p-2 md:p-4 text-justify">
-                    To deliver Forex Services in a transparent and hassle-free manner. Hyderabad Forex, as a company, is known for its integrity, innovation, empathy, and passion for delivering the best forex services.
-                </div>
-            </div>
-        </div>
-      </div>
-
     </div>
   );
 };
