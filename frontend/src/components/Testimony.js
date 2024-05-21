@@ -1,85 +1,157 @@
 import React, { useState, useEffect } from 'react';
+import background from '../assets/testimony.png';
+import image1 from '../assets/Testimony/image1.jpg';
+import image2 from '../assets/Testimony/image2.jpg';
+import image3 from '../assets/Testimony/image3.jpg';
+import image4 from '../assets/Testimony/image4.jpg';
+import image5 from '../assets/Testimony/image5.jpg';
+import image6 from '../assets/Testimony/image6.jpg';
+
+const testimonials = [
+  {
+    name: 'Sharan Khandavilli',
+    feedback: 'I had a really good and seamless experience with them, the exchange rates were lower than multiple places and banks I have visited. I recommend them for your future travel.',
+    image: image1,
+    rating: 5
+  },
+  {
+    name: 'ravi kumar gandham',
+    feedback: 'They provide excellent service with very competitive rates of forex. Highly reliable and dependable. Availing their services for the last 16 years.',
+    image: image2,
+    rating: 5
+  },
+  {
+    name: 'Akash M',
+    feedback: 'Highly recommended, fast and efficient they provide home delivery all across Hyderabad as well, the rates offered are also very competitive.',
+    image: image3,
+    rating: 5
+  },
+  {
+    name: 'Sandeep Singh',
+    feedback: 'Wow... I\'ve never seen a service so fast.. Totally reliable and trustworthy. Money got transferred within 20 mins.',
+    image: image4,
+    rating: 5
+  },
+  {
+    name: 'Vedaprakash Badimi',
+    feedback: 'Hyderabad Forex Limited (HFL), one of the oldest foreign exchange services in Hyderabad. The owner\'s extensive experience in the field is evident in the professionalism and efficiency with which they operate. Their offer exchange rates are also very reasonable.',
+    image: image5,
+    rating: 5
+  },
+  {
+    name: 'Satish Lenka',
+    feedback: 'Really impressed with service. Quickly arranged Singapore dollars in short time with home delivery and before my departure. Very much professional behavior over call and in personal contact as well.',
+    image: image6,
+    rating: 5
+  },
+  {
+    name: 'abhilash reddy',
+    feedback: 'forex guy was really friendly and nice guy and exchange rate is very genuine. prefer this if this is near to you. RBI approved center too.',
+    image: image1,
+    rating: 5
+  },
+  {
+    name: 'Bhukya Srikanth',
+    feedback: 'Hyderabad Forex Ltd provides excellent service with multilingual assistance and timely reservations. Their experienced staff ensures top-notch service, and they accept various payment methods including cash, G Pay, and bank transfers.',
+    image: image2,
+    rating: 5
+  },
+  {
+    name: 'Surya',
+    feedback: 'Good service provided by "Hyderabad Forex Ltd., Somajiguda (Raghunath M)" to exchange IND rupee to Taiwan dollar. It was genuine service provider and they took within an hour, the charges were also reasonable so I am totally satisfied with their service.',
+    image: image3,
+    rating: 5
+  },
+  {
+    name: 'K Shiva Prasad',
+    feedback: 'This is the Forex from where I purchased 8000 Us dollars. they charged me around Rs2.50 per dollar as service charge. They were quick and I\'m delighted with their service.',
+    image: image4,
+    rating: 5
+  },
+  {
+    name: 'MD MUSTAFA',
+    feedback: 'I converted Dollars into Indian money at Hyderabad forex and the transaction taken place soon , the service was good and I felt contented.',
+    image: image5,
+    rating: 5
+  },
+  {
+    name: 'Narsaiah',
+    feedback: 'The Canadian currency has been converted by me in to Indian money at the Hyderabad forex the service was decent and they have rendered a neat job.',
+    image: image6,
+    rating: 5
+  }
+];
 
 const Testimony = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = [
-    {
-      image: require('../assets/Testimony/testimony-6.png'),
-     
-    },
-    {
-      image: require('../assets/Testimony/Testimony-2.png'),
-      
-    },
-    {
-      image: require('../assets/Testimony/Testimony-3.png'),
-      
-    },
-    {
-      image: require('../assets/Testimony/Testimony-4.png'),
-      
-    },
-    {
-      image: require('../assets/Testimony/Testimony-5.png'),
-    
-    },
-  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
   const nextSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide === slides.length - 1 ? 0 : prevSlide + 1));
+    setCurrentIndex((prevIndex) => (prevIndex + 3) % testimonials.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide === 0 ? slides.length - 1 : prevSlide - 1));
+    setCurrentIndex((prevIndex) => (prevIndex - 3 + testimonials.length) % testimonials.length);
   };
 
-  useEffect(() => {
-    const slideInterval = setInterval(nextSlide, 5000);
-    return () => clearInterval(slideInterval);
-  },);
+  const getTotalSlides = () => {
+    return Math.ceil(testimonials.length / 3);
+  };
+
+  const getCurrentSlideIndex = () => {
+    return Math.floor(currentIndex / 3);
+  };
 
   return (
-    <div className="py-4 sm:p-6 overflow-x-hidden m-1">
-      <div className="text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">What Our Clients Say?</h2>
-        <p className="text-gray-600 text-sm sm:text-base">
-          Our client's delightful smiles are a testament to the exceptional services we provide.
-        </p>
-      </div>
-      <div className="relative mt-8 sm:mt-12 sm:mx-16 pt-4 sm:pt-8">
-        <div className="overflow-hidden border-solid border-4 border-black">
+    <div className="container mx-auto my-12 py-8 px-8 relative bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
+      <h2 className="ml-32 text-5xl font-bold mb-2">Our Customer Feedback</h2>
+      <p className="ml-36 mb-8 text-xl text-gray-600">Don't take our word for it. Trust our customers</p>
+      <div className="flex justify-center space-x-4 overflow-hidden h-64">
+        {testimonials.slice(currentIndex, currentIndex + 3).map((testimonial, index) => (
           <div
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            className={`flex flex-col max-w-sm rounded overflow-hidden shadow-lg border p-4 transition-transform duration-500 ease-in-out ${
+              index === 0 ? 'slide-in' : index === 2 ? 'slide-out' : ''
+            }`}
+            key={index}
           >
-            {slides.map((slide, index) => (
-              <div key={index} className="w-full flex-shrink-0">
-                <img src={slide.image} alt={`Testimonial ${index + 1}`} className="w-full" />
+            <div className="flex items-center mb-4">
+              <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full mr-4" />
+              <div className="flex items-center">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <svg
+                    key={i}
+                    className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.95a1 1 0 00.95.69h4.07c.969 0 1.371 1.24.588 1.81l-3.293 2.4a1 1 0 00-.363 1.118l1.287 3.95c.3.921-.755 1.688-1.54 1.118l-3.293-2.4a1 1 0 00-1.175 0l-3.293 2.4c-.784.57-1.838-.197-1.54-1.118l1.287-3.95a1 1 0 00-.363-1.118l-3.293-2.4c-.783-.57-.381-1.81.588-1.81h4.07a1 1 0 00.95-.69l1.286-3.95z"/>
+                  </svg>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-        <div className="absolute -top-6 sm:-top-8 left-0 w-full flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-          {slides.map((slide, index) => (
-            <div key={index} className="w-full flex-shrink-0 flex justify-center">
-              
             </div>
-          ))}
-        </div>
-        <button
-          className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-50 text-black border-none text-xl p-1 sm:text-2xl sm:p-2 rounded-full focus:outline-none"
-          onClick={prevSlide}
-        >
-          &lt;
-        </button>
-        <button
-          className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-50 text-black border-none text-xl p-1 sm:text-2xl sm:p-2 rounded-full focus:outline-none"
-          onClick={nextSlide}
-        >
-          &gt;
-        </button>
+            <h3 className="font-bold text-lg">{testimonial.name}</h3>
+            <p className="text-gray-600 flex-grow">{testimonial.feedback}</p>
+          </div>
+        ))}
       </div>
-
+      <div className="flex justify-center mt-6 space-x-2">
+        {Array.from({ length: getTotalSlides() }, (_, i) => (
+          <div
+            key={i}
+            className={`h-2 w-2 rounded-full ${i === getCurrentSlideIndex() ? 'bg-orange-400' : 'bg-gray-300'}`}
+          ></div>
+        ))}
+      </div>
+      <div className="absolute top-0 right-0 mt-4 mr-4 flex space-x-2">
+        <button className="border rounded px-4 py-2" onClick={prevSlide}>Previous</button>
+        <button className="border rounded px-4 py-2" onClick={nextSlide}>Next</button>
+      </div>
     </div>
   );
 };
