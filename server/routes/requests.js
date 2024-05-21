@@ -7,9 +7,10 @@ const Grid = require('gridfs-stream');
 const crypto = require('crypto');
 const path = require('path');
 const ocr = require('../utils/ocr');
+const mongoose = require('mongoose');
 
 // MongoDB Connection - get a reference to the database
-const mongoURI = 'mongodb://localhost:27017/your-database-name'; 
+const mongoURI = 'mongodb+srv://admin:eVBQQOvplo3wvwq6@cluster0.rqkwzyy.mongodb.net/HFL'; 
 const conn = mongoose.createConnection(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Init gfs 

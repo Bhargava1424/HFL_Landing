@@ -247,14 +247,11 @@ const UploadWizard = () => {
                   Back
                 </button>
                 <button
-                  onClick={() =>
+                  onClick={() => 
                     currentStep === steps.length - 1 ? handleSubmit() : setCurrentStep(currentStep + 1)
                   }
                   className="!bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
-                  disabled={
-                    !files[steps[currentStep].toLowerCase().replace(' ', '')] ||
-                    currentStep >= steps.length - 1
-                  }
+                  disabled={!files[steps[currentStep].toLowerCase().replace(' ', '')]} // Only check for file presence
                 >
                   {currentStep === steps.length - 1 ? 'Submit' : 'Next'}
                 </button>
@@ -278,4 +275,4 @@ const UploadWizard = () => {
   );
 };
 
-export default UploadWizard;
+export default UploadWizard;  
