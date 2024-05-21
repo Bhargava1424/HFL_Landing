@@ -3,6 +3,8 @@ import { FaCheckCircle, FaCamera } from 'react-icons/fa';
 import Webcam from 'react-webcam';
 
 const steps = ['PAN', 'Passport', 'Aadhar', 'Driving License'];
+const currencies = ['USD', 'EUR', 'GBP', 'INR'];
+
 
 const UploadWizard = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -12,12 +14,17 @@ const UploadWizard = () => {
     aadhar: null,
     drivingLicense: null,
   });
-  const [username, setUsername] = useState('');
-  const [isRegistered, setIsRegistered] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    phoneNumber: '',
+    email: '',
+    amount: '',
+    currency: currencies[0],
+  });
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [uploadError, setUploadError] = useState(null);
   const [showWebcam, setShowWebcam] = useState(false);
-  const [registrationTime, setRegistrationTime] = useState(null);
+  const [requestId, setRequestId] = useState(null); 
 
   const webcamRef = useRef(null);
 
@@ -32,57 +39,140 @@ const UploadWizard = () => {
     const fileType = steps[currentStep].toLowerCase().replace(' ', '');
     const imageSrc = webcamRef.current.getScreenshot();
     fetch(imageSrc)
-      .then(res => res.blob())
-      .then(blob => {
+      .then((res) => res.blob())
+      .then((blob) => {
         const file = new File([blob], `${fileType}.jpg`, { type: 'image/jpeg' });
         setFiles({ ...files, [fileType]: file });
         setShowWebcam(false);
       });
   };
 
-  const onRegister = async () => {
+  const createRequest = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/register', {
+      const response = await fetch('http://localhost:5000/api/create-request', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username }),
-      });
+        headers: { 
+          'Content-Type': 'application/json' 
+        }, 
+        body: JSON.stringify(formData) 
+      }); 
 
-      const data = await response.json();
-
-      if (response.status === 201) {
-        console.log('User registered successfully');
-        setRegistrationTime(data.registrationTime);
-        setIsRegistered(true);
+      if (response.ok) { 
+        const data = await response.json(); 
+        console.log('Request created successfully');
+        setRequestId(data.requestId); 
       } else {
-        console.error('Error registering user:', data.message);
+        const data = await response.json(); 
+        console.error('Error creating request:', data.message); 
+      }
+    } catch (error) { 
+      console.error('Error creating request:', error.message); 
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (event) => { 
+    event.preventDefault(); // Prevent default form submission 
+
+    try { 
+      for (const [key, value] of Object.entries(files)) { 
+        if (value) {
+          const formData = new FormData(); 
+          formData.append('file', value); 
+          formData.append('documentType', key); // Pass the document type 
+
+          const response = await fetch(`http://localhost:5000/api/requests/${requestId}/upload`, { 
+            method: 'POST', 
+            body: formData, 
+          }); 
+
+          if (response.ok) {
+            setUploadSuccess(true); 
+            setUploadError(null); 
+          } else {
+            const data = await response.json(); 
+            setUploadError(data.message);
+          } 
+        } 
       }
     } catch (error) {
-      console.error('Error registering user:', error.message);
-    }
+      setUploadError(error.message); 
+    } 
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
       <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-2xl border-2 border-dashed border-gray-400">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Register & Upload Documents</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+          Create Request & Upload Documents
+        </h2>
 
-        {!isRegistered ? (
+        {!requestId ? (
           <div className="mb-8">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+              <input
+                type="text"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Amount Needed</label>
+              <input
+                type="number"
+                name="amount"
+                value={formData.amount}
+                onChange={handleChange}
+                className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Currency</label>
+              <select
+                name="currency"
+                value={formData.currency}
+                onChange={handleChange}
+                className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+              >
+                {currencies.map((currency) => (
+                  <option key={currency} value={currency}>
+                    {currency}
+                  </option>
+                ))}
+              </select>
+            </div>
             <button
-              onClick={onRegister}
+              onClick={createRequest}
               className="mt-4 w-full bg-green-500 text-white py-3 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
             >
-              Register
+              Create Request
             </button>
           </div>
         ) : (
@@ -105,7 +195,9 @@ const UploadWizard = () => {
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Upload {steps[currentStep]}
-                  {files[steps[currentStep].toLowerCase().replace(' ', '')] && <FaCheckCircle className="inline ml-2 text-green-500" />}
+                  {files[steps[currentStep].toLowerCase().replace(' ', '')] && (
+                    <FaCheckCircle className="inline ml-2 text-green-500" />
+                  )}
                 </label>
                 <div className="flex items-center space-x-4">
                   <label className="block w-full py-2 px-4 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer">
@@ -155,11 +247,16 @@ const UploadWizard = () => {
                   Back
                 </button>
                 <button
-                  onClick={() => setCurrentStep(currentStep + 1)}
+                  onClick={() =>
+                    currentStep === steps.length - 1 ? handleSubmit() : setCurrentStep(currentStep + 1)
+                  }
                   className="!bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
-                  disabled={!files[steps[currentStep].toLowerCase().replace(' ', '')] || currentStep >= steps.length - 1}
+                  disabled={
+                    !files[steps[currentStep].toLowerCase().replace(' ', '')] ||
+                    currentStep >= steps.length - 1
+                  }
                 >
-                  {currentStep === steps.length - 1 ? 'Finish' : 'Next'}
+                  {currentStep === steps.length - 1 ? 'Submit' : 'Next'}
                 </button>
               </div>
             </div>
@@ -172,11 +269,6 @@ const UploadWizard = () => {
             {uploadError && (
               <div className="mt-4 text-red-600 text-center">
                 Error uploading files: {uploadError}
-              </div>
-            )}
-            {registrationTime && (
-              <div className="mt-4 text-gray-600 text-center">
-                Registered on: {new Date(registrationTime).toLocaleString()}
               </div>
             )}
           </>
