@@ -20,6 +20,8 @@ import sellIcon from "../assets/payment-method.png";
 import forexIcon from "../assets/credit-card.png";
 import tuitionIcon from "../assets/school.png";
 import cashIcon from '../assets/euros.png';
+// import map image
+import MAP from "../assets/banks/Maps.png"
 
 const BankScroll = () => {
   const bankLogos = [
@@ -42,19 +44,26 @@ const BankScroll = () => {
     <div className="flex flex-col items-center">
       
       <div className="w-full overflow-hidden">
-      <div className="bg-[#ffd686] py-3 m-1 px-4 md:px-0 rounded-2xl">
-        <h1 className="text-2xl md:text-5xl font-bold text-center mb-5">We are associated with</h1>
+      <div className=" py-3 m-1 px-4 md:px-0 rounded-2xl">
+        <h1 className="text-2xl md:text-5xl font-bold text-center mb-5">We are Associated with</h1>
         <Marquee speed={100} pauseOnHover loop={0} className="mb-5">
           {bankLogos.map((logo, index) => (
             <img
               key={index}
               src={logo}
               alt={`Bank Logo ${index + 1}`}
-              className="h-12 md:h-20 mx-6 md:mx-20 grayscale hover:grayscale-0 transition-all duration-300"
+              className="h-12 md:h-20 mx-6 md:mx-20  hover:grayscale-0 transition-all duration-300"
             />
           ))}
         </Marquee>
+        
+        <h1 className="text-2xl md:text-5xl font-bold text-center mb-5 ">Plan Your Trip Today with Hyderabad Forex</h1>
+        <h1 className="text-2xl md:text-5xl font-bold text-center mb-5">Excellence in 
+        <span className='text-orange-500'> Any Money</span> Exchange</h1>
+        <img src={MAP} alt="map" className='flex justify-center h-auto w-auto mt-8 lg:ml-20' />
+        
       </div>
+      
         <div className="flex flex-col items-center w-full px-4 md:px-10 py-5 bg-white">
           <h1 className="text-3xl md:text-6xl text-center mb-10">Services at HFL AnyMoney</h1>
           <div className="flex flex-wrap justify-between items-stretch w-full pl-4 pr-4 md:pl-8 md:pr-8">

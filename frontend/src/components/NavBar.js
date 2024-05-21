@@ -58,10 +58,10 @@ const Navbar = () => {
       <div className='absolute inset-0.5 px-4 py-2 ml-4 bg-orange-200 rounded-lg blur'></div>
       <motion.button 
         whileHover={{ scale: 1.1 }}
-        className="relative bg-white text-black hover: py-2 px-4 border border-orange-500 rounded-full ml-4 font-semibold button" // Add 'button' class for animation
+        className="relative bg-white text-black hover: py-2 px-4 border border-orange-500 rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg  ml-4 font-semibold button" // Add 'button' class for animation
         style={{ // Add style attribute for custom CSS
-          animation: 'glowing 2000ms infinite', // Apply the glowing animation
-          borderRadius: '60px', // Apply border-radius
+          animation: 'glowing 1500ms infinite', // Apply the glowing animation
+         // borderRadius: '60px', // Apply border-radius
         }}
       >
         Get AnyMoney Now &rarr;
