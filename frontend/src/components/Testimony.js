@@ -84,49 +84,62 @@ const testimonials = [
 
 const Testimony = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerSlide, setItemsPerSlide] = useState(3);
+
+  useEffect(() => {
+    const updateItemsPerSlide = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerSlide(1);
+      } else {
+        setItemsPerSlide(3);
+      }
+    };
+    window.addEventListener('resize', updateItemsPerSlide);
+    updateItemsPerSlide();
+    return () => window.removeEventListener('resize', updateItemsPerSlide);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
     }, 3000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, itemsPerSlide]);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 3) % testimonials.length);
+    setCurrentIndex((prevIndex) => (prevIndex + itemsPerSlide) % testimonials.length);
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 3 + testimonials.length) % testimonials.length);
+    setCurrentIndex((prevIndex) => (prevIndex - itemsPerSlide + testimonials.length) % testimonials.length);
   };
 
   const getTotalSlides = () => {
-    return Math.ceil(testimonials.length / 3);
+    return Math.ceil(testimonials.length / itemsPerSlide);
   };
 
   const getCurrentSlideIndex = () => {
-    return Math.floor(currentIndex / 3);
+    return Math.floor(currentIndex / itemsPerSlide);
   };
 
   return (
-    <div className="container mx-auto my-12 py-8 px-8 relative bg-cover bg-center" style={{ backgroundImage: `url(${background})` }}>
-      <h2 className="ml-32 text-5xl font-bold mb-2">Our Customer Feedback</h2>
-      <p className="ml-36 mb-8 text-xl text-gray-600">Don't take our word for it. Trust our customers</p>
-      <div className="flex justify-center space-x-4 overflow-hidden h-64">
-        {testimonials.slice(currentIndex, currentIndex + 3).map((testimonial, index) => (
+    <div className="container mx-auto my-4 py-2 px-2 md:py-4 md:px-4 relative bg-cover bg-center bg-[#ffefd6]" style={{ backgroundImage: `url(${background})` }}>
+      <h2 className="text-lg md:text-2xl lg:text-5xl font-bold mb-1 md:mb-2">Our Customer Feedback</h2>
+      <p className="text-xs md:text-base lg:text-xl text-gray-600 mb-2 md:mb-4">Don't take our word for it. Trust our customers</p>
+        
+      <div className="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 overflow-hidden h-48 md:h-64">
+        {testimonials.slice(currentIndex, currentIndex + itemsPerSlide).map((testimonial, index) => (
           <div
-            className={`flex flex-col max-w-sm rounded overflow-hidden shadow-lg border p-4 transition-transform duration-500 ease-in-out ${
-              index === 0 ? 'slide-in' : index === 2 ? 'slide-out' : ''
-            }`}
+            className={`flex flex-col w-full md:max-w-sm rounded overflow-hidden shadow-lg border p-2 md:p-4 transition-transform duration-500 ease-in-out`}
             key={index}
           >
-            <div className="flex items-center mb-4">
-              <img src={testimonial.image} alt={testimonial.name} className="w-12 h-12 rounded-full mr-4" />
+            <div className="flex items-center mb-2 md:mb-4">
+              <img src={testimonial.image} alt={testimonial.name} className="w-8 h-8 md:w-12 md:h-12 rounded-full mr-2 md:mr-4" />
               <div className="flex items-center">
                 {Array.from({ length: 5 }, (_, i) => (
                   <svg
                     key={i}
-                    className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                    className={`w-3 h-3 md:w-5 md:h-5 ${i < testimonial.rating ? 'text-yellow-400' : 'text-gray-300'}`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -135,23 +148,30 @@ const Testimony = () => {
                 ))}
               </div>
             </div>
-            <h3 className="font-bold text-lg">{testimonial.name}</h3>
-            <p className="text-gray-600 flex-grow">{testimonial.feedback}</p>
+            <h3 className="font-bold text-sm md:text-lg">{testimonial.name}</h3>
+            <p className="text-gray-600 flex-grow text-xs md:text-base">{testimonial.feedback}</p>
           </div>
         ))}
       </div>
-      <div className="flex justify-center mt-6 space-x-2">
+      <div className="flex justify-center mt-1 md:mt-4 space-x-2 py-4">
+        
         {Array.from({ length: getTotalSlides() }, (_, i) => (
           <div
             key={i}
-            className={`h-2 w-2 rounded-full ${i === getCurrentSlideIndex() ? 'bg-orange-400' : 'bg-gray-300'}`}
+            className={`h-1 w-1 md:h-2 md:w-2 rounded-full ${i === getCurrentSlideIndex() ? 'bg-orange-400' : 'bg-gray-300'}`}
           ></div>
         ))}
+        <div className="absolute inset-x-0 bottom-7 m-4 mt-2 flex justify-center space-x-2 md:mt-4 mb-2 md:mb-0">
+          <button className="border rounded px-1 py-0.5 text-xs md:block md:px-4 md:py-2 md:text-base" onClick={prevSlide}>Previous</button>
+          <button className="border rounded px-1 py-0.5 text-xs md:block md:px-4 md:py-2 md:text-base" onClick={nextSlide}>Next</button>
+        </div>
       </div>
-      <div className="absolute top-0 right-0 mt-4 mr-4 flex space-x-2">
-        <button className="border rounded px-4 py-2" onClick={prevSlide}>Previous</button>
-        <button className="border rounded px-4 py-2" onClick={nextSlide}>Next</button>
+      <div className="hidden md:flex absolute top-0 right-0 mt-4 mr-4 space-x-2">
+        <button className="border rounded px-4 py-2 text-base" onClick={prevSlide}>Previous</button>
+        <button className="border rounded px-4 py-2 text-base" onClick={nextSlide}>Next</button>
       </div>
+
+      
     </div>
   );
 };
