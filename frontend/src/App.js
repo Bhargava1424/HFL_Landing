@@ -5,6 +5,10 @@ import HomePage from './components/HomePage';
 import AboutUs from './components/AboutUs';
 import Upload from './components/Upload';
 import AdminPanel from './components/AdminPanel';
+import Dashboard from './components/Dashboard';
+import UserManagement from './components/UserManagement';
+
+
 
 function App() {
   return (
@@ -16,6 +20,8 @@ function App() {
           <Route path='/aboutUs' element={<AboutUs />}/>
           <Route path='/upload' element={<Upload/>}/>
           <Route path='/adminPanel' element={<AdminPanel/>}/>
+          <Route path='/dashboard' element={<Dashboard/>}/>
+          <Route path='/user-management' element={<UserManagement/>}/>
         </Routes>
       </Router>
     </div>

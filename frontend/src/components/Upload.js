@@ -75,33 +75,36 @@ const UploadWizard = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (event) => { 
-    event.preventDefault(); // Prevent default form submission 
-
-    try { 
-      for (const [key, value] of Object.entries(files)) { 
+  const handleSubmit = async (event) => {
+    if (!requestId) {
+      alert("Please create a request first.");
+      return; // Exit the function if requestId is undefined
+    }
+  
+    try {
+      for (const [key, value] of Object.entries(files)) {
         if (value) {
-          const formData = new FormData(); 
-          formData.append('file', value); 
+          const formData = new FormData();
+          formData.append('file', value);
           formData.append('documentType', key); // Pass the document type 
-
-          const response = await fetch(`http://localhost:5000/api/requests/${requestId}/upload`, { 
-            method: 'POST', 
-            body: formData, 
-          }); 
-
+  
+          const response = await fetch(`http://localhost:5000/api/requests/${requestId}/upload`, {
+            method: 'POST',
+            body: formData,
+          });
+  
           if (response.ok) {
-            setUploadSuccess(true); 
-            setUploadError(null); 
+            setUploadSuccess(true);
+            setUploadError(null);
           } else {
-            const data = await response.json(); 
+            const data = await response.json();
             setUploadError(data.message);
-          } 
-        } 
+          }
+        }
       }
     } catch (error) {
-      setUploadError(error.message); 
-    } 
+      setUploadError(error.message);
+    }
   };
 
   return (
