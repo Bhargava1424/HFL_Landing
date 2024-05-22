@@ -9,6 +9,8 @@ import Testimony from './Testimony';
 import BanksScroll from './BanksScroll';
 import FAQ from './Faq';
 import Footer from './Footer';
+import PromoBanner from './PromoBanner';
+
 
 
 
@@ -28,6 +30,7 @@ const HomePage = () => {
       <Testimony/>
       <BanksScroll/>
       <FAQ/>
+      <PromoBanner/>
       <Footer/>
 
         
