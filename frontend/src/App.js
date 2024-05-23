@@ -7,7 +7,7 @@ import Upload from './components/Upload';
 import AdminPanel from './components/AdminPanel';
 import ContactUs from './components/ContactUs';
 import FAQs from './components/FAQs';
-
+import GetAnymoney from './components/GetAnymoney'
 function App() {
   return (
     <div className="App">
@@ -20,6 +20,8 @@ function App() {
           <Route path='/adminPanel' element={<AdminPanel/>}/>
           <Route path='/contactUs' element={<ContactUs/>}/>
           <Route path='/FAQs' element={<FAQs/>}/>
+          <Route path='/Getanymoney' element={<GetAnymoney/>}/>
+          
         </Routes>
       </Router>
     </div>

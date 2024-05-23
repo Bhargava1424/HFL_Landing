@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from "../assets/HFLlogo.jpg";
 import { motion } from "framer-motion"
 import "./NavBar.css"
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const navigate=useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,6 +24,9 @@ const Navbar = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  const handlebuttonclick = () =>{
+    navigate('/Getanymoney')
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white z-50 pr-0.5">
@@ -63,6 +67,7 @@ const Navbar = () => {
           animation: 'glowing 1500ms infinite', // Apply the glowing animation
          // borderRadius: '60px', // Apply border-radius
         }}
+        onClick={handlebuttonclick}
       >
         Get AnyMoney Now &rarr;
       </motion.button>
@@ -122,7 +127,8 @@ const Navbar = () => {
             </Link>
             <div className='relative'>
               
-              <button className="relative bg-white text-black hover:text-orange-500 py-2 px-4 border border-orange-500 rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg  font-semibold">
+              <button className="relative bg-white text-black hover:text-orange-500 py-2 px-4 border border-orange-500 rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg  font-semibold"
+              onClick={handlebuttonclick}>
                 Get AnyMoney Now &rarr;
               </button>
             </div>
