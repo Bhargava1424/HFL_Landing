@@ -1,10 +1,14 @@
 import React from "react";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/solid";
+import faqbg from '../assets/faqbg.png';
+import Footer from "./Footer";
+import NavBar from "./NavBar";
+
 
 const FAQSection = ({ title, questions }) => {
   return (
-    <div className="w-full p-4 bg-yellow-100 rounded-lg shadow-lg mb-6">
+    <div className="w-full p-4 bg-[#faedce] rounded-lg shadow-lg mb-6" >
       <h2 className="text-lg font-medium mb-2">{title}</h2>
       {questions.map((question, index) => (
         <Disclosure key={index}>
@@ -159,19 +163,22 @@ const FAQs = () => {
   ];
 
   return (
-    <div className="min-h-screen py-8 px-4">
-      <div className="w-full bg-white rounded-xl shadow-md overflow-hidden">
-        <div className="p-6 bg-orange-600">
-          <h1 className="text-2xl font-bold text-center text-white">
+    <div className="min-h-screen">
+      <NavBar/>
+      <div className="w-full bg-white shadow-md overflow-hidden"
+      style={{ backgroundImage: `url(${faqbg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="md:mt-12 mt-12 p-6 bg-[#d69009] rounded-b-3xl">
+          <h1 className="text-lg md:text-2xl font-bold text-center text-white">
             Frequently Asked Questions on Foreign Exchange for Indian Tourists (RBI Rules)
           </h1>
         </div>
-        <div className="p-6">
+        <div className="px-4 md:px-32 py-4">
           {faqSections.map((section, index) => (
             <FAQSection key={index} title={section.title} questions={section.questions} />
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };

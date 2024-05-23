@@ -6,6 +6,7 @@ import AboutUs from './components/AboutUs';
 import Upload from './components/Upload';
 import AdminPanel from './components/AdminPanel';
 import ContactUs from './components/ContactUs';
+import FAQs from './components/FAQs';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path='/upload' element={<Upload/>}/>
           <Route path='/adminPanel' element={<AdminPanel/>}/>
           <Route path='/contactUs' element={<ContactUs/>}/>
+          <Route path='/FAQs' element={<FAQs/>}/>
         </Routes>
       </Router>
     </div>
