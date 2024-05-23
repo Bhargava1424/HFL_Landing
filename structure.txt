@@ -20,6 +20,14 @@ HFL_LANDING/
 │   │   │   ├── StatsDisplay.js
 │   │   │   ├── Testimony.js
 │   │   │   ├── Upload.js
+│   │   │   ├── admin/
+│   │   │   │   ├── Dashboard.js
+│   │   │   │   ├── DocumentViewer.js
+│   │   │   │   ├── Navbar.js
+│   │   │   │   ├── RequestDetail.js
+│   │   │   │   ├── RequestList.js
+│   │   │   │   ├── Upload.js
+│   │   │   │   ├── UserManagement.js
 │   │   ├── App.css
 │   │   ├── App.js
 │   │   ├── App.test.js

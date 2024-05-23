@@ -7,10 +7,10 @@ const DocumentViewer = ({ documents }) => {
       {documents.length > 0 ? (
         <ul>
           {documents.map((document) => (
-            <li key={document._id}>
-              <Link to={`/documents/${document.file}`} className="text-blue-500 hover:underline">
-                {document.type} - Download
-              </Link>
+            <li key={document.file}>
+              <a href={document.file} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                {document.type} - View
+              </a>
             </li>
           ))}
         </ul>
