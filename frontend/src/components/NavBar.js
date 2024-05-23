@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from "../assets/HFLlogo.jpg";
 import { motion } from "framer-motion"
 import "./NavBar.css"
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const navigate=useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -23,10 +24,13 @@ const Navbar = () => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  const handlebuttonclick = () =>{
+    navigate('/Getanymoney')
+  }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white z-50">
-      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
+    <nav className="fixed top-0 left-0 right-0 bg-white z-50 pr-0.5">
+      <div className="container mx-auto px-1 py-2 flex justify-between items-center">
         {/* Logo */}
         <Link to='/' className="flex items-center">
           <img src={Logo} alt="Logo" className="h-9 w-auto" />
@@ -48,21 +52,22 @@ const Navbar = () => {
           <Link to="/AboutUs" className="font-medium text-gray-800 hover:text-orange-500">
             About Us
           </Link>
-          <Link to="#" className="font-medium text-gray-800 hover:text-orange-500">
-            Services
+          <Link to="/contactUs" className="font-medium text-gray-800 hover:text-orange-500">
+            Contact Us
           </Link>
         </div>
 
         {/* Button */}
         <div className={`${isMobile ? 'hidden' : 'relative'}`}>
-      <div className='absolute inset-0.5 px-4 py-2 ml-4 bg-orange-200 rounded-lg blur'></div>
+      <div className='absolute inset-0.5 px-2 py-2 ml-4 bg-orange-200 rounded-lg blur'></div>
       <motion.button 
-        whileHover={{ scale: 1.1 }}
-        className="relative bg-white text-black hover: py-2 px-4 border border-orange-500 rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg  ml-4 font-semibold button" // Add 'button' class for animation
+        whileHover={{ scale: 1.05 }}
+        className="relative bg-white text-black hover: py-2 px-2 border border-orange-500 rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg     font-semibold button" // Add 'button' class for animation
         style={{ // Add style attribute for custom CSS
           animation: 'glowing 1500ms infinite', // Apply the glowing animation
          // borderRadius: '60px', // Apply border-radius
         }}
+        onClick={handlebuttonclick}
       >
         Get AnyMoney Now &rarr;
       </motion.button>
@@ -71,7 +76,7 @@ const Navbar = () => {
         {/* Mobile menu button */}
         <div className={`${isMobile ? 'block' : 'hidden'}`}>
           <button
-            className="lg:hidden text-gray-800 hover:text-blue-600 focus:outline-none"
+            className="lg:hidden text-gray-800 hover:text-orange-500 focus:outline-none"
             onClick={toggleDropdown}
           >
             <svg
@@ -115,14 +120,15 @@ const Navbar = () => {
               About Us
             </Link>
             <Link
-              to="#"
+              to="/contactUs"
               className="block text-gray-800 hover:text-orange-500 py-2 font-medium"
             >
-              Services
+              Contact Us
             </Link>
             <div className='relative'>
               
-              <button className="relative bg-white text-black hover:text-orange-500 py-2 px-4 border border-orange-500 rounded-full  font-semibold">
+              <button className="relative bg-white text-black hover:text-orange-500 py-2 px-4 border border-orange-500 rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg  font-semibold"
+              onClick={handlebuttonclick}>
                 Get AnyMoney Now &rarr;
               </button>
             </div>

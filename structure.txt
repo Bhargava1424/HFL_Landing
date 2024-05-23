@@ -1,0 +1,47 @@
+HFL_LANDING/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── AboutUs.js
+│   │   │   ├── AdminPanel.js
+│   │   │   ├── BanksScroll.js
+│   │   │   ├── CurrencyScroll.js
+│   │   │   ├── CustomerForm.js
+│   │   │   ├── Faq.js
+│   │   │   ├── Footer.js
+│   │   │   ├── GetAnymoney.js
+│   │   │   ├── HomePage.js
+│   │   │   ├── ImageSlider.js
+│   │   │   ├── KundanAboutUs.js
+│   │   │   ├── NavBar.js
+│   │   │   ├── OurServiceHomePage.js
+│   │   │   ├── PromoBanner.js
+│   │   │   ├── RbiComponent.js
+│   │   │   ├── StatsDisplay.js
+│   │   │   ├── Testimony.js
+│   │   │   ├── Upload.js
+│   │   ├── App.css
+│   │   ├── App.js
+│   │   ├── App.test.js
+│   │   ├── index.css
+│   │   ├── index.js
+│   │   ├── logo.svg
+│   │   ├── reportWebVitals.js
+│   │   ├── setupTests.js
+│   │   ├── temp.js
+│   ├── .gitignore
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── README.md
+│   ├── tailwind.config.js
+├── server/
+│   ├── config/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   │   ├── upload.js
+│   │   ├── user.js
+│   ├── server.js
+├── node_modules/
+├── .gitattributes

@@ -10,6 +10,7 @@ import BanksScroll from './BanksScroll';
 import FAQ from './Faq';
 import Footer from './Footer';
 import PromoBanner from './PromoBanner';
+import OurServiceHomePage from './OurServiceHomePage';
 
 
 
@@ -26,6 +27,7 @@ const HomePage = () => {
         <CurrencyScroll />
       </header>
       <ImageSlider/>
+      <OurServiceHomePage />
       <StatsDisplay/>
       <Testimony/>
       <BanksScroll/>

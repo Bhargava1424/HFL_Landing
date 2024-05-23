@@ -161,7 +161,7 @@ const Testimony = () => {
             className={`h-1 w-1 md:h-2 md:w-2 rounded-full ${i === getCurrentSlideIndex() ? 'bg-orange-400' : 'bg-gray-300'}`}
           ></div>
         ))}
-        <div className="absolute inset-x-0 bottom-7 m-4 mt-2 flex justify-center space-x-2 md:mt-4 mb-2 md:mb-0">
+        <div className="md:hidden absolute inset-x-0 bottom-7 m-4 mt-2 flex justify-center space-x-2 md:mt-4 mb-2 md:mb-0">
           <button className="border rounded px-1 py-0.5 text-xs md:block md:px-4 md:py-2 md:text-base" onClick={prevSlide}>Previous</button>
           <button className="border rounded px-1 py-0.5 text-xs md:block md:px-4 md:py-2 md:text-base" onClick={nextSlide}>Next</button>
         </div>

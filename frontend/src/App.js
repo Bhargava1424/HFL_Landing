@@ -5,7 +5,9 @@ import HomePage from './components/HomePage';
 import AboutUs from './components/AboutUs';
 import Upload from './components/Upload';
 import AdminPanel from './components/AdminPanel';
-import Dashboard from './components/Dashboard';
+import ContactUs from './components/ContactUs';
+import FAQs from './components/FAQs';
+import GetAnymoney from './components/GetAnymoney'import Dashboard from './components/Dashboard';
 import UserManagement from './components/UserManagement';
 
 
@@ -20,6 +22,10 @@ function App() {
           <Route path='/aboutUs' element={<AboutUs />}/>
           <Route path='/upload' element={<Upload/>}/>
           <Route path='/adminPanel' element={<AdminPanel/>}/>
+          <Route path='/contactUs' element={<ContactUs/>}/>
+          <Route path='/FAQs' element={<FAQs/>}/>
+          <Route path='/Getanymoney' element={<GetAnymoney/>}/>
+          
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/user-management' element={<UserManagement/>}/>
         </Routes>
