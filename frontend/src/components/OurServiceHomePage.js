@@ -4,11 +4,12 @@ import Buy from "../assets/Buy.png"
 import Sell from "../assets/Receive Cash.png"
 import Card from "../assets/Card Security.png"
 import Scholarship from "../assets/Scholarship.png"
+import background from '../assets/Ourservice.png'
 
 const OurServiceHomePage = () => {
   return (
     <div className='py-4 px-1'>
-      <div className="bg-[#FBF8F1] rounded-xl px-4 py-8 sm:px-8 sm:py-4 ">
+      <div className="container mx-auto my-4 py-2 px-2 md:py-4 md:px-4 relative bg-cover bg-center bg-[#ffefd6]" style={{ backgroundImage: `url(${background})` }}>
         <div className='sm:relative'>
         <div className='flex flex-col sm:flex-row mt-4 '>
         <h1 className="text-black text-5xl font-semibold md:text-5xl">Always Provide The</h1>
