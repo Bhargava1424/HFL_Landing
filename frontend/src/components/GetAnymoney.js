@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Navbar from './NavBar';
-import Steps from '../assets/GetAnyMoney/5Steps.jpg'
+import Steps from '../assets/GetAnyMoney/Roadmap.svg'
 import OurServiceHomePage from './OurServiceHomePage';
 import RbiComponent from './RbiComponent';
 import StatsDisplay from './StatsDisplay';
 import PromoBanner from './PromoBanner';
 import Footer from './Footer';
-import backgroundImage from '../assets/GetAnyMoney/backgroundImage.jpg'
+import backgroundImage from '../assets/GetAnyMoney/BGVEctor.svg'
 
 const GetAnyMoney = () => {
 
@@ -53,8 +53,8 @@ const GetAnyMoney = () => {
         className="mt-16 pb-6 md:pb-16 bg-cover bg-center"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className='mx-auto mb-1 md:mb-4 text-2xl md:text-4xl pt-4 md:pt-12 text-center w-full font-semibold'>
-          Get <span className='text-[#D69009]'>Any Money</span> in 5 Simple Steps
+        <div className='mx-auto bg-cover mb-1 md:mb-4 text-2xl md:text-4xl pt-4 md:pt-12 text-center w-full font-semibold'>
+          Get <span className='bg-white p-2 text-[#D69009]'>Any Money</span> in 5 Simple Steps
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-2 md:mt-8 mb-4 md:mb-20'>
           <div className='flex justify-center'>

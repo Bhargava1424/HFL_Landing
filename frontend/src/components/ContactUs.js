@@ -104,17 +104,18 @@ const ContactUs = () => {
         <Navbar />
       </header>
       <div
-        className="mt-16 pb-16 bg-cover bg-center pt-16"
+        className="pt-16 pb-16 mt-16 bg-center bg-cover"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className="max-w-7xl md:mx-auto bg-white rounded-lg shadow-md p-2 md:p-8 flex flex-col md:grid md:grid-cols-5 gap-2 md:gap-8 mr-4 ml-4">
-          <div className="md:col-span-2 mb-2 md:mb-8 md:mb-0">
+        <div className="flex flex-col gap-2 p-2 ml-4 mr-4 bg-white rounded-lg shadow-md max-w-7xl md:mx-auto md:p-8 md:grid md:grid-cols-5 md:gap-8">
+          <div className="mb-2 md:col-span-2 md:mb-8 md:mb-0">
             <div className="mb-4">
-              <h2 className="text-3xl md:text-6xl font-bold mb-2 mt-2">
+              <h2 className="mt-2 mb-2 text-3xl font-bold md:text-6xl">
                 Get in <span className="text-yellow-500">Touch</span>
               </h2>
-              <p className="text-gray-600 text-sm md:text-lg">
-                Enim tempor eget pharetra facilisis sed maecenas adipiscing. Eu leo molestie vel, ornare non id blandit netus.
+              <p className="text-sm text-gray-600 md:text-lg">
+              Have questions or need assistance? 
+              <p className="text-sm text-gray-600 md:text-lg "> Our friendly team is here to help you with all your forex needs. Contact us today for personalized support!</p>
               </p>
             </div>
             <form onSubmit={handleSubmit} className="mb-2 md:mb-8">
@@ -123,54 +124,55 @@ const ContactUs = () => {
                   type="text"
                   name="name"
                   placeholder="Name *"
-                  className="w-full p-1 md:p-3 border rounded bg-gray-100 text-black text-sm md:text-lg"
+                  className="w-full p-1 text-sm text-black bg-gray-100 border rounded md:p-3 md:text-lg"
                   value={formData.name}
                   onChange={handleChange}
                   required
                 />
-                {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
+                {errors.name && <p className="text-xs text-red-500">{errors.name}</p>}
               </div>
               <div className="mb-4">
                 <input
                   type="email"
                   name="email"
                   placeholder="Email"
-                  className="w-full p-1 md:p-3 border rounded bg-gray-100 text-black text-sm md:text-lg"
+                  className="w-full p-1 text-sm text-black bg-gray-100 border rounded md:p-3 md:text-lg"
                   value={formData.email}
                   onChange={handleChange}
                   required
                 />
-                {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
+                {errors.email && <p className="text-xs text-red-500">{errors.email}</p>}
               </div>
               <div className="mb-4">
                 <input
                   type="tel"
                   name="phoneNumber"
                   placeholder="Phone number *"
-                  className="w-full p-1 md:p-3 border rounded bg-gray-100 text-black text-sm md:text-lg"
+                  className="w-full p-1 text-sm text-black bg-gray-100 border rounded md:p-3 md:text-lg"
                   value={formData.phoneNumber}
                   onChange={handleChange}
                   maxLength="10"
                   required
                 />
-                {errors.phoneNumber && <p className="text-red-500 text-xs">{errors.phoneNumber}</p>}
+                {errors.phoneNumber && <p className="text-xs text-red-500">{errors.phoneNumber}</p>}
               </div>
               <div className="mb-4">
                 <select
                   name="inquiry"
-                  className="w-3/4 md:w-full p-1 md:p-3 border rounded bg-gray-100 text-black text-xs md:text-lg"
+                  className="w-3/4 p-1 text-xs text-black bg-gray-100 border rounded md:w-full md:p-3 md:text-lg"
                   value={formData.inquiry}
                   onChange={handleChange}
                   required
                 >
                   <option value="">What Are You Looking About?</option>
-                  <option value="inquiry1">Inquiry 1</option>
-                  <option value="inquiry2">Inquiry 2</option>
+                  <option value="inquiry1">Currency Notes</option>
+                  <option value="inquiry2">Forex Cards</option>
+                  <option value="inquiry3">Outwards Remettiance</option>
                 </select>
               </div>
               <button
                 type="submit"
-                className="w-full bg-yellow-500 text-white p-3 rounded custom-get-quote-button text-sm md:text-lg"
+                className="w-full p-3 text-sm text-white bg-yellow-500 rounded custom-get-quote-button md:text-lg"
               >
                 SEND
               </button>
@@ -178,27 +180,27 @@ const ContactUs = () => {
           </div>
 
           <div className="md:col-span-3">
-            <div className="mt-0 md:mt-24 mb-2 md:mb-4 flex justify-center text-3xl md:text-4xl">Store Locations</div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex justify-center mt-0 mb-2 text-3xl md:mt-24 md:mb-4 md:text-4xl">Store Locations</div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
                 <div
-                  className="rounded-lg overflow-hidden flex justify-center"
+                  className="flex justify-center overflow-hidden rounded-lg"
                   dangerouslySetInnerHTML={{
                     __html: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.75140611615!2d78.45640297468381!3d17.42371380175852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb974c629a05bf%3A0x1f2ad73d4257ca81!2sHyderabad%20Forex%20Limited!5e0!3m2!1sen!2sin!4v1715873066743!5m2!1sen!2sin&z=15" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
                   }}
                 />
                 <div className="mt-2">
-                  <h3 className="font-bold flex justify-center">Somajiguda</h3>
-                  <p className='text-justify mr-6 ml-6 font-semibold'>6-3-1090/A/1B/1, C-2, One Centre, Raj Bhavan Rd, Somajiguda, Hyderabad, Telangana 500082</p>
+                  <h3 className="flex justify-center mb-4 text-2xl font-medium">Somajiguda</h3>
+                  <p className='ml-6 mr-6 font-semibold text-justify'>6-3-1090/A/1B/1, C-2, One Centre, Raj Bhavan Rd, Somajiguda, Hyderabad, Telangana 500082</p>
                 </div>
                 <div className="flex justify-center space-x-4">
                   <div>
-                    <button onClick={handleContactSomaji} className="flex items-center space-x-2 text-black font-semibold text-sm">
+                    <button onClick={handleContactSomaji} className="flex items-center space-x-2 text-sm font-semibold text-black">
                       <div role="img" aria-label="phone">📞 9876543210</div>
                     </button>
                   </div>
                   <div>
-                    <button onClick={() => openGmail('hooperations@hflforex.com')} className="flex items-center space-x-2 text-black font-semibold text-sm">
+                    <button onClick={() => openGmail('hooperations@hflforex.com')} className="flex items-center space-x-2 text-sm font-semibold text-black">
                       <span role="img" aria-label="email">📧</span>
                       <span>hooperations@hflforex.com</span>
                     </button>
@@ -207,25 +209,25 @@ const ContactUs = () => {
               </div>
               <div>
                 <div
-                  className="rounded-lg overflow-hidden flex justify-center"
+                  className="flex justify-center overflow-hidden rounded-lg"
                   dangerouslySetInnerHTML={{
                     __html: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.4985901306195!2d78.36422557468401!3d17.43583440140857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93ec2b8933c7%3A0xfe8d87caf8af1578!2sHYDERABAD%20FOREX%20LIMITED!5e0!3m2!1sen!2sin!4v1715872909969!5m2!1sen!2sin&z=15" width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
                   }}
                 />
                 <div className="mt-2">
-                  <h3 className="font-bold flex justify-center">Gachibowli</h3>
-                  <p className='text-justify mr-6 ml-6 font-semibold'>95H9+F9P, Gachibowli, Hyderabad, Telangana 500032</p>
+                  <h3 className="flex justify-center mb-4 text-2xl font-medium">Gachibowli</h3>
+                  <p className='ml-6 mr-6 font-semibold text-justify'>95H9+F9P, Gachibowli, Hyderabad, Telangana 500032</p>
                 </div>
-                <div className="flex justify-center space-x-4 mt-5">
+                <div className="flex justify-center mt-5 space-x-4">
                   <div>
-                    <button onClick={handleContactGachi} className="flex items-center space-x-2 text-black font-semibold text-sm">
+                    <button onClick={handleContactGachi} className="flex items-center space-x-2 text-sm font-semibold text-black">
                       <div role="img" aria-label="phone">📞 9876543210</div>
                     </button>
                   </div>
                   <div>
-                    <button onClick={() => openGmail('gnoperations@hflforex.com')} className="flex items-center space-x-2 text-black text-sm font-semibold">
+                    <button onClick={() => openGmail('gboperations@hflforex.com')} className="flex items-center space-x-2 text-sm font-semibold text-black">
                       <span role="img" aria-label="email">📧</span>
-                      <span>gnoperations@hflforex.com</span>
+                      <span>gboperations@hflforex.com</span>
                     </button>
                   </div>
                 </div>
