@@ -2,98 +2,104 @@ const express = require('express');
 const router = express.Router();
 const Request = require('../models/request');
 const multer = require('multer');
-const { GridFsStorage } = require('multer-gridfs-storage');
-const Grid = require('gridfs-stream');
+const { Storage } = require('@google-cloud/storage');
 const crypto = require('crypto');
 const path = require('path');
-const ocr = require('../utils/ocr');
+const ocr = require('../utils/ocr'); 
 const mongoose = require('mongoose');
+const fs = require('fs');
 
-// MongoDB Connection - get a reference to the database
-const mongoURI = 'mongodb+srv://admin:eVBQQOvplo3wvwq6@cluster0.rqkwzyy.mongodb.net/HFL'; 
-const conn = mongoose.createConnection(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+// ... (other imports)
 
-// Init gfs 
-let gfs; 
+// MongoDB Connection 
+const mongoURI = 'mongodb+srv://admin:eVBQQOvplo3wvwq6@cluster0.rqkwzyy.mongodb.net/HFL';
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log('MongoDB Connected')) 
+.catch(err => console.log(err)); 
 
-conn.once('open', () => { 
-  gfs = Grid(conn.db, mongoose.mongo); 
-  gfs.collection('uploads'); // Make sure you have the 'uploads' bucket
-});
+// Google Cloud Storage setup
+const gc = new Storage({
+  projectId: process.env.GOOGLE_CLOUD_PROJECT_ID, // Use environment variable
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS // Use environment variable
+}); 
+const bucketName = '@google-cloud/storage'; // Your bucket name
+const bucket = gc.bucket(bucketName);
 
-// Create storage engine
-const storage = new GridFsStorage({
-  url: mongoURI, 
-  file: (req, file) => { 
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString('hex') + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: 'uploads',
-        };
-        resolve(fileInfo); 
-      });
-    }); 
-  }
-});
+// Multer storage configuration (for Google Cloud Storage) 
+const storage = multer.memoryStorage(); // Store files in memory first
+const upload = multer({ storage: storage });
 
-const upload = multer({ storage }); 
+// ... (Your existing code for request creation) 
 
-// Create new request 
-router.post('/create-request', async (req, res) => {
+// Handle document upload  
+router.post('/requests/:requestId/upload', upload.single('file'), async (req, res) => {
   try {
-    const newRequest = new Request(req.body);
-    await newRequest.save();
-    res.status(201).json({ message: 'Request created successfully', requestId: newRequest._id });
-  } catch (error) {
-    res.status(400).json({ message: 'Error creating request', error: error.message });
-  }
-});
+    console.log('Upload request received:', req.body, req.params, req.file); // Log request details
 
-// Handle document upload 
-router.post('/requests/:requestId/upload', upload.single('file'), async (req, res) => { 
-  try {
     const requestId = req.params.requestId;
-    const request = await Request.findById(requestId);
+    const documentType = req.query.documentType; // Or get from req.body
 
     if (!req.file) {
-      throw new Error('File not uploaded');
+      console.error('No file uploaded');
+      return res.status(400).send('No file uploaded');
     }
+   
+    const blobName = `${crypto.randomUUID()}-${req.file.originalname}`; // Generate unique filename
+    const blob = bucket.file(blobName); 
+    const blobStream = blob.createWriteStream({ 
+      metadata: { 
+        contentType: req.file.mimetype 
+      },
+      resumable: false // For smaller files, you can set this to true 
+    });
 
-    // Assuming you are sending documentType as a query parameter (or you can modify to use body) 
-    const documentType = req.query.documentType;
+    blobStream.on('error', (err) => {
+      console.error('Error uploading to GCS:', err);
+      res.status(500).send('File upload failed');
+    });
 
-    // Update document in Request 
-    request.documents.push({
-      type: documentType,
-      file: req.file.filename 
+    blobStream.on('finish', async () => {
+      const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+      console.log(`File uploaded to GCS: ${publicUrl}`);
+
+      try {
+        // Update the Request document in your MongoDB
+        const request = await Request.findById(requestId); 
+        if (!request) { 
+          return res.status(404).send('Request not found'); 
+        } 
+
+        request.documents.push({
+          type: documentType,
+          file: publicUrl // Store the public URL in your database
+        }); 
+
+        await request.save();
+
+        // OCR processing (example, adapt as needed)
+        const ocrText = await ocr.extractText(publicUrl); // Assuming your OCR function can take a URL
+        if (ocrText) {
+          console.log('OCR Text:', ocrText);
+          // ... Update the request document with OCR text in MongoDB
+        } else {
+          console.error('Error extracting text using OCR');
+        }
+
+        res.status(200).send({ message: 'File uploaded successfully', url: publicUrl });
+      } catch (error) {
+        console.error('Error updating request in database:', error);
+        res.status(500).send('Failed to process file');
+      } 
     }); 
 
-    await request.save();
+    blobStream.end(req.file.buffer); 
 
-    // Call OCR (asynchronous) 
-    const ocrText = await ocr.extractText(req.file.filename); // Get extracted text
-    if (ocrText) {
-      await Request.findByIdAndUpdate(requestId, { 
-        $push: {
-          "documents.$.ocrText": ocrText 
-        } 
-      }); 
-    } else {
-      console.error('Error extracting text using OCR');
-    } 
-
-    res.status(200).send({ message: 'File uploaded successfully' });
   } catch (error) {
-    console.error('Error during file upload:', error.message); 
-    res.status(500).send('File upload failed'); 
-  } 
+    console.error('Error during file upload:', error);
+    res.status(500).send('File upload failed');
+  }
 });
 
-// ... (Other routes - Get OCR extracted text, Extract data, etc.) 
+// ... (Your existing routes)
 
-module.exports = router; 
+module.exports = router;
