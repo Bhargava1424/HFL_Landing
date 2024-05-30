@@ -85,7 +85,7 @@ const ImageSlider = () => {
                 <p className="text-sm">Expert team ensures quick, secure and hassle free services</p>
               </div>
               <button 
-                    className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded border border-white"
+                    className="bg-orange-500 hover:bg-orange-600 text-white px-2 py-1 md:px-4 md:py-2 rounded border border-2 border-white font-bold"
                     onClick={handleContactUs}
               >
                 Contact Us

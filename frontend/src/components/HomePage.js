@@ -27,12 +27,16 @@ const HomePage = () => {
         <CurrencyScroll />
       </header>
       <ImageSlider/>
-      <OurServiceHomePage />
-      <StatsDisplay/>
-      <Testimony/>
-      <BanksScroll/>
-      <FAQ/>
-      <PromoBanner/>
+      <div className='pl-3 pr-3 md:pl-12 md:pr-12'>
+        <OurServiceHomePage />
+        <StatsDisplay/>
+        <Testimony/>
+        </div>
+        <BanksScroll/>
+        <FAQ/>
+        <div className='pl-3 pr-3 md:pl-0 md:pr-0'>
+          <PromoBanner/>
+        </div>
       <Footer/>
 
         

@@ -51,27 +51,27 @@ const BankScroll = () => {
             ))}
           </Marquee>
 
-          <h1 className="mb-5 text-2xl font-bold text-center md:text-5xl">Plan Your Trip Today with Hyderabad Forex</h1>
-          <h1 className="mb-5 text-2xl font-bold text-center md:text-5xl">
+          <h1 className="md-1 md:mb-5 text-xl font-bold text-center md:text-5xl">Plan Your Trip Today with Hyderabad Forex</h1>
+          <h1 className="md:mb-5 text-xl font-bold text-center md:text-5xl">
             Excellence in <span className='text-orange-500'>Any Money</span> Exchange
           </h1>
           <div className="flex justify-center">
-            <img src={MAP} alt="map" className='w-auto h-auto mt-8' />
+            <img src={MAP} alt="map" className='w-auto h-auto mt-2 md:mt-8' />
           </div>
         </div>
 
         <div className="flex flex-col items-center w-full px-4 py-5 bg-white md:px-10">
           <h1 className="mb-10 text-3xl text-center md:text-6xl">Services at HFL AnyMoney</h1>
           <div className="flex flex-wrap items-stretch justify-between w-full pl-4 pr-4 md:pl-8 md:pr-8">
-            <div className="flex flex-col items-center flex-1 mb-4 text-center md:mb-0">
+            <div className="flex flex-col items-center flex-1 md:mb-4 text-center md:mb-0">
               <img src={buyIcon} alt="We Buy" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
               <p className='text-xs font-bold md:text-xl'>We BUY</p>
             </div>
-            <div className="flex flex-col items-center flex-1 mb-4 text-center md:mb-0">
+            <div className="flex flex-col items-center flex-1 md:mb-4 text-center md:mb-0">
               <img src={sellIcon} alt="We Sell" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
               <p className='text-xs font-bold md:text-xl'>We SELL</p>
             </div>
-            <div className="flex flex-col items-center flex-1 mb-4 text-center md:mb-0">
+            <div className="flex flex-col items-center flex-1 md:mb-4 text-center md:mb-0">
               <img src={forexIcon} alt="Forex Card" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
               <p className='text-xs font-bold md:text-xl'>Forex Card</p>
             </div>
