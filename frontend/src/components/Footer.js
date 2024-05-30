@@ -65,8 +65,8 @@ const Footer = () => {
                             FAQs <span className="ml-1">↗</span>
                         </button>
                     </div>
-                    <div className="flex flex-row items-center mt-6 space-x-20 space-y-2 md:flex-col md:mt-12">
-                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="ml-5 text-black">
+                    <div className="flex flex-row items-center mt-6 space-x-20 space-y-2 md:flex-col md:mt-12 md:mr-10">
+                        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className=" ml-20 text-black">
                             <FaFacebookF size={24} />
                         </a>
                         <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-black">
