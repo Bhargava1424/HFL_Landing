@@ -46,7 +46,7 @@ const Navbar = () => {
           <Link to="/" className="font-medium text-gray-800 hover:text-orange-500">
             Home
           </Link>
-          <Link to="#" className="font-medium text-gray-800 hover:text-orange-500">
+          <Link to="/getanymoney" className="font-medium text-gray-800 hover:text-orange-500">
             Currency Exchange
           </Link>
           <Link to="/AboutUs" className="font-medium text-gray-800 hover:text-orange-500">

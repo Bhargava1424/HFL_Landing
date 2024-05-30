@@ -82,7 +82,7 @@ const BankScroll = () => {
           </div>
         </div>
 
-        <div className="bg-[#FFD686] p-4 my-4 mx-1 rounded-2xl">
+        {/* <div className="bg-[#FFD686] p-4 my-4 mx-1 rounded-2xl">
           <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3, 4, 5, 6].map((num) => (
               <div key={num} className="flex flex-col items-center p-2 bg-white md:p-6 rounded-xl">
@@ -105,7 +105,7 @@ const BankScroll = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

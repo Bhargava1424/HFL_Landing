@@ -23,6 +23,7 @@ import StatsDisplay from './StatsDisplay';
 import locationIcon from '../assets/AboutUs/location.png';
 import messageIcon from '../assets/AboutUs/whatsapp.png';
 import phoneIcon from '../assets/AboutUs/telephone.png'
+import Footer from './Footer';
 
 
 const AboutUs = () => {
@@ -418,6 +419,7 @@ const AboutUs = () => {
     </div>
         </div>
         </div>
+        <Footer/>
     </div>
 
     
