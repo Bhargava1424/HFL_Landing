@@ -44,7 +44,7 @@ const ImageSlider = () => {
     <div>
       
       <div className="p-1">
-        <div className="relative w-full h-64 sm:h-96 overflow-hidden rounded-2xl">
+        <div className="relative w-full h-64 overflow-hidden sm:h-96 rounded-2xl">
           <div
             className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -52,31 +52,31 @@ const ImageSlider = () => {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="flex-none w-full h-64 sm:h-96 bg-cover bg-center"
+                className="flex-none w-full h-64 bg-center bg-cover sm:h-96"
                 style={{ backgroundImage: `url(${slide})` }}
               ></div>
             ))}
           </div>
           <button
-            className="absolute top-1/2 left-2 sm:left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white border-none text-xl sm:text-2xl p-2 cursor-pointer"
+            className="absolute p-2 text-xl text-white transform -translate-y-1/2 bg-black bg-opacity-50 border-none cursor-pointer top-1/2 left-2 sm:left-4 sm:text-2xl"
             onClick={prevSlide}
           >
             &lt;
           </button>
           <button
-            className="absolute top-1/2 right-2 sm:right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white border-none text-xl sm:text-2xl p-2 cursor-pointer"
+            className="absolute p-2 text-xl text-white transform -translate-y-1/2 bg-black bg-opacity-50 border-none cursor-pointer top-1/2 right-2 sm:right-4 sm:text-2xl"
             onClick={nextSlide}
           >
             &gt;
           </button>
         </div>
       </div>
-      <div className='px-1 py-1'>
-      <div className="bg-orange-500 rounded-xl text-white px-4 py-3 sm:px-8 sm:py-4">
+      {/* <div className='px-1 py-1'>
+      <div className="px-4 py-3 text-white bg-orange-500 rounded-xl sm:px-8 sm:py-4">
         <div className="container mx-auto">
           <div className="flex flex-col sm:flex-row">
-            <div className="w-full sm:border-r sm:border-white sm:w-1/2 sm:pr-4 mb-4 sm:mb-0"> 
-              <h1 className="text-lg sm:text-4xl font-bold">Experience seamless currency exchange with best price in HFL</h1>
+            <div className="w-full mb-4 sm:border-r sm:border-white sm:w-1/2 sm:pr-4 sm:mb-0"> 
+              <h1 className="text-lg font-bold sm:text-4xl">Experience seamless currency exchange with best price in HFL</h1>
             </div>
             <div className="w-full sm:w-1/2 sm:pl-4">
               <div className="mb-4">
@@ -85,7 +85,7 @@ const ImageSlider = () => {
                 <p className="text-sm">Expert team ensures quick, secure and hassle free services</p>
               </div>
               <button 
-                    className="bg-orange-500 hover:bg-orange-600 text-white px-2 py-1 md:px-4 md:py-2 rounded border border-2 border-white font-bold"
+                    className="px-2 py-1 font-bold text-white bg-orange-500 border border-2 border-white rounded hover:bg-orange-600 md:px-4 md:py-2"
                     onClick={handleContactUs}
               >
                 Contact Us
@@ -95,7 +95,7 @@ const ImageSlider = () => {
         </div>
       </div>
       
-      </div>
+      </div> */}
       
     </div>
     
