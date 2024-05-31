@@ -1,27 +1,25 @@
-require('dotenv').config('');
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('./config/db');
-const requestRouter = require('./routes/requestRoutes');
-const authRouter = require('./routes/authRoutes');
-const userRouter = require('./routes/userRoutes');
+const connectDB = require('./config/db'); 
+const authRoutes = require('./routes/authRoutes'); 
+const requestRoutes = require('./routes/requestRoutes');
+const userRoutes = require('./routes/userRoutes'); 
+require('dotenv').config({ path: '../env/.env' });
 
 const app = express();
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; 
 
-// Middleware
-app.use(cors());
-app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
-// Connect to MongoDB
+// Connect to database
 connectDB();
 
-// Routes
-app.use('/api/auth', authRouter);
-app.use('/api/requests', requestRouter);
-app.use('/api/users', userRouter);
+app.use(cors()); 
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+
+// Use the routes
+app.use('/api/auth', authRoutes);
+app.use('/api/requests', requestRoutes); 
+app.use('/api/users', userRoutes); 
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

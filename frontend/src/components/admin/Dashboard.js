@@ -2,17 +2,16 @@ import React from 'react';
 import Navbar from './Navbar';
 import RequestList from './RequestList';
 import UserManagement from './UserManagement';
-import Upload from './Upload'; // Add Upload component
-import { Routes, Route } from 'react-router-dom';
+import Upload from './Upload'; 
+import { Routes, Route, useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
     <div>
-      <Navbar />
-      <main className="">
+      <main className="p-4"> 
         <Routes>
           <Route path="/" element={<RequestList />} />
-          <Route path="/user-management" element={<UserManagement />} />
+          <Route path="/users" element={<UserManagement />} />
           <Route path="/upload" element={<Upload />} />
         </Routes>
       </main>
@@ -20,4 +19,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Dashboard;  

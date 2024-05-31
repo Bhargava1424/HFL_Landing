@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { FaCheckCircle, FaCamera } from 'react-icons/fa';
 import Webcam from 'react-webcam';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
-const steps = ['PAN', 'Passport', 'Aadhar', 'Driving License'];
+const steps = ['PAN', 'Passport', 'Aadhar', 'Driving License', 'Ticket'];
 const currencies = ['USD', 'EUR', 'GBP', 'INR'];
-
 
 const UploadWizard = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -13,6 +14,7 @@ const UploadWizard = () => {
     passport: null,
     aadhar: null,
     drivingLicense: null,
+    ticket: null
   });
   const [formData, setFormData] = useState({
     name: '',
@@ -49,21 +51,17 @@ const UploadWizard = () => {
 
   const createRequest = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/create-request', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json' 
-        }, 
-        body: JSON.stringify(formData) 
-      }); 
-
-      if (response.ok) { 
-        const data = await response.json(); 
+      const response = await axios.post(process.env.REACT_APP_SERVER_URL + '/api/requests/create', formData, {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('token')}` 
+        }
+      });
+      console.log(response);
+      if (response.status >= 200 && response.status < 300) { 
         console.log('Request created successfully');
-        setRequestId(data.requestId); 
+        setRequestId(response.data.requestId); 
       } else {
-        const data = await response.json(); 
-        console.error('Error creating request:', data.message); 
+        console.error('Error creating request:', response.data.message); 
       }
     } catch (error) { 
       console.error('Error creating request:', error.message); 
@@ -76,33 +74,46 @@ const UploadWizard = () => {
   };
 
   const handleSubmit = async (event) => {
+    event.preventDefault(); 
     if (!requestId) {
-      alert("Please create a request first.");
-      return; // Exit the function if requestId is undefined
+      toast.error("Please create a request first.");
+      return; 
     }
   
     try {
       for (const [key, value] of Object.entries(files)) {
         if (value) {
           const formData = new FormData();
+          console.log('Uploading:', value);
           formData.append('file', value);
-          formData.append('documentType', key); // Pass the document type 
+          console.log('Uploading:', key);
+          formData.append('documentType', key); 
   
-          const response = await fetch(`http://localhost:5000/api/requests/${requestId}/upload`, {
-            method: 'POST',
-            body: formData,
-          });
+          const response = await axios.post(
+            process.env.REACT_APP_SERVER_URL + `/api/requests/${requestId}/upload`,
+            formData, // Send the FormData object directly
+            {
+              headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include JWT token
+                'Content-Type': 'multipart/form-data'
+              }
+            }
+          );
   
-          if (response.ok) {
+          if (response.status === 200) {
+              toast.success(`Uploaded ${key} Successfully`);
             setUploadSuccess(true);
             setUploadError(null);
           } else {
             const data = await response.json();
+              toast.error(`Error Uploading ${key}`);
             setUploadError(data.message);
           }
         }
       }
     } catch (error) {
+        console.error("Upload error", error);
+        toast.error("Error uploading files, try again later");
       setUploadError(error.message);
     }
   };
@@ -195,6 +206,7 @@ const UploadWizard = () => {
                   </div>
                 ))}
               </div>
+                <form onSubmit={handleSubmit}> 
               <div className="mb-6">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Upload {steps[currentStep]}
@@ -250,15 +262,14 @@ const UploadWizard = () => {
                   Back
                 </button>
                 <button
-                  onClick={() => 
-                    currentStep === steps.length - 1 ? handleSubmit() : setCurrentStep(currentStep + 1)
-                  }
+                  type="submit"
                   className="!bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
-                  disabled={!files[steps[currentStep].toLowerCase().replace(' ', '')]} // Only check for file presence
+                  disabled={!files[steps[currentStep].toLowerCase().replace(' ', '')]} 
                 >
                   {currentStep === steps.length - 1 ? 'Submit' : 'Next'}
                 </button>
               </div>
+                </form> 
             </div>
             {uploadSuccess && (
               <div className="mt-4 text-green-600 text-center">

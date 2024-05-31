@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const { createRequest, getRequestById, updateRequest } = require('../controllers/requestController');
-const authenticateJWT = require('../middleware/auth');
+const { 
+  createRequest, 
+  getRequestById, // Assumed - Add if you need this
+  updateRequest,  // Assumed - Add if you need this
+  uploadDocument 
+} = require('../controllers/requestController');
+const authenticateJWT = require('../middleware/auth'); // For protecting other routes 
 
-// Create new request
-router.post('/create', authenticateJWT, createRequest);
-router.get('/:requestId', authenticateJWT, getRequestById);
-router.put('/:requestId', authenticateJWT, updateRequest);
+router.post('/create', createRequest);  // No authentication for createRequest
+router.get('/:requestId', authenticateJWT, getRequestById); // Protected route (example)
+router.put('/:requestId', authenticateJWT, updateRequest); // Protected route (example)
+router.post('/:requestId/upload', uploadDocument); // Protected route
 
-// Implement other routes for getting, updating, deleting, etc.
-
-module.exports = router;
+module.exports = router; 

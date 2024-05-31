@@ -13,7 +13,7 @@ const RequestList = () => {
         setIsLoading(true);
         const response = await axios.get('/api/requests', {
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}` // Include JWT token
+            'Authorization': `Bearer ${localStorage.getItem('token')}` 
           }
         });
         setRequests(response.data);

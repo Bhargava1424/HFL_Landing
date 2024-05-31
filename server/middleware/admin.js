@@ -1,15 +1,8 @@
-// server/middleware/admin.js
-const User = require('../models/User');
-
-const authenticateAdmin = async (req, res, next) => {
-  try {
-    const user = await User.findById(req.user.userId);
-    if (user.role !== 'admin') {
-      return res.status(403).json({ message: 'Unauthorized: Admin privileges required' });
-    }
-    next();
-  } catch (error) {
-    res.status(500).json({ message: 'Error checking admin role', error: error.message });
+const authenticateAdmin = (req, res, next) => {
+  if (req.user.role === 'admin') {
+    next(); 
+  } else {
+    res.status(403).json({ message: 'Unauthorized: Admin privileges required' });
   }
 };
 
