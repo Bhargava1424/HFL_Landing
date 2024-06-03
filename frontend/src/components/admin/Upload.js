@@ -3,9 +3,13 @@ import { FaCheckCircle, FaCamera } from 'react-icons/fa';
 import Webcam from 'react-webcam';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { Worker, Viewer } from '@react-pdf-viewer/core';
+import '@react-pdf-viewer/core/lib/styles/index.css';
 
 const steps = ['PAN', 'Passport', 'Aadhar', 'Driving License', 'Ticket'];
 const currencies = ['USD', 'EUR', 'GBP', 'INR'];
+
+const pdfjsVersion = '2.16.105';
 
 const UploadWizard = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -71,6 +75,18 @@ const UploadWizard = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleNextStep = () => {
+    if (currentStep < steps.length - 1) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+
+  const handlePreviousStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -206,70 +222,92 @@ const UploadWizard = () => {
                   </div>
                 ))}
               </div>
-                <form onSubmit={handleSubmit}> 
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Upload {steps[currentStep]}
-                  {files[steps[currentStep].toLowerCase().replace(' ', '')] && (
-                    <FaCheckCircle className="inline ml-2 text-green-500" />
-                  )}
-                </label>
-                <div className="flex items-center space-x-4">
-                  <label className="block w-full py-2 px-4 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer">
-                    <span className="text-gray-600">Choose file</span>
-                    <input type="file" className="hidden" onChange={onFileChange} />
+              <form onSubmit={handleSubmit}> 
+                <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Upload {steps[currentStep]}
+                    {files[steps[currentStep].toLowerCase().replace(' ', '')] && (
+                      <FaCheckCircle className="inline ml-2 text-green-500" />
+                    )}
                   </label>
-                  <button
-                    type="button"
-                    onClick={() => setShowWebcam(!showWebcam)}
-                    className="!bg-green-700 text-white py-2 px-16 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
-                  >
-                    <FaCamera className="inline-block mr-2" />
-                    Webcam
-                  </button>
-                </div>
-                {files[steps[currentStep].toLowerCase().replace(' ', '')] && (
-                  <img
-                    src={URL.createObjectURL(files[steps[currentStep].toLowerCase().replace(' ', '')])}
-                    alt={`${steps[currentStep]} preview`}
-                    className="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
-                  />
-                )}
-                {showWebcam && (
-                  <div className="mt-4">
-                    <Webcam
-                      audio={false}
-                      ref={webcamRef}
-                      screenshotFormat="image/jpeg"
-                      className="rounded-lg shadow-md"
-                    />
+                  <div className="flex items-center space-x-4">
+                    <label className="block w-full py-2 px-4 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer">
+                      <span className="text-gray-600">Choose file</span>
+                      <input type="file" className="hidden" onChange={onFileChange} />
+                    </label>
                     <button
                       type="button"
-                      onClick={capture}
-                      className="mt-4 !bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
+                      onClick={() => setShowWebcam(!showWebcam)}
+                      className="!bg-green-700 text-white py-2 px-16 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
                     >
-                      Capture
+                      <FaCamera className="inline-block mr-2" />
+                      Webcam
                     </button>
                   </div>
-                )}
-              </div>
-              <div className="flex justify-between">
-                <button
-                  onClick={() => setCurrentStep(currentStep - 1)}
-                  disabled={currentStep === 0}
-                  className=" bg-sky-700 text-white py-2 px-4 rounded-lg shadow-md hover:bg-sky-800 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  Back
-                </button>
-                <button
-                  type="submit"
-                  className="!bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
-                  disabled={!files[steps[currentStep].toLowerCase().replace(' ', '')]} 
-                >
-                  {currentStep === steps.length - 1 ? 'Submit' : 'Next'}
-                </button>
-              </div>
-                </form> 
+                  {files[steps[currentStep].toLowerCase().replace(' ', '')] && (
+                    <div className="mt-4">
+                      {files[steps[currentStep].toLowerCase().replace(' ', '')].type === 'application/pdf' ? (
+                        <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pdfjsVersion}/build/pdf.worker.min.js`}>
+                          <div style={{ height: '300px' }}>
+                            <Viewer fileUrl={URL.createObjectURL(files[steps[currentStep].toLowerCase().replace(' ', '')])} />
+                          </div>
+                        </Worker>
+                      ) : (
+                        <img
+                          src={URL.createObjectURL(files[steps[currentStep].toLowerCase().replace(' ', '')])}
+                          alt={`${steps[currentStep]} preview`}
+                          className="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
+                        />
+                      )}
+                    </div>
+                  )}
+                  {showWebcam && (
+                    <div className="mt-4">
+                      <Webcam
+                        audio={false}
+                        ref={webcamRef}
+                        screenshotFormat="image/jpeg"
+                        className="rounded-lg shadow-md"
+                      />
+                      <button
+                        type="button"
+                        onClick={capture}
+                        className="mt-4 !bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
+                      >
+                        Capture
+                      </button>
+                    </div>
+                  )}
+                </div>
+                <div className="flex justify-between">
+                  <button
+                    type="button"
+                    onClick={handlePreviousStep}
+                    disabled={currentStep === 0}
+                    className="bg-sky-700 text-white py-2 px-4 rounded-lg shadow-md hover:bg-sky-800 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    Back
+                  </button>
+                  {currentStep < steps.length - 1 && (
+                    <button
+                      type="button"
+                      onClick={handleNextStep} 
+                      className="!bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
+                      disabled={!files[steps[currentStep].toLowerCase().replace(' ', '')]} 
+                    >
+                      Next
+                    </button>
+                  )}
+                  {currentStep === steps.length - 1 && (
+                    <button
+                      type="submit"
+                      className="!bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
+                    >
+                      Submit
+                    </button>
+                  )}
+                </div>
+              </form> 
             </div>
             {uploadSuccess && (
               <div className="mt-4 text-green-600 text-center">
@@ -289,4 +327,4 @@ const UploadWizard = () => {
   );
 };
 
-export default UploadWizard;  
+export default UploadWizard;
