@@ -27,6 +27,50 @@ const CustomerForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  
+    const phonePattern = /^\d{10}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+    if (!phonePattern.test(formData.phone)) {
+      toast.error('Please enter a valid 10-digit phone number.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setTimeout(() => {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          phone: '',
+        }));
+      }, 2000);
+      return;
+    }
+  
+    if (!emailPattern.test(formData.email)) {
+      toast.error('Please enter a valid email address.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setTimeout(() => {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          email: '',
+        }));
+      }, 2000);
+      return;
+    }
+  
     if (!isPrivacyPolicyChecked) {
       toast.error('Please agree to the terms and conditions.', {
         position: "top-center",
@@ -40,12 +84,13 @@ const CustomerForm = () => {
       });
       return;
     }
+  
     const payload = {
       ...formData,
       formType,
     };
     console.log('Form Payload:', payload);
-
+  
     // Display the success toast
     toast.success('Our HFL team will contact you soon.', {
       position: "top-center",
@@ -60,7 +105,21 @@ const CustomerForm = () => {
         color: '#000',
       },
     });
+  
+    // Reset the form after 2000ms
+    setTimeout(() => {
+      setFormData({
+        store: 'Somajiguda',
+        currency: 'USD - Dollar',
+        amount: '',
+        phone: '',
+        email: '',
+      });
+      setIsPrivacyPolicyChecked(false);
+      setFormType('buy');
+    }, 2000);
   };
+  
 
   return (
     <div className="flex flex-col justify-between mx-auto lg:flex-row md:p-4">
@@ -163,7 +222,7 @@ const CustomerForm = () => {
             <div>
               <label className="block mb-1 text-sm md:text-lg">Phone Number</label>
               <input
-                type="text"
+                type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
