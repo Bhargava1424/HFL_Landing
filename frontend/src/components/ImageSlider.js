@@ -72,7 +72,7 @@ const ImageSlider = () => {
         </div>
       </div>
       {/* <div className='px-1 py-1'>
-      <div className="px-4 py-3 text-white bg-orange-500 rounded-xl sm:px-8 sm:py-4">
+      <div className="px-4 py-3 text-white bg-[#ffb72b] rounded-xl sm:px-8 sm:py-4">
         <div className="container mx-auto">
           <div className="flex flex-col sm:flex-row">
             <div className="w-full mb-4 sm:border-r sm:border-white sm:w-1/2 sm:pr-4 sm:mb-0"> 
@@ -85,7 +85,7 @@ const ImageSlider = () => {
                 <p className="text-sm">Expert team ensures quick, secure and hassle free services</p>
               </div>
               <button 
-                    className="px-2 py-1 font-bold text-white bg-orange-500 border border-2 border-white rounded hover:bg-orange-600 md:px-4 md:py-2"
+                    className="px-2 py-1 font-bold text-white bg-[#ffb72b] border border-2 border-white rounded hover:bg-[#ffb72b] md:px-4 md:py-2"
                     onClick={handleContactUs}
               >
                 Contact Us

@@ -3,8 +3,12 @@ import Navbar from './NavBar';
 import Footer from './Footer';
 import { isMobile } from 'react-device-detect';
 import backgroundImage from '../assets/ContactUs/backgroundImage.jpg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const ContactUs = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -48,18 +52,32 @@ const ContactUs = () => {
     setErrors((prevState) => ({ ...prevState, [name]: error }));
   };
   
-  
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.phoneNumber || !formData.inquiry) {
-      alert('Please fill in all the fields');
+      toast.error('Please fill in all the fields.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return;
     }
 
     if (errors.email || errors.phoneNumber) {
-      alert('Please correct the errors before submitting');
+      toast.error('Please correct the errors before submitting.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return;
     }
 
@@ -67,16 +85,43 @@ const ContactUs = () => {
       ...formData,
       name: formData.name.replace(/^\w/, (c) => c.toUpperCase()),
     });
+
+    toast.success('Form submitted successfully! Our team will contact you soon.', {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined, 
+      onClose: () => navigate('/')// Reset the form after toast timeout
+
+      
+    });
+
+
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      email: '',
+      phoneNumber: '',
+      inquiry: '',
+    });
+    setErrors({
+      name: '',
+      email: '',
+      phoneNumber: '',
+    });
   };
 
   const handleContactSomaji = () => {
     const phoneNumber = '9876543210';
 
     if (isMobile) {
-      // Redirect to the call app with the phone number
       window.location.href = `tel:${phoneNumber}`;
     } else {
-      // Show a popup with the phone number
       alert(`Please call ${phoneNumber}`);
     }
   };
@@ -85,10 +130,8 @@ const ContactUs = () => {
     const phoneNumber = '9876543210';
 
     if (isMobile) {
-      // Redirect to the call app with the phone number
       window.location.href = `tel:${phoneNumber}`;
     } else {
-      // Show a popup with the phone number
       alert(`Please call ${phoneNumber}`);
     }
   };
@@ -236,6 +279,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
       <Footer />
     </>
   );

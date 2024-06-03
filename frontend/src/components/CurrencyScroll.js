@@ -62,7 +62,7 @@ const CurrencyScroll = () => {
           ))}
         </Marquee>
         <button
-          className="flex-shrink-0 bg-orange-500 text-white font-bold border-none px-1 py-2 cursor-pointer outline-none transition duration-300 ease-in-out hover:bg-orange-600 h-12 flex items-center shadow-current text-[10px] sm:text-sm rounded-lg"
+          className="flex-shrink-0 bg-[#ffb72b] text-white font-bold border-none px-1 py-2 cursor-pointer outline-none transition duration-300 ease-in-out hover:bg-[#ffb72b] h-12 flex items-center shadow-current text-[10px] sm:text-sm rounded-lg"
           onClick={handleContactUs}
         >
           Contact Us {/* Button padding and text size reduced */}

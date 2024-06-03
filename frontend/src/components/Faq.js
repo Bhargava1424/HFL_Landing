@@ -68,8 +68,8 @@ function FAQ() {
           </div>
         ))}
       </div>
-      <div className="w-full md:w-1/2 flex justify-end">
-        <img src={faqImage} alt="FAQ Illustration" className="w-auto max-h-56 md:max-h-80" />
+      <div className="w-full md:w-1/2 flex justify-center">
+        <img src={faqImage} alt="FAQ Illustration" className="w-auto max-h-56 md:max-h-[600px]" />
       </div>
     </div>
   );

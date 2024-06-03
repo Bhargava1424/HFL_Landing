@@ -99,7 +99,7 @@ const BankScroll = () => {
                 <p className="mb-1 text-xs text-center md:text-base md:mb-4">
                   A sufficient amount of foreign currency notes can always come in handy.
                 </p>
-                <button className="px-2 py-1 mt-auto text-xs text-white transition-colors duration-300 bg-orange-500 rounded-md md:text-md md:px-4 md:py-2 hover:bg-orange-600">
+                <button className="px-2 py-1 mt-auto text-xs text-white transition-colors duration-300 bg-[#ffb72b] rounded-md md:text-md md:px-4 md:py-2 hover:bg-[#ffb72b]">
                   Read More
                 </button>
               </div>

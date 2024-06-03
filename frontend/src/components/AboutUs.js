@@ -79,7 +79,7 @@ const AboutUs = () => {
       {/* About Us container */}
       <div className="p-4 mb-1 md:mb-4 mt-4 w-full">
       <div className="mt-16">
-      <div className="bg-orange-500 flex justify-center items-center rounded-2xl shadow-lg overflow-hidden">
+      <div className="bg-[#ffb72b] flex justify-center items-center rounded-2xl shadow-lg overflow-hidden">
         <div className="text-center p-2">
           <h1 className="text-white font-bold text-xl sm:text-5xl">About Us</h1>
         </div>
@@ -211,7 +211,7 @@ const AboutUs = () => {
 
 
 
-      <div className="bg-orange-500 text-white px-4 py-3 sm:px-8 sm:py-4 rounded-2xl mb-2">
+      {/* <div className="bg-[#ffb72b] text-white px-4 py-3 sm:px-8 sm:py-4 rounded-2xl mb-2">
         <div className="container mx-auto">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <div className="w-full sm:w-auto mb-4 sm:mb-0">
@@ -224,7 +224,7 @@ const AboutUs = () => {
             </div>
             <div className='flex justify-center sm:justify-start sm:mr-40'>
               <button
-                className="bg-orange-500 rounded-xl hover:bg-orange-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded border border-white"
+                className="bg-[#ffb72b] rounded-xl hover:bg-[#eeb826] text-white px-3 py-1 sm:px-4 sm:py-2  border-4 border-white"
                 onClick={handleContactUs}
               >
                 Contact Us
@@ -232,7 +232,7 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="flex flex-col md:flex-row items-start bg-slate-300 rounded-r-2xl sm:bg-white my-2">
         <div className="mb-1 md:mb-0 md:max-w-2xl md:mr-8 flex-1">
