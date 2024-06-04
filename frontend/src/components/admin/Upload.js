@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import { useNavigate } from 'react-router-dom';
-import centerImage from 'D:/HFL/LandingWebsite/HFL_Landing/frontend/src/assets/HFLlogo.jpg';
+import centerImage from '../../assets/HFLlogo.jpg';
 
 const steps = ['PAN', 'Passport', 'Aadhar', 'Driving License', 'Ticket'];
 const currencies = ['USD', 'EUR', 'GBP', 'INR'];

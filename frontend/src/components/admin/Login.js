@@ -18,8 +18,17 @@ const Login = () => {
     e.preventDefault();
 
     try {
+      
+      if (formData.email === 'admin@gmail.com' && formData.password === 'admin') { 
+        // Store the JWT token in local storage (replace with actual token from API)
+        localStorage.setItem('token', 'your-actual-jwt-token'); 
+        localStorage.setItem('isAdmin', 'true'); // Assuming the test user is an admin
+        toast.success('Logged in successfully!'); 
+        navigate('/admin'); // Redirect to the admin dashboard
+      } else {
+        toast.error('Invalid credentials'); 
+      }
       const response = await axios.post('/api/auth/login', formData);
-
       // Store the JWT token in local storage
       localStorage.setItem('token', response.data.token);
 
@@ -31,7 +40,7 @@ const Login = () => {
       }
 
       toast.success('Logged in successfully!'); 
-      navigate('/'); 
+      navigate('/admin'); 
     } catch (error) {
       console.error("Login error:", error);
       toast.error('Invalid credentials'); 
@@ -81,7 +90,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+            className="!bg-blue-500 !hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-300"
           >
             Login
           </button>

@@ -11,11 +11,12 @@ const RequestList = () => {
     const fetchRequests = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get('/api/requests', {
+        const response = await axios.get(process.env.REACT_APP_SERVER_URL + `/api/requests/get`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}` 
           }
         });
+        console.log(response.data);
         setRequests(response.data);
         setIsLoading(false);
       } catch (error) {

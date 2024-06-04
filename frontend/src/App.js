@@ -11,6 +11,7 @@ import Dashboard from './components/admin/Dashboard';
 import UserManagement from './components/admin/UserManagement';
 import Login from './components/admin/Login'; 
 import ProtectedRoute from './components/admin/ProtectedRoute';
+import RequestList from './components/admin/RequestList';
 
 function App() {
   return (
@@ -32,12 +33,13 @@ function App() {
           <Route 
             path="/admin" // Base path for admin routes
             element={
-              <ProtectedRoute>
+              <ProtectedRoute> 
                 <Dashboard /> {/* Your Admin Layout or Dashboard */}
               </ProtectedRoute>
             }
           >
-            <Route index element={<Upload />} /> 
+            {/* Notice the nesting of routes here */}
+            <Route index element={<Dashboard />} /> 
             <Route path="user-management" element={<UserManagement />} />
             {/* Add more admin routes as needed */}
           </Route>
