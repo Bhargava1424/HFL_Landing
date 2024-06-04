@@ -32,6 +32,7 @@ const requestSchema = new mongoose.Schema({
             extractedData: { type: Object },
         },
     ],
+    finalExtractedData: { type: Object },
     createdAt: { type: Date, default: Date.now },
 });
 

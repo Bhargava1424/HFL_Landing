@@ -1,71 +1,59 @@
-const vision = require('@google-cloud/vision');
-const client = new vision.ImageAnnotatorClient();
+// ocr.js
 
-const extractDataFromText = (text, documentType) => {
-  const extractedData = {};
-  const lines = text.split('\n');
+const { DocumentProcessorServiceClient } = require('@google-cloud/documentai').v1;
 
-  if (documentType === 'passport') {
-    lines.forEach((line, i) => {
-      if (line.includes('Name')) {
-        extractedData['Name as per passport'] = lines[i + 1]?.trim() || '';
-      } else if (line.includes('Passport No.')) {
-        extractedData['Passport number'] = lines[i + 1]?.trim() || '';
-      } else if (line.includes('Place of Issue')) {
-        extractedData['Place of issue'] = lines[i + 1]?.trim() || '';
-      } else if (line.includes('Date of Issue')) {
-        extractedData['Issue date'] = lines[i + 1]?.trim() || '';
-      } else if (line.includes('Date of Expiry')) {
-        extractedData['Expiry date'] = lines[i + 1]?.trim() || '';
-      } else if (line.includes('Father')) {
-        extractedData['Father name'] = lines[i + 1]?.trim() || '';
-      }
-    });
-  } else if (documentType === 'aadhar') {
-    lines.forEach((line, i) => {
-      if (line.includes('Aadhaar Number')) {
-        extractedData['Aadhar number'] = line.split(':')[1]?.trim() || '';
-      } else if (line.includes('Address')) {
-        extractedData['Address as per aadhar'] = `${lines[i + 1]?.trim() || ''} ${lines[i + 2]?.trim() || ''}`;
-      }
-    });
-  } else if (documentType === 'pan') {
-    lines.forEach((line, i) => {
-      if (line.includes('Account Number')) {
-        extractedData['PAN number'] = line.split(':')[1]?.trim() || '';
-      } else if (line.includes('Name')) {
-        extractedData['Name as per pan'] = lines[i + 1]?.trim() || '';
-      }
-    });
-  } else if (documentType === 'ticket') {
-    // Add extraction logic for ticket
-  }
-
-  return extractedData;
-};
-
-const extractText = async (fileBuffer, documentType) => {
+const extractText = async (fileBuffer, documentType, mimeType) => {
   try {
-    const base64Image = fileBuffer.toString('base64');
+    // Instantiates a client
+    const client = new DocumentProcessorServiceClient();
+
+    name = process.env.PROCESSOR_NAME;
+    // Prepare the request using the file buffer
     const request = {
-      image: { content: base64Image },
-      features: [{ type: 'DOCUMENT_TEXT_DETECTION' }]
+      name,
+      rawDocument: {
+        content: fileBuffer.toString('base64'),
+        mimeType: mimeType, 
+      },
     };
 
-    const [result] = await client.annotateImage(request);
+    // Recognizes text entities in the document
+    const [result] = await client.processDocument(request);
+    const { document } = result;
 
-    let ocrText = '';
-    let extractedData = {};
+    console.log('Document processing complete:', document);
 
-    if (result?.fullTextAnnotation) {
-      ocrText = result.fullTextAnnotation.text || '';
-      extractedData = extractDataFromText(ocrText, documentType);
+    // Get all of the document text as one big string
+    const { text } = document;
+
+    // Helper function to extract text from textAnchor
+    const getText = (textAnchor) => {
+      if (!textAnchor.textSegments || textAnchor.textSegments.length === 0) {
+        return '';
+      }
+      const startIndex = textAnchor.textSegments[0].startIndex || 0;
+      const endIndex = textAnchor.textSegments[0].endIndex;
+      return text.substring(startIndex, endIndex);
+    };
+
+    // Extract data from the document based on type
+    const extractedData = {};
+    const [page1] = document.pages; // Assuming you only need data from the first page
+    const { paragraphs } = page1;
+
+    if (document.entities) {
+      document.entities.forEach(entity => {
+      console.log(`Entity value: ${entity.mentionText}`);
+      console.log(`Entity type: ${entity.type}`);
+      extractedData[entity.type] = entity.mentionText;
+      });
     }
 
-    return { ocrText, extractedData };
+    return { ocrText: text, extractedData };
+
   } catch (error) {
     console.error('Error performing OCR:', error);
-    throw error;
+    throw error; // Re-throw the error to be handled by the calling function
   }
 };
 

@@ -1,5 +1,6 @@
+// requestController.js
+
 const Request = require('../models/Request');
-const User = require('../models/User');
 const formidable = require('formidable');
 const ocr = require('../utils/ocr');
 const { Storage } = require('@google-cloud/storage');
@@ -72,23 +73,15 @@ const uploadDocument = async (req, res) => {
       console.log('Request ID:', requestId);
 
       try {
+
         // Read the file contents into a buffer
         const documentBuffer = await fs.readFile(documentFile.filepath);
-
-        // Perform OCR
-        let ocrData = {};
-        try {
-          ocrData = await ocr.extractText(documentBuffer, type);
-        } catch (error) {
-          console.error('Error performing OCR:', error);
-        }
-
+        
         const bucket = storage.bucket(process.env.GOOGLE_CLOUD_BUCKET_NAME);
         const fileName = `${requestId}/${type}-${Date.now()}-${documentFile.originalFilename}`;
         const file = bucket.file(fileName);
-
-        // Upload the buffer to GCS without setting individual object ACLs
-        await file.save(documentBuffer, {
+         // Upload the buffer to GCS without setting individual object ACLs
+         await file.save(documentBuffer, {
           metadata: {
             contentType: documentFile.mimetype,
           },
@@ -96,6 +89,16 @@ const uploadDocument = async (req, res) => {
 
         const publicUrl = `https://storage.googleapis.com/${bucket.name}/${fileName}`;
         console.log('File uploaded to:', publicUrl);
+
+        console.log("documentBuffer", documentBuffer)
+
+        // Perform OCR
+        let ocrData = {};
+        try {
+          ocrData = await ocr.extractText(documentBuffer, type, documentFile.mimetype);
+        } catch (error) {
+          console.error('Error performing OCR:', error);
+        }
 
         const request = await Request.findById(requestId);
         if (!request) {
@@ -108,6 +111,8 @@ const uploadDocument = async (req, res) => {
           ocrText: ocrData.ocrText || '',
           extractedData: ocrData.extractedData || {},
         });
+
+        request.finalExtractedData = { ...request.finalExtractedData, ...ocrData.extractedData };
 
         await request.save();
         res.status(200).json({ message: 'Document processed and uploaded successfully', fileUrl: publicUrl });
