@@ -1,10 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FaCheckCircle, FaCamera } from 'react-icons/fa';
 import Webcam from 'react-webcam';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
+import { useNavigate } from 'react-router-dom';
+import centerImage from 'D:/HFL/LandingWebsite/HFL_Landing/frontend/src/assets/HFLlogo.jpg';
 
 const steps = ['PAN', 'Passport', 'Aadhar', 'Driving License', 'Ticket'];
 const currencies = ['USD', 'EUR', 'GBP', 'INR'];
@@ -30,9 +32,12 @@ const UploadWizard = () => {
   const [uploadSuccess, setUploadSuccess] = useState(false);
   const [uploadError, setUploadError] = useState(null);
   const [showWebcam, setShowWebcam] = useState(false);
-  const [requestId, setRequestId] = useState(null); 
+  const [requestId, setRequestId] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const webcamRef = useRef(null);
+  const navigate = useNavigate();
 
   const onFileChange = (e) => {
     const fileType = steps[currentStep].toLowerCase().replace(' ', '');
@@ -57,18 +62,18 @@ const UploadWizard = () => {
     try {
       const response = await axios.post(process.env.REACT_APP_SERVER_URL + '/api/requests/create', formData, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}` 
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
       console.log(response);
-      if (response.status >= 200 && response.status < 300) { 
+      if (response.status >= 200 && response.status < 300) {
         console.log('Request created successfully');
-        setRequestId(response.data.requestId); 
+        setRequestId(response.data.requestId);
       } else {
-        console.error('Error creating request:', response.data.message); 
+        console.error('Error creating request:', response.data.message);
       }
-    } catch (error) { 
-      console.error('Error creating request:', error.message); 
+    } catch (error) {
+      console.error('Error creating request:', error.message);
     }
   };
 
@@ -90,12 +95,15 @@ const UploadWizard = () => {
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
+    setIsLoading(true);
+
     if (!requestId) {
       toast.error("Please create a request first.");
-      return; 
+      setIsLoading(false);
+      return;
     }
-  
+
     try {
       for (const [key, value] of Object.entries(files)) {
         if (value) {
@@ -103,108 +111,145 @@ const UploadWizard = () => {
           console.log('Uploading:', value);
           formData.append('file', value);
           console.log('Uploading:', key);
-          formData.append('documentType', key); 
-  
+          formData.append('documentType', key);
+
           const response = await axios.post(
             process.env.REACT_APP_SERVER_URL + `/api/requests/${requestId}/upload`,
-            formData, // Send the FormData object directly
+            formData,
             {
               headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include JWT token
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'multipart/form-data'
               }
             }
           );
-  
+
           if (response.status === 200) {
-              toast.success(`Uploaded ${key} Successfully`);
+            toast.success(`Uploaded ${key} Successfully`);
             setUploadSuccess(true);
             setUploadError(null);
+            setIsLoading(false);
+            setShowModal(true);
           } else {
             const data = await response.json();
-              toast.error(`Error Uploading ${key}`);
+            toast.error(`Error Uploading ${key}`);
             setUploadError(data.message);
           }
         }
       }
+      setTimeout(() => {
+        navigate('/');
+      }, 5000);
     } catch (error) {
-        console.error("Upload error", error);
-        toast.error("Error uploading files, try again later");
+      console.error("Upload error", error);
+      toast.error("Error uploading files, try again later");
       setUploadError(error.message);
+      setIsLoading(false);
     }
   };
 
+  useEffect(() => {
+    if (showModal) {
+      const timer = setTimeout(() => {
+        setShowModal(false);
+        navigate('/');
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showModal, navigate]);
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6 relative">
+      {isLoading && (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="loader animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+        </div>
+      )}
+
+      {showModal && (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-8 rounded-xl shadow-xl max-w-md text-center">
+            <p className="text-lg font-bold mb-4">Thank you for uploading the documents. You will now be redirected to the Hyderabad Forex Limited Official Webpage.</p>
+          </div>
+        </div>
+      )}
+
       <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-2xl border-2 border-dashed border-gray-400">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
           Create Request & Upload Documents
         </h2>
 
+        <p className="mb-6 text-gray-600 font-semibold" >
+        <img src={centerImage} className="upload-blurred-image" alt="Background" />
+          Welcome to the official HFL Foreign Exchange Document Upload Portal. This is an essential RBI-approved step for legally processing your foreign exchange needs. We take pleasure in maintaining the highest levels of professionalism and data security. Please review our <a href="#" className="text-green-500 hover:text-green-700">User Data Protection Regulations</a> to understand our commitment to protecting your personal information.
+        </p>
+
+
         {!requestId ? (
           <div className="mb-8">
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-              <input
-                type="text"
-                name="phoneNumber"
-                value={formData.phoneNumber}
-                onChange={handleChange}
-                className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Amount Needed</label>
-              <input
-                type="number"
-                name="amount"
-                value={formData.amount}
-                onChange={handleChange}
-                className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">Currency</label>
-              <select
-                name="currency"
-                value={formData.currency}
-                onChange={handleChange}
-                className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
-              >
-                {currencies.map((currency) => (
-                  <option key={currency} value={currency}>
-                    {currency}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <button
-              onClick={createRequest}
-              className="mt-4 w-full bg-green-500 text-white py-3 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
-            >
-              Create Request
-            </button>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
           </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+            <input
+              type="text"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleChange}
+              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Amount Needed</label>
+            <input
+              type="number"
+              name="amount"
+              value={formData.amount}
+              onChange={handleChange}
+              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-2">Currency</label>
+            <select
+              name="currency"
+              value={formData.currency}
+              onChange={handleChange}
+              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              {currencies.map((currency) => (
+                <option key={currency} value={currency}>
+                  {currency}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button
+            onClick={createRequest}
+            className="mt-4 w-full bg-green-500 text-white py-3 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
+          >
+            Create Request
+          </button>
+        </div>
         ) : (
           <>
             <div className="mb-8">
@@ -284,7 +329,7 @@ const UploadWizard = () => {
                     type="button"
                     onClick={handlePreviousStep}
                     disabled={currentStep === 0}
-                    className="bg-sky-700 text-white py-2 px-4 rounded-lg shadow-md hover:bg-sky-800 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="!bg-orange-500 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-orange-600 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Back
                   </button>
