@@ -16,12 +16,13 @@ const pdfjsVersion = '2.16.105';
 const UploadWizard = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [files, setFiles] = useState({
-    pan: null,
-    passport: null,
-    aadhar: null,
-    drivingLicense: null,
-    ticket: null
+    pan: [],
+    passport: [],
+    aadhar: [],
+    drivingLicense: [],
+    ticket: []
   });
+  
   const [formData, setFormData] = useState({
     name: '',
     phoneNumber: '',
@@ -41,10 +42,11 @@ const UploadWizard = () => {
 
   const onFileChange = (e) => {
     const fileType = steps[currentStep].toLowerCase().replace(' ', '');
-    setFiles({ ...files, [fileType]: e.target.files[0] });
+    setFiles({ ...files, [fileType]: [e.target.files[0]] });
     setUploadSuccess(false);
     setUploadError(null);
   };
+  
 
   const capture = () => {
     const fileType = steps[currentStep].toLowerCase().replace(' ', '');
@@ -53,10 +55,17 @@ const UploadWizard = () => {
       .then((res) => res.blob())
       .then((blob) => {
         const file = new File([blob], `${fileType}.jpg`, { type: 'image/jpeg' });
-        setFiles({ ...files, [fileType]: file });
-        setShowWebcam(false);
+        setFiles((prevFiles) => {
+          const updatedFiles = { ...prevFiles };
+          updatedFiles[fileType] = [...(updatedFiles[fileType] || []), file];
+          setShowWebcam(updatedFiles[fileType].length < 2);
+          return updatedFiles;
+        });
       });
   };
+  
+  
+  
 
   const createRequest = async () => {
     try {
@@ -83,10 +92,17 @@ const UploadWizard = () => {
   };
 
   const handleNextStep = () => {
+    const fileType = steps[currentStep].toLowerCase().replace(' ', '');
+    if (showWebcam && (files[fileType]?.length || 0) < 2) {
+      toast.error("Please capture two images for this document.");
+      return;
+    }
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     }
   };
+  
+  
 
   const handlePreviousStep = () => {
     if (currentStep > 0) {
@@ -97,22 +113,22 @@ const UploadWizard = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-
+  
     if (!requestId) {
       toast.error("Please create a request first.");
       setIsLoading(false);
       return;
     }
-
+  
     try {
       for (const [key, value] of Object.entries(files)) {
-        if (value) {
+        if (value.length > 0) {
           const formData = new FormData();
-          console.log('Uploading:', value);
-          formData.append('file', value);
-          console.log('Uploading:', key);
+          value.forEach((file, index) => {
+            formData.append(`file${index + 1}`, file);
+          });
           formData.append('documentType', key);
-
+  
           const response = await axios.post(
             process.env.REACT_APP_SERVER_URL + `/api/requests/${requestId}/upload`,
             formData,
@@ -123,7 +139,7 @@ const UploadWizard = () => {
               }
             }
           );
-
+  
           if (response.status === 200) {
             toast.success(`Uploaded ${key} Successfully`);
             setUploadSuccess(true);
@@ -131,9 +147,8 @@ const UploadWizard = () => {
             setIsLoading(false);
             setShowModal(true);
           } else {
-            const data = await response.json();
             toast.error(`Error Uploading ${key}`);
-            setUploadError(data.message);
+            setUploadError(response.data.message);
           }
         }
       }
@@ -147,6 +162,8 @@ const UploadWizard = () => {
       setIsLoading(false);
     }
   };
+  
+  
 
   useEffect(() => {
     if (showModal) {
@@ -289,23 +306,40 @@ const UploadWizard = () => {
                       Webcam
                     </button>
                   </div>
-                  {files[steps[currentStep].toLowerCase().replace(' ', '')] && (
+                  {showWebcam && (
                     <div className="mt-4">
-                      {files[steps[currentStep].toLowerCase().replace(' ', '')].type === 'application/pdf' ? (
+                      <Webcam
+                        audio={false}
+                        ref={webcamRef}
+                        screenshotFormat="image/jpeg"
+                        className="rounded-lg shadow-md"
+                      />
+                      <button
+                        type="button"
+                        onClick={capture}
+                        className="mt-4 !bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
+                      >
+                        Capture
+                      </button>
+                    </div>
+                  )}
+                  {files[steps[currentStep].toLowerCase().replace(' ', '')]?.map((file, index) => (
+                    <div key={index} className="mt-4">
+                      {file.type === 'application/pdf' ? (
                         <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pdfjsVersion}/build/pdf.worker.min.js`}>
                           <div style={{ height: '300px' }}>
-                            <Viewer fileUrl={URL.createObjectURL(files[steps[currentStep].toLowerCase().replace(' ', '')])} />
+                            <Viewer fileUrl={URL.createObjectURL(file)} />
                           </div>
                         </Worker>
                       ) : (
                         <img
-                          src={URL.createObjectURL(files[steps[currentStep].toLowerCase().replace(' ', '')])}
+                          src={URL.createObjectURL(file)}
                           alt={`${steps[currentStep]} preview`}
                           className="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
                         />
                       )}
                     </div>
-                  )}
+                  ))}
                   {showWebcam && (
                     <div className="mt-4">
                       <Webcam
