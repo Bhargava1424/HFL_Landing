@@ -47,18 +47,7 @@ const createRequest = async (req, res) => {
 const getRequests = async (req, res) => {
   try {
     const requests = await Request.find();
-    const updatedRequests = await Promise.all(requests.map(async (request) => {
-      const updatedDocuments = await Promise.all(request.documents.map(async (document) => {
-        const signedUrl = await getSignedUrlForFile(document.file);
-        return {
-          ...document,
-          file: signedUrl,
-        };
-      }));
-      request.documents = updatedDocuments;
-      return request;
-    }));
-    res.status(200).json(updatedRequests);
+    res.status(200).json(requests);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching requests', error: error.message });
   }
@@ -174,6 +163,7 @@ const uploadDocument = async (req, res) => {
 };
 
 const getSignedUrl = async (req, res) => {
+  console.log(req)
   const fullUrl = req.body.url; // Full URL from the route parameter
 
   // Extract the filename and folder path (if any)

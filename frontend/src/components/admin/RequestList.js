@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import 'tailwindcss/tailwind.css';
+import RequestDetailModal from './RequestDetailModal';
 
 const Modal = ({ isOpen, onClose, children }) => {
   return (
@@ -226,56 +227,11 @@ const RequestList = () => {
         </table>
       </div>
 
-      <Modal isOpen={showDetail} onClose={handleCloseDetail}>
-        {selectedRequest && (
-          <div>
-            <div className="mb-8">
-              <p><strong>ID:</strong> {selectedRequest._id}</p>
-              <p><strong>Name:</strong> {selectedRequest.name}</p>
-              <p><strong>Amount:</strong> {selectedRequest.amount}</p>
-              <p><strong>Currency:</strong> {selectedRequest.currency}</p>
-              <p><strong>Status:</strong> {selectedRequest.status}</p>
-            </div>
-            <h3 className="text-xl font-semibold mb-4">Documents</h3>
-            {selectedRequest.documents.map((doc, index) => (
-              <div key={index} className="mb-8">
-                <p><strong>Type:</strong> {doc.type}</p>
-                {doc.file.endsWith('.pdf') ? (
-                  <Worker workerUrl={`https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.min.js`}>
-                    <div style={{ height: '400px' }} className="mt-4">
-                      <Viewer fileUrl={doc.file} />
-                    </div>
-                  </Worker>
-                ) : (
-                  <img
-                    src={doc.file}
-                    alt={`${doc.type} preview`}
-                    className="mt-4 w-full max-h-96 object-contain rounded-lg shadow-md"
-                  />
-                )}
-
-                
-                <details className="mt-4">
-                  <summary className="cursor-pointer text-blue-500 hover:text-blue-700">OCR Data</summary>
-                  <pre className="whitespace-pre-wrap bg-gray-100 p-4 rounded">{doc.ocrText}</pre>
-                </details>
-                <details className="mt-4">
-                  <summary className="cursor-pointer text-blue-500 hover:text-blue-700">Extracted Data</summary>
-                  {doc.extractedData ? (
-                    <div className="bg-gray-100 p-4 rounded">
-                      {Object.entries(doc.extractedData).map(([key, value]) => (
-                        <p key={key}><strong>{key}:</strong> {value}</p>
-                      ))}
-                    </div>
-                  ) : (
-                    <p>No extracted data available.</p>
-                  )}
-                </details>
-              </div>
-            ))}
-          </div>
-        )}
-      </Modal>
+      <RequestDetailModal 
+        showDetail={showDetail} 
+        handleCloseDetail={handleCloseDetail} 
+        selectedRequest={selectedRequest} 
+      />
 
       <Modal isOpen={showExtractedData} onClose={handleCloseExtractedData}>
         {selectedRequest && (
