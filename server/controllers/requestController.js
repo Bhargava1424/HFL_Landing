@@ -7,6 +7,24 @@ const { Storage } = require('@google-cloud/storage');
 const storage = new Storage();
 const fs = require('fs').promises;
 
+const getSignedUrlForFile = async (fileUrl) => {
+  const parts = fileUrl.split('/');
+  const filename = parts.pop(); 
+  const folderPath = parts.slice(3).join('/'); // Adjust this based on your URL structure
+
+  const bucket = storage.bucket(process.env.GOOGLE_CLOUD_BUCKET_NAME);
+  const file = bucket.file(folderPath ? `${folderPath}/${filename}` : filename);
+
+  const [signedUrl] = await file.getSignedUrl({
+    action: 'read',
+    expires: Date.now() + 15 * 60 * 1000, // 15 minutes
+  });
+
+  return signedUrl;
+};
+
+
+
 const createRequest = async (req, res) => {
   try {
     const { name, phoneNumber, email, amount, currency } = req.body;
@@ -29,11 +47,23 @@ const createRequest = async (req, res) => {
 const getRequests = async (req, res) => {
   try {
     const requests = await Request.find();
-    res.status(200).json(requests);
+    const updatedRequests = await Promise.all(requests.map(async (request) => {
+      const updatedDocuments = await Promise.all(request.documents.map(async (document) => {
+        const signedUrl = await getSignedUrlForFile(document.file);
+        return {
+          ...document,
+          file: signedUrl,
+        };
+      }));
+      request.documents = updatedDocuments;
+      return request;
+    }));
+    res.status(200).json(updatedRequests);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching requests', error: error.message });
   }
 };
+
 
 
 const getRequestById = async (req, res) => {

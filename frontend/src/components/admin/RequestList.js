@@ -253,6 +253,7 @@ const RequestList = () => {
                     className="mt-4 w-full max-h-96 object-contain rounded-lg shadow-md"
                   />
                 )}
+
                 
                 <details className="mt-4">
                   <summary className="cursor-pointer text-blue-500 hover:text-blue-700">OCR Data</summary>
