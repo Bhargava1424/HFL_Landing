@@ -1,3 +1,5 @@
+// requestController.js
+
 const Request = require('../models/Request');
 const formidable = require('formidable');
 const ocr = require('../utils/ocr');
@@ -24,51 +26,15 @@ const createRequest = async (req, res) => {
   }
 };
 
-const getSignedUrlForFile = async (fileUrl) => {
-  const parts = fileUrl.split('/');
-  const filename = parts.pop(); // Last part is the filename
-  const folderPath = parts.join('/'); // Remaining parts are the folder path
-
-  try {
-    const bucket = storage.bucket(process.env.GOOGLE_CLOUD_BUCKET_NAME);
-    const file = bucket.file(`${folderPath}/${filename}`);
-
-    const [signedUrl] = await file.getSignedUrl({
-      action: 'read',
-      expires: Date.now() + 15 * 60 * 1000, // 15 minutes
-    });
-
-    return signedUrl;
-  } catch (error) {
-    console.error('Error generating signed URL:', error);
-    throw new Error('Failed to generate signed URL');
-  }
-};
-
 const getRequests = async (req, res) => {
   try {
     const requests = await Request.find();
-
-    // Replace each document file with signed URLs
-    const updatedRequests = await Promise.all(requests.map(async (request) => {
-      const updatedDocuments = await Promise.all(request.documents.map(async (document) => {
-        const signedUrl = await getSignedUrlForFile(document.file);
-        return {
-          ...document,
-          file: signedUrl,
-        };
-      }));
-      return {
-        ...request.toObject(),
-        documents: updatedDocuments,
-      };
-    }));
-
-    res.status(200).json(updatedRequests);
+    res.status(200).json(requests);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching requests', error: error.message });
   }
 };
+
 
 const getRequestById = async (req, res) => {
   const requestId = req.params.requestId;
@@ -126,14 +92,15 @@ const uploadDocument = async (req, res) => {
       console.log('Request ID:', requestId);
 
       try {
+
         // Read the file contents into a buffer
         const documentBuffer = await fs.readFile(documentFile.filepath);
         
         const bucket = storage.bucket(process.env.GOOGLE_CLOUD_BUCKET_NAME);
         const fileName = `${requestId}/${type}-${Date.now()}-${documentFile.originalFilename}`;
         const file = bucket.file(fileName);
-        // Upload the buffer to GCS without setting individual object ACLs
-        await file.save(documentBuffer, {
+         // Upload the buffer to GCS without setting individual object ACLs
+         await file.save(documentBuffer, {
           metadata: {
             contentType: documentFile.mimetype,
           },
@@ -182,11 +149,11 @@ const getSignedUrl = async (req, res) => {
   // Extract the filename and folder path (if any)
   const parts = fullUrl.split('/');
   const filename = parts.pop(); // Last part is the filename
-  const folderPath = parts.join('/'); // Remaining parts are the folder path
+  const folderPath = parts.pop(); // Remaining parts are the folder path
 
   try {
     const bucket = storage.bucket(process.env.GOOGLE_CLOUD_BUCKET_NAME);
-    const file = bucket.file(`${folderPath}/${filename}`); // Combine folder and filename
+    const file = bucket.file(folderPath ? `${folderPath}/${filename}` : filename); // Combine folder and filename
 
     const [signedUrl] = await file.getSignedUrl({
       action: 'read',
@@ -199,5 +166,6 @@ const getSignedUrl = async (req, res) => {
     res.status(500).json({ error: 'Failed to generate signed URL' });
   }
 };
+
 
 module.exports = { createRequest, uploadDocument, getRequests, getRequestById, updateRequest, getSignedUrl };
