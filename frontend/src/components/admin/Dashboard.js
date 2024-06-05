@@ -1,8 +1,7 @@
 import React from 'react';
-import Navbar from './Navbar';
+import { Routes, Route } from 'react-router-dom';
 import RequestList from './RequestList';
 import UserManagement from './UserManagement';
-import { Routes, Route, useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   return (
@@ -10,7 +9,7 @@ const Dashboard = () => {
       <main className="p-4"> 
         <Routes>
           <Route path="/" element={<RequestList />} />
-          <Route path="/users" element={<UserManagement />} />
+          <Route path="/user-management" element={<UserManagement />} />
         </Routes>
       </main>
     </div>
