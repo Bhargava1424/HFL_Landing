@@ -26,13 +26,32 @@ const createRequest = async (req, res) => {
   }
 };
 
+const getRequests = async (req, res) => {
+  try {
+    const requests = await Request.find();
+    res.status(200).json(requests);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching requests', error: error.message });
+  }
+};
+
+
 const getRequestById = async (req, res) => {
   const requestId = req.params.requestId;
   try {
-    const request = await Request.findById(requestId).populate('userId');
+    const request = await Request.findById(requestId);
     if (!request) {
       return res.status(404).json({ message: 'Request not found' });
     }
+    // Replace each document file with signed URLs
+    const updatedDocuments = await Promise.all(request.documents.map(async (document) => {
+      const signedUrl = await getSignedUrlForFile(document.file);
+      return {
+        ...document,
+        file: signedUrl,
+      };
+    }));
+    request.documents = updatedDocuments;
     res.status(200).json(request);
   } catch (error) {
     res.status(500).json({ message: 'Error fetching request', error: error.message });
@@ -124,4 +143,29 @@ const uploadDocument = async (req, res) => {
   });
 };
 
-module.exports = { createRequest, uploadDocument, getRequestById, updateRequest };
+const getSignedUrl = async (req, res) => {
+  const fullUrl = req.body.url; // Full URL from the route parameter
+
+  // Extract the filename and folder path (if any)
+  const parts = fullUrl.split('/');
+  const filename = parts.pop(); // Last part is the filename
+  const folderPath = parts.pop(); // Remaining parts are the folder path
+
+  try {
+    const bucket = storage.bucket(process.env.GOOGLE_CLOUD_BUCKET_NAME);
+    const file = bucket.file(folderPath ? `${folderPath}/${filename}` : filename); // Combine folder and filename
+
+    const [signedUrl] = await file.getSignedUrl({
+      action: 'read',
+      expires: Date.now() + 15 * 60 * 1000, // 15 minutes
+    });
+
+    res.status(200).json({ signedUrl });
+  } catch (error) {
+    console.error('Error generating signed URL:', error);
+    res.status(500).json({ error: 'Failed to generate signed URL' });
+  }
+};
+
+
+module.exports = { createRequest, uploadDocument, getRequests, getRequestById, updateRequest, getSignedUrl };

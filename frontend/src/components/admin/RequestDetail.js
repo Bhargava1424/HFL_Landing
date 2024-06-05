@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import DocumentViewer from '../components/DocumentViewer';
+import DocumentViewer from './DocumentViewer';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -13,11 +13,12 @@ const RequestDetail = () => {
 
   const handleStatusChange = async (newStatus) => {
     try {
-      const response = await axios.put(`/api/requests/${requestId}`, { status: newStatus }, {
+      const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/api/requests/${requestId}`, { status: newStatus }, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}` 
         }
       });
+      console.log(response.data);
       setRequest(response.data); 
         toast.success(`Request marked as ${newStatus}`); 
     } catch (error) {
