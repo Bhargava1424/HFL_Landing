@@ -8,11 +8,14 @@ import AdminPanel from './components/AdminPanel';
 import ContactUs from './components/ContactUs';
 import FAQs from './components/FAQs';
 import GetAnymoney from './components/GetAnymoney'
+import ScrollToTop from './components/ScrollToTop';
 function App() {
   return (
     <div className="App">
       <Router>
+      <ScrollToTop />
         <Routes>
+          
           {/* The Route path="/" will render HomePage as the default component */}
           <Route path="/" element={<HomePage />} />
           <Route path='/aboutUs' element={<AboutUs />}/>
