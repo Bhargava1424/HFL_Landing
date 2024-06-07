@@ -12,7 +12,7 @@ const RbiComponent = () => {
           <div className="text-md md:text-4xl text-black">
             RBI Authorized Money Changer
           </div>
-          <div className="text-xxs md:text-xl text-black mt-0 md:mt-4">
+          <div className="text-sm md:text-xl text-black mt-0 md:mt-4">
             <button onClick={() => navigate('/FAQs')}>Know what RBI says ➔</button>
           </div>
         </div>
