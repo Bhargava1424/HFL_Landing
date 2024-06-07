@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from './NavBar';
 import Steps from '../assets/GetAnyMoney/Roadmap.svg'
 import OurServiceHomePage from './OurServiceHomePage';
@@ -9,6 +10,7 @@ import Footer from './Footer';
 import backgroundImage from '../assets/GetAnyMoney/BGVEctor.svg'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PrivacyPolicy from './PrivacyPolicy';
 
 const GetAnyMoney = () => {
 
@@ -21,6 +23,11 @@ const GetAnyMoney = () => {
     email: '',
   });
   const [isPrivacyPolicyChecked, setIsPrivacyPolicyChecked] = useState(false);
+  const navigate = useNavigate();
+  const handlePrivacyPolicyClick = (e) => {
+    e.preventDefault();
+    navigate('/privacypolicy');
+  };
   
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -291,7 +298,7 @@ const GetAnyMoney = () => {
                     className="mr-2 bg-gray-100"
                   />
                   <label htmlFor="privacyPolicy" className='text-sm md:text-lg'>
-                    I accept the <a href="#" className="text-blue-500 underline">Privacy Policy</a>
+                  I accept the <a href="" onClick={handlePrivacyPolicyClick} className="text-blue-500 underline">Privacy Policy</a>
                   </label>
                 </div>
               </form>

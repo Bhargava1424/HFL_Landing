@@ -9,6 +9,7 @@ import ContactUs from './components/ContactUs';
 import FAQs from './components/FAQs';
 import GetAnymoney from './components/GetAnymoney'
 import ScrollToTop from './components/ScrollToTop';
+import PrivacyPolicy from './components/PrivacyPolicy';
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,7 @@ function App() {
           <Route path='/contactUs' element={<ContactUs/>}/>
           <Route path='/FAQs' element={<FAQs/>}/>
           <Route path='/Getanymoney' element={<GetAnymoney/>}/>
+          <Route path='/PrivacyPolicy' element={<PrivacyPolicy/>}/>
           
         </Routes>
       </Router>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useNavigate } from 'react-router-dom';
 const CustomerForm = () => {
   const [formType, setFormType] = useState('buy'); // buy, sell, or card
   const [formData, setFormData] = useState({
@@ -12,7 +12,11 @@ const CustomerForm = () => {
     email: '',
   });
   const [isPrivacyPolicyChecked, setIsPrivacyPolicyChecked] = useState(false);
-
+  const navigate = useNavigate();
+  const handlePrivacyPolicyClick = (e) => {
+    e.preventDefault();
+    navigate('/privacypolicy');
+  };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -291,9 +295,9 @@ const CustomerForm = () => {
               onChange={handleCheckboxChange}
               className="mr-2 bg-gray-100"
             />
-            <label htmlFor="privacyPolicy" className="text-sm md:text-lg">
-              I accept the <a href="#" className="text-blue-500 underline">Privacy Policy</a>
-            </label>
+                  <label htmlFor="privacyPolicy" className='text-sm md:text-lg'>
+                  I accept the <a href="" onClick={handlePrivacyPolicyClick} className="text-blue-500 underline">Privacy Policy</a>
+                  </label>
           </div>
         </form>
         <ToastContainer />
