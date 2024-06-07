@@ -10,7 +10,7 @@ const RequestDetailModal = ({ showDetail, handleCloseDetail, selectedRequest }) 
   const handleOpenDocument = async (doc) => {
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/api/requests/getSignedUrl', {
+      const response = await axios.post(process.env.REACT_APP_SERVER_URL + '/api/requests/getSignedUrl', {
         url: doc.file,
       }, {
         headers: {
