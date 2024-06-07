@@ -105,7 +105,7 @@ const AboutUs = () => {
                       To deliver Forex Services in a transparent and hassle-free manner. Hyderabad Forex, as a company, is known for its integrity, innovation, empathy, and passion for delivering the best forex services.
                   </p>
                   {/* Just Dial logo, rating, and anchor tag */}
-                  <div className="flex flex-row md:flex-col md:flex-row items-center justify-center md:justify-start">
+                  <div className="flex flex-row items-center justify-center md:justify-start">
                       <div className="flex flex-col items-center mr-2 md:mr-8">
                           <img src={JustDialLogo} alt="Just Dial Logo" className="w-16 md:w-24 h-15 mb-2" />
                           <div className="flex flex-col items-center">
