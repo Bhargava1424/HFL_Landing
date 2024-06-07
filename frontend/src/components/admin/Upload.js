@@ -144,14 +144,14 @@ const UploadWizard = () => {
             toast.success(`Uploaded ${key} Successfully`);
             setUploadSuccess(true);
             setUploadError(null);
-            setIsLoading(false);
-            setShowModal(true);
           } else {
             toast.error(`Error Uploading ${key}`);
             setUploadError(response.data.message);
           }
         }
       }
+      setIsLoading(false);
+      setShowModal(true);
       setTimeout(() => {
         navigate('/');
       }, 5000);
@@ -294,7 +294,7 @@ const UploadWizard = () => {
                   </label>
                   <div className="flex items-center space-x-4">
                     <label className="block w-full py-2 px-4 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer">
-                      <span className="text-gray-600">Choose file</span>
+                      <span className="text-gray-600 text-sm md:text-lg">Choose file</span>
                       <input type="file" className="hidden" onChange={onFileChange} />
                     </label>
                     <button
@@ -323,22 +323,24 @@ const UploadWizard = () => {
                       </button>
                     </div>
                   )}
-                  {files[steps[currentStep].toLowerCase().replace(' ', '')]?.map((file, index) => (
-                    <div key={index} className="mt-4">
-                      {file.type === 'application/pdf' ? (
-                        <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pdfjsVersion}/build/pdf.worker.min.js`}>
-                          <div style={{ height: '300px' }}>
-                            <Viewer fileUrl={URL.createObjectURL(file)} />
-                          </div>
-                        </Worker>
-                      ) : (
-                        <img
-                          src={URL.createObjectURL(file)}
-                          alt={`${steps[currentStep]} preview`}
-                          className="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
-                        />
-                      )}
-                    </div>
+                  {files[steps[currentStep].toLowerCase().replace(' ', '')]?.length > 0 && files[steps[currentStep].toLowerCase().replace(' ', '')].map((file, index) => (
+                    file && (
+                      <div key={index} className="mt-4">
+                        {file.type === 'application/pdf' ? (
+                          <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pdfjsVersion}/build/pdf.worker.min.js`}>
+                            <div style={{ height: '300px' }}>
+                              <Viewer fileUrl={URL.createObjectURL(file)} />
+                            </div>
+                          </Worker>
+                        ) : (
+                          <img
+                            src={URL.createObjectURL(file)}
+                            alt={`${steps[currentStep]} preview`}
+                            className="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
+                          />
+                        )}
+                      </div>
+                    )
                   ))}
                   {showWebcam && (
                     <div className="mt-4">
@@ -370,12 +372,19 @@ const UploadWizard = () => {
                   {currentStep < steps.length - 1 && (
                     <button
                       type="button"
-                      onClick={handleNextStep} 
+                      onClick={handleNextStep}
                       className="!bg-green-700 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-green-800 transition duration-300"
-                      disabled={!files[steps[currentStep].toLowerCase().replace(' ', '')]} 
+                      disabled={
+                        (currentStep === 0 && files[steps[currentStep].toLowerCase().replace(' ', '')]?.length === 0) || // PAN requires 1 file
+                        (currentStep === 1 && files[steps[currentStep].toLowerCase().replace(' ', '')]?.length < 1) || // Passport requires 2 files
+                        (currentStep === 2 && files[steps[currentStep].toLowerCase().replace(' ', '')]?.length < 1) || // Aadhar requires 2 files
+                        (currentStep === 3 && files[steps[currentStep].toLowerCase().replace(' ', '')]?.length < 1) || // Driving License requires 2 files
+                        (currentStep === 4 && files[steps[currentStep].toLowerCase().replace(' ', '')]?.length <1)  // Ticket requires 1 file
+                      }
                     >
                       Next
                     </button>
+
                   )}
                   {currentStep === steps.length - 1 && (
                     <button
