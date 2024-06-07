@@ -147,7 +147,7 @@ const ContactUs = () => {
         <Navbar />
       </header>
       <div
-        className="pt-16 pb-16 mt-16 bg-center bg-cover"
+        className="pt-16 pb-16  bg-center bg-cover"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <div className="flex flex-col gap-2 p-2 ml-4 mr-4 bg-white rounded-lg shadow-md max-w-7xl md:mx-auto md:p-8 md:grid md:grid-cols-5 md:gap-8">

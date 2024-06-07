@@ -52,13 +52,13 @@ const Footer = () => {
                         <button onClick={() => navigate('/')} className="flex items-center ml-1 hover:underline">
                             Home <span className="ml-1">↗</span>
                         </button>
-                        <button onClick={() => navigate('/currencyExchange')} className="flex items-center hover:underline">
+                        <button onClick={() => navigate('/Getanymoney')} className="flex items-center hover:underline">
                             Currency Exchange <span className="ml-1">↗</span>
                         </button>
                         <button onClick={() => navigate('/aboutUs')} className="flex items-center hover:underline">
                             About Us <span className="ml-1">↗</span>
                         </button>
-                        <button onClick={() => navigate('/contact-us')} className="flex items-center hover:underline">
+                        <button onClick={() => navigate('/contactUs')} className="flex items-center hover:underline">
                             Contact Us <span className="ml-1">↗</span>
                         </button>
                         <button onClick={() => navigate('/FAQs')} className="flex items-center hover:underline">

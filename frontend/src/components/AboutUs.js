@@ -24,6 +24,7 @@ import locationIcon from '../assets/AboutUs/location.png';
 import messageIcon from '../assets/AboutUs/whatsapp.png';
 import phoneIcon from '../assets/AboutUs/telephone.png'
 import Footer from './Footer';
+import image from '../assets/AboutUs/image.png'
 
 
 const AboutUs = () => {
@@ -77,8 +78,8 @@ const AboutUs = () => {
     <div>
       <NavBar /> {/* Navbar component */}
       {/* About Us container */}
-      <div className="p-4 mb-1 md:mb-4 mt-4 w-full">
-      <div className="mt-16">
+      <div className="p-4 mb-1 md:mb-4 w-full">
+      
       <div className="bg-[#ffb72b] flex justify-center items-center rounded-2xl shadow-lg overflow-hidden">
         <div className="text-center p-2">
           <h1 className="text-white font-bold text-xl sm:text-5xl">About Us</h1>
@@ -91,9 +92,9 @@ const AboutUs = () => {
             {/* Image container */}
             <div className="w-full md:w-1/2 flex flex-row md:flex-col items-center md:items-start mb-4 md:mb-0 relative">
             {/* First image */}
-            <img src={GBLI} alt="" className="w-1/2 md:w-auto h-auto mb-0 md:mb-2 mr-2 md:mr-5" />
+            <img src={image} alt="" className="w-1/2 md:w-auto h-auto mb-0 md:mb-2 mr-2 md:mr-5" />
             {/* Second image */}
-            <img src={SMGD} alt="" className="w-1/2 md:w-auto h-auto md:absolute md:-bottom-1/4 md:right-5" />
+            {/* <img src={SMGD} alt="" className="w-1/2 md:w-auto h-auto md:absolute md:-bottom-1/4 md:right-5" /> */}
         </div>
 
             {/* Written content */}
@@ -144,7 +145,7 @@ const AboutUs = () => {
 
         </div>
 
-      </div>
+      
       {/* Additional heading and paragraph */}
       <div className="flex flex-col md:flex-row mt-3 md:mt-6 mb-3 md:mb-4">
       <div className="w-full md:w-1/2 p-2 md:p-10">

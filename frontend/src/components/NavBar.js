@@ -12,7 +12,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth < 768);
     };
 
     handleResize();
@@ -36,8 +36,8 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white z-50 pr-0.5">
-      <div className="container mx-auto px-1 py-2 flex justify-between items-center">
+    <nav className=" sticky top-0 left-0 right-0 bg-white z-50 pr-0.5">
+      <div className=" mx-auto px-1 py-2 flex justify-between items-center">
         {/* Logo */}
         <Link to='/' className="flex items-center">
           <img src={Logo} alt="Logo" className="h-9 w-auto" />
@@ -110,24 +110,28 @@ const Navbar = () => {
             <Link
               to="/"
               className={`block py-2 font-medium hover:text-orange-500 ${getNavLinkClass('/')}`}
+              onClick={toggleDropdown}
             >
               Home
             </Link>
             <Link
               to="/getanymoney"
               className={`block py-2 font-medium hover:text-orange-500 ${getNavLinkClass('/getanymoney')}`}
+              onClick={toggleDropdown}
             >
               Currency Exchange
             </Link>
             <Link
               to="/AboutUs"
               className={`block py-2 font-medium hover:text-orange-500 ${getNavLinkClass('/AboutUs')}`}
+              onClick={toggleDropdown}
             >
               About Us
             </Link>
             <Link
               to="/contactUs"
               className={`block py-2 font-medium hover:text-orange-500 ${getNavLinkClass('/contactUs')}`}
+              onClick={toggleDropdown}
             >
               Contact Us
             </Link>

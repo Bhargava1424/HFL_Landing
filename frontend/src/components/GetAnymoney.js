@@ -155,7 +155,7 @@ const GetAnyMoney = () => {
       <Navbar/>
 
       <div
-        className="mt-16 pb-6 md:pb-16 bg-cover bg-center"
+        className=" pb-6 md:pb-16 bg-cover bg-center"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <div className='mx-auto bg-cover mb-1 md:mb-4 text-2xl md:text-4xl pt-4 md:pt-12 text-center w-full font-semibold'>
