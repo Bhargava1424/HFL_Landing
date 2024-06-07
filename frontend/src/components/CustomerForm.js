@@ -146,7 +146,7 @@ const CustomerForm = () => {
         <h2 className="mb-1 font-semibold text-black text-kundan md:mb-4">
           Experience the Best Currency Exchange Service with HFL
         </h2>
-        <ul className="pl-5 list-disc space-y-7">
+        <ul className="pl-5 list-disc space-y-3 md:space-y-7">
           <li className="text-sm font-semibold text-[#d69009] md:mb-1 md:text-2xl">
             RBI Authorized Money changer
           </li>

@@ -158,11 +158,11 @@ const GetAnyMoney = () => {
         className=" pb-6 md:pb-16 bg-cover bg-center"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className='mx-auto bg-cover mb-1 md:mb-4 text-2xl md:text-4xl pt-4 md:pt-12 text-center w-full font-semibold'>
+        <div className='mx-auto bg-cover mb-1 md:mb-4 text-2xl md:text-4xl pt-4 md:pt-12 text-center w-full font-semibold hidden md:block'>
           Get <span className='bg-white p-2 text-[#D69009]'>Any Money</span> in 5 Simple Steps
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-2 md:mt-8 mb-4 md:mb-20'>
-          <div className='flex justify-center'>
+          <div className='flex justify-center hidden md:inline'>
             <img src={Steps} alt='5 Steps' className='max-w-full h-72 md:h-auto' />
           </div>
 
