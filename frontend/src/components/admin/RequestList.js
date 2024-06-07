@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { CSSTransition } from 'react-transition-group';
-import { Worker, Viewer } from '@react-pdf-viewer/core';
-import '@react-pdf-viewer/core/lib/styles/index.css';
 import 'tailwindcss/tailwind.css';
 import RequestDetailModal from './RequestDetailModal';
 
@@ -58,6 +56,17 @@ const RequestList = () => {
     };
     fetchRequests();
   }, []);
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  };
 
   const handleViewDetail = (request) => {
     setSelectedRequest(request);
@@ -153,6 +162,7 @@ const RequestList = () => {
           <thead>
             <tr className="bg-blue-500 text-white">
               <th className="px-6 py-4 font-medium">ID</th>
+              <th className="px-6 py-4 font-medium">Date & Time</th>
               <th className="px-6 py-4 font-medium">Name</th>
               <th className="px-6 py-4 font-medium">Phone no.</th>
               <th className="px-6 py-4 font-medium">Amount</th>
@@ -170,6 +180,9 @@ const RequestList = () => {
               >
                 <td className="px-6 py-4 border-b border-gray-200 animate-fade-in">
                   {request._id}
+                </td>
+                <td className="px-6 py-4 border-b border-gray-200 animate-fade-in">
+                  {formatDate(request.createdAt)}
                 </td>
                 <td className="px-6 py-4 border-b border-gray-200 animate-fade-in">
                   {request.name}
