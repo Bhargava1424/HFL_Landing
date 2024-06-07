@@ -23,6 +23,8 @@ import StatsDisplay from './StatsDisplay';
 import locationIcon from '../assets/AboutUs/location.png';
 import messageIcon from '../assets/AboutUs/whatsapp.png';
 import phoneIcon from '../assets/AboutUs/telephone.png'
+import Footer from './Footer';
+import image from '../assets/AboutUs/image.png'
 
 
 const AboutUs = () => {
@@ -76,9 +78,9 @@ const AboutUs = () => {
     <div>
       <NavBar /> {/* Navbar component */}
       {/* About Us container */}
-      <div className="p-4 mb-4 mt-4 w-full">
-      <div className="mt-16">
-      <div className="bg-orange-500 flex justify-center items-center rounded-2xl shadow-lg overflow-hidden">
+      <div className="p-4 mb-1 md:mb-4 w-full">
+      
+      <div className="bg-[#ffb72b] flex justify-center items-center rounded-2xl shadow-lg overflow-hidden">
         <div className="text-center p-2">
           <h1 className="text-white font-bold text-xl sm:text-5xl">About Us</h1>
         </div>
@@ -90,22 +92,22 @@ const AboutUs = () => {
             {/* Image container */}
             <div className="w-full md:w-1/2 flex flex-row md:flex-col items-center md:items-start mb-4 md:mb-0 relative">
             {/* First image */}
-            <img src={GBLI} alt="" className="w-1/2 md:w-auto h-auto mb-0 md:mb-2 mr-2 md:mr-5" />
+            <img src={image} alt="" className="w-1/2 md:w-auto h-auto mb-0 md:mb-2 mr-2 md:mr-5" />
             {/* Second image */}
-            <img src={SMGD} alt="" className="w-1/2 md:w-auto h-auto md:absolute md:-bottom-1/4 md:right-5" />
+            {/* <img src={SMGD} alt="" className="w-1/2 md:w-auto h-auto md:absolute md:-bottom-1/4 md:right-5" /> */}
         </div>
 
             {/* Written content */}
           <div className="w-full md:w-1/2 ml-2 md:ml-8 p-2 md:p-4 text-center md:text-left">
               <h2 className="text-orange-500 font-bold text-3xl md:text-5xl mb-2">Mission</h2>
               <div className="flex flex-col items-center md:items-start">
-                  <p className="text-black mb-8 font-normal text-sm md:text-2xl text-justify">
+                  <p className="text-black mb-2 md:mb-8 font-normal text-sm md:text-2xl text-justify">
                       To deliver Forex Services in a transparent and hassle-free manner. Hyderabad Forex, as a company, is known for its integrity, innovation, empathy, and passion for delivering the best forex services.
                   </p>
                   {/* Just Dial logo, rating, and anchor tag */}
-                  <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
+                  <div className="flex flex-row items-center justify-center md:justify-start">
                       <div className="flex flex-col items-center mr-2 md:mr-8">
-                          <img src={JustDialLogo} alt="Just Dial Logo" className="w-18 md:w-24 h-15 mb-2" />
+                          <img src={JustDialLogo} alt="Just Dial Logo" className="w-16 md:w-24 h-15 mb-2" />
                           <div className="flex flex-col items-center">
                               <div className="flex items-center">
                                   <span className="text-black mr-1 md:mr-2">4.3</span>
@@ -143,19 +145,19 @@ const AboutUs = () => {
 
         </div>
 
-      </div>
+      
       {/* Additional heading and paragraph */}
-      <div className="flex flex-col md:flex-row mt-6 my-4">
+      <div className="flex flex-col md:flex-row mt-3 md:mt-6 mb-3 md:mb-4">
       <div className="w-full md:w-1/2 p-2 md:p-10">
         <h2 className="text-orange-500 text-xl md:text-6xl mb-4 font-bold bg-slate-300 text-center rounded-2xl">Vision</h2>
-        <p className="text-black text-xs md:text-2xl md:mb- text-center text-justify">
+        <p className="text-black text-sm md:text-2xl md:mb- text-center text-justify">
           <b>W</b>e aim to offer innovative products in B2C segment in forex market by
           targeting needs of people travelling abroad on holiday, business and on
           higher education
         </p>
       </div>
       <div className="w-full md:w-1/2 flex justify-center">
-        <div className="grid grid-cols-4 gap-1 md:grid-cols-2 md:gap-4 p-1 md:p-4">
+        <div className="grid grid-cols-4 gap-4 md:grid-cols-2 p-1 md:p-4">
           <div className="flex flex-col items-center">
             <img src={Checkout} alt="Vision Image 1" className="w-12 md:w-24 h-12 md:h-24 mb-1 md:mb-2 md:mr-16 mx-2" />
             <span className="text-center font-semibold text-xs md:text-base">We Buy</span>
@@ -178,7 +180,7 @@ const AboutUs = () => {
 
 
       {/* Company profile section */}
-      <div className="bg-orange p-8 decoration-wavy rounded-2xl my-2">
+      <div className="bg-orange p-4 md:p-8 decoration-wavy rounded-2xl mb-2">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/3 mb-8 md:mb-0 relative opacity-50 md:opacity-100"> {/* Opacity for mobile */}
@@ -191,7 +193,7 @@ const AboutUs = () => {
                 {/* Image next to the heading, only visible on mobile */}
                 <img src={Company} alt="Company" className="w-20 h-20 ml-2 block md:hidden" />
               </div>
-              <p className="text-black mb-4 font-normal text-sm md:text-2xl text-justify">
+              <p className="text-black mb-2 md:mb-4 font-normal text-sm md:text-2xl text-justify">
                 <span className='font-bold text-2xl md:text-4xl'>H</span>yderabad Forex Customer base includes a cream of corporates from IT industry, manufacturing units, service industry and of course individuals who travel abroad frequently on business and for holiday. In addition to this, Hyderabad Forex has strong business relationship with various Banks and Travel agencies.
               </p>
               <p className="text-black font-semibold text-sm md:text-1xl text-justify">
@@ -200,11 +202,6 @@ const AboutUs = () => {
               <p className='text-black font-semibold text-sm md:text-base text-justify'>
                 products and currencies at the best rates.
               </p>
-              <div className="mt-8">
-                <div className="grid grid-cols-3 gap-4">
-                  {/* Images with opacity would go here if uncommented */}
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -215,7 +212,7 @@ const AboutUs = () => {
 
 
 
-      <div className="bg-orange-500 text-white px-4 py-3 sm:px-8 sm:py-4 rounded-2xl mb-2">
+      {/* <div className="bg-[#ffb72b] text-white px-4 py-3 sm:px-8 sm:py-4 rounded-2xl mb-2">
         <div className="container mx-auto">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <div className="w-full sm:w-auto mb-4 sm:mb-0">
@@ -228,7 +225,7 @@ const AboutUs = () => {
             </div>
             <div className='flex justify-center sm:justify-start sm:mr-40'>
               <button
-                className="bg-orange-500 rounded-xl hover:bg-orange-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded border border-white"
+                className="bg-[#ffb72b] rounded-xl hover:bg-[#eeb826] text-white px-3 py-1 sm:px-4 sm:py-2  border-4 border-white"
                 onClick={handleContactUs}
               >
                 Contact Us
@@ -236,11 +233,11 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="flex flex-col md:flex-row items-start bg-slate-300 rounded-r-2xl sm:bg-white m-1">
-        <div className="mb-8 md:mb-0 md:max-w-2xl md:mr-8 flex-1">
-          <h2 className="text-orange-500 text-xl sm:text-4xl md:text-6xl mb-4 md:pl-12 mt-9 text-center">Our People:</h2>
+      <div className="flex flex-col md:flex-row items-start bg-slate-300 rounded-r-2xl sm:bg-white my-2">
+        <div className="mb-1 md:mb-0 md:max-w-2xl md:mr-8 flex-1">
+          <h2 className="text-orange-500 text-xl sm:text-4xl md:text-6xl mb-2 md:mb-4 md:pl-12 mt-2 md:mt-9 text-center">Our People:</h2>
           <div className="md:pl-11">
             <p className="text-black text-sm md:text-3xl mb-4 text-justify m-2">
               <span className="font-bold text-md md:text-4xl">W</span>e are proud of our people - proud of their ability, commitment and service orientation. Our people have been indoctrinated in the service quality mindset and the organization is one of the best customer service oriented companies in the forex services domain. Hyderabad Forex enjoys a reputation for providing reliable, personalized and professional forex services.
@@ -251,8 +248,8 @@ const AboutUs = () => {
           <img src={Network} alt="People" className="max-w-full h-auto object-contain" />
         </div>
       </div>
-      <div className="bg-orange-100 py-8 rounded-2xl">
-  <h1 className="text-sm sm:text-3xl font-bold text-center text-gray-800 mb-4">
+      <div className="bg-orange-100 py-4 md:py-8 rounded-2xl mb-2 md:mb-4">
+  <h1 className="text-sm sm:text-3xl font-bold text-center text-gray-800 mb-2 md:mb-4">
     Board Of Directors
   </h1>
   <p className="text-center text-black-600 mb-4 sm:mb-8 font-semibold text-xs sm:text-base">
@@ -273,7 +270,7 @@ const AboutUs = () => {
         </a>
       </div>
     </div>
-    <div className="text-center mb-4">
+    <div className="text-center mb-2 md:mb-4">
       <div className="relative bg-white shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-2xl p-1 sm:p-6 max-w-xs mx-1">
         <img
           src={Avatar}
@@ -321,8 +318,7 @@ const AboutUs = () => {
 
 
 
-  </div>  
-  <div>
+
         <StatsDisplay/>
         <div className="flex flex-col justify-center items-center w-full bg-white rounded-2xl mt-10">
   <h1 className="text-2xl sm:text-4xl font-semibold text-black mb-2 text-center">Why Buy Forex via HFL AnyMoney?</h1>
@@ -424,6 +420,7 @@ const AboutUs = () => {
     </div>
         </div>
         </div>
+        <Footer/>
     </div>
 
     

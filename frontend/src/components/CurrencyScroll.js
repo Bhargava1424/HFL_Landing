@@ -38,8 +38,8 @@ const CurrencyScroll = () => {
 
   return (
     <div className='px-1'> {/* Consistent padding on left and right */}
-      <div className="flex items-center justify-between overflow-hidden h-12 mx-auto max-w-full bg-gray-100 rounded-xl shadow-inner mt-16 mb-1 md-margin-top">
-        <div className="sm:hidden flex-shrink-0 px-1 py-2 bg-gray-300 z-10 h-12 flex flex-col items-center justify-center font-semibold text-[10px] shadow-inner rounded-lg">
+      <div className="flex items-center justify-between overflow-hidden h-12 mx-auto max-w-full bg-gray-100 rounded-xl shadow-inner  mb-1 ">
+        <div className="sm:hidden flex-shrink-0 px-1 py-2 bg-gray-300 z-10  flex flex-col items-center justify-center font-semibold text-[10px] shadow-inner rounded-lg">
           <div>We Buy</div>
           <div>We Sell</div>
         </div>
@@ -62,7 +62,7 @@ const CurrencyScroll = () => {
           ))}
         </Marquee>
         <button
-          className="flex-shrink-0 bg-orange-500 text-white font-bold border-none px-1 py-2 cursor-pointer outline-none transition duration-300 ease-in-out hover:bg-orange-600 h-12 flex items-center shadow-current text-[10px] sm:text-sm rounded-lg"
+          className="flex-shrink-0 bg-[#ffb72b] text-white font-bold border-none px-1 py-2 cursor-pointer outline-none transition duration-300 ease-in-out hover:bg-[#ffb72b] h-12 flex items-center shadow-current text-[10px] sm:text-sm rounded-lg"
           onClick={handleContactUs}
         >
           Contact Us {/* Button padding and text size reduced */}

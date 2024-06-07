@@ -46,14 +46,14 @@ function FAQ() {
 
   return (
     <div className="flex flex-col md:flex-row justify-between w-full items-start p-4 md:p-6">
-      <div className="w-full md:w-1/2 mb-4 md:mb-0">
+      <div className="w-full md:w-1/2">
         <h1 className="text-xl md:text-2xl font-bold mb-3">FAQs</h1>
         {/* <h1 className="text-xl md:text-2xl font-bold mb-3">Popular FAQs</h1> */}
         {faqs.map((faq, index) => (
-          <div key={index} className="mb-2">
+          <div key={index} className="md:mb-2">
             <button
               onClick={() => toggleFAQ(index)}
-              className="flex justify-between items-center w-full text-left text-sm md:text-lg p-2 border-b border-gray-300 font-semibold"
+              className="flex justify-between items-center w-full text-left text-sm md:text-lg p-1 md:p-2 border-b border-gray-300 font-semibold"
             >
               {faq.question}
               {activeIndex === index ? (
@@ -68,8 +68,8 @@ function FAQ() {
           </div>
         ))}
       </div>
-      <div className="w-full md:w-1/2 flex justify-end">
-        <img src={faqImage} alt="FAQ Illustration" className="w-auto max-h-60 md:max-h-80" />
+      <div className="w-full md:w-1/2 flex justify-center">
+        <img src={faqImage} alt="FAQ Illustration" className="w-auto max-h-56 md:max-h-[600px]" />
       </div>
     </div>
   );

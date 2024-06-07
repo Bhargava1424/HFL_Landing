@@ -13,11 +13,16 @@ import Login from './components/admin/Login';
 import ProtectedRoute from './components/admin/ProtectedRoute';
 import RequestList from './components/admin/RequestList';
 
+import ScrollToTop from './components/ScrollToTop';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import InfoRBI from './components/InfoRBI';
 function App() {
   return (
     <div className="App">
       <Router>
+      <ScrollToTop />
         <Routes>
+          
           {/* Public Routes */}
           <Route path="/" element={<HomePage />} />
           <Route path="/aboutUs" element={<AboutUs />} />
@@ -25,7 +30,8 @@ function App() {
           <Route path="/FAQs" element={<FAQs />} />
           <Route path="/Getanymoney" element={<GetAnymoney />} />
           <Route path="/upload" element={<Upload />} /> {/* Upload is now public */}
-
+          <Route path='/PrivacyPolicy' element={<PrivacyPolicy/>}/>
+          <Route path='/infoRbi' element={<InfoRBI/>}/>
           {/* Authentication Route */}
           <Route path="/login" element={<Login />} /> 
 
@@ -43,9 +49,6 @@ function App() {
             <Route path="user-management" element={<UserManagement />} />
             {/* Add more admin routes as needed */}
           </Route>
-
-          {/* For any undefined route, redirect to home */}
-          <Route path="*" element={<Navigate to="/" />} /> 
         </Routes>
       </Router>
     </div>

@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from './NavBar';
-import Steps from '../assets/GetAnyMoney/5Steps.jpg'
+import Steps from '../assets/GetAnyMoney/Roadmap.svg'
 import OurServiceHomePage from './OurServiceHomePage';
 import RbiComponent from './RbiComponent';
 import StatsDisplay from './StatsDisplay';
 import PromoBanner from './PromoBanner';
 import Footer from './Footer';
-import backgroundImage from '../assets/GetAnyMoney/backgroundImage.jpg'
+import backgroundImage from '../assets/GetAnyMoney/BGVEctor.svg'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import PrivacyPolicy from './PrivacyPolicy';
 
 const GetAnyMoney = () => {
 
@@ -19,6 +23,11 @@ const GetAnyMoney = () => {
     email: '',
   });
   const [isPrivacyPolicyChecked, setIsPrivacyPolicyChecked] = useState(false);
+  const navigate = useNavigate();
+  const handlePrivacyPolicyClick = (e) => {
+    e.preventDefault();
+    navigate('/privacypolicy');
+  };
   
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -35,14 +44,110 @@ const GetAnyMoney = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isPrivacyPolicyChecked) {
-      alert('Please agree to the terms and conditions.');
+      toast.error('Please agree to the terms and conditions.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setTimeout(() => {
+      }, 2000);
       return;
     }
+    const phonePattern = /^\d{10}$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+    if (!phonePattern.test(formData.phone)) {
+      toast.error('Please enter a valid 10-digit phone number.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setTimeout(() => {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          phone: '',
+        }));
+      }, 2000);
+      return;
+    }
+  
+    if (!emailPattern.test(formData.email)) {
+      toast.error('Please enter a valid email address.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      setTimeout(() => {
+        setFormData((prevFormData) => ({
+          ...prevFormData,
+          email: '',
+        }));
+      }, 2000);
+      return;
+    }
+  
+    if (!isPrivacyPolicyChecked) {
+      toast.error('Please agree to the terms and conditions.', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      return;
+    }
+  
     const payload = {
       ...formData,
       formType,
     };
     console.log('Form Payload:', payload);
+  
+    // Display the success toast
+    toast.success('Our HFL team will contact you soon.', {
+      position: "top-center",
+      autoClose: 10000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      style: {
+        backgroundColor: '#ffcc69',
+        color: '#000',
+      },
+    });
+  
+    // Reset the form after 2000ms
+    setTimeout(() => {
+      setFormData({
+        store: 'Somajiguda',
+        currency: 'USD - Dollar',
+        amount: '',
+        phone: '',
+        email: '',
+      });
+      setIsPrivacyPolicyChecked(false);
+      setFormType('buy');
+    }, 2000);
   };
 
   return (
@@ -50,14 +155,14 @@ const GetAnyMoney = () => {
       <Navbar/>
 
       <div
-        className="mt-16 pb-6 md:pb-16 bg-cover bg-center"
+        className=" pb-6 md:pb-16 bg-cover bg-center"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className='mx-auto mb-1 md:mb-4 text-2xl md:text-4xl pt-4 md:pt-12 text-center w-full font-semibold'>
-          Get <span className='text-[#D69009]'>Any Money</span> in 5 Simple Steps
+        <div className='mx-auto bg-cover mb-1 md:mb-4 text-2xl md:text-4xl pt-4 md:pt-12 text-center w-full font-semibold hidden md:block'>
+          Get <span className='bg-white p-2 text-[#D69009]'>Any Money</span> in 5 Simple Steps
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mt-2 md:mt-8 mb-4 md:mb-20'>
-          <div className='flex justify-center'>
+          <div className='flex justify-center hidden md:inline'>
             <img src={Steps} alt='5 Steps' className='max-w-full h-72 md:h-auto' />
           </div>
 
@@ -107,7 +212,29 @@ const GetAnyMoney = () => {
                       onChange={handleInputChange}
                       className="w-3/4 p-1 border rounded bg-gray-100 text-sm md:text-lg"
                     >
-                      <option value="USD - Dollar">USD - Dollar</option>
+                      <option value="US Dollar (USD) - $">US Dollar (USD) - $</option>
+                      <option value="Euro (EUR) - €">Euro (EUR) - €</option>
+                      <option value="Swiss frank (CHF) - CHF">Swiss frank (CHF) - CHF</option>
+                      <option value="British pound (GBP) - £">British pound (GBP) - £</option>
+                      <option value="Australian dollar (AUD) - A$">Australian dollar (AUD) - A$</option>
+                      <option value="Canadian dollar (CAD) - C$">Canadian dollar (CAD) - C$</option>
+                      <option value="Singapore dollar (SGD) - S$">Singapore dollar (SGD) - S$</option>
+                      <option value="Malaysian ringgit (MYR) - RM">Malaysian ringgit (MYR) - RM</option>
+                      <option value="UAE Dirham (AED) - د.إ">UAE Dirham (AED) - د.إ</option>
+                      <option value="Thai Baht (THB) - ฿ ">Thai Baht (THB) - ฿ </option>
+                      <option value="Japanese yen (JPY) - ¥ ">Japanese yen (JPY) - ¥ </option>
+                      <option value="Chinese yuan (CNY) - ¥ (or 元)">Chinese yuan (CNY) - ¥ (or 元)</option>
+                      <option value="Indonesian rupiah (IDR) - Rp ">Indonesian rupiah (IDR) - Rp </option>
+                      <option value="Thai Baht (THB) - ฿ ">Thai Baht (THB) - ฿ </option>
+                      <option value="Vietnamese Dong (VND) - ₫">Thai Baht (THB) - ฿ </option>
+                      <option value="New Zealand dollar (NZD) - NZ$">New Zealand dollar (NZD) - NZ$</option>
+                      <option value="Hong Kong dollar (HKD) - HK$">Thai Baht (THB) - ฿ </option>
+                      <option value="Saudi riyal (SAR) - ر.س">Saudi riyal (SAR) - ر.س</option>
+                      <option value="Turkish lira (TRY) - ₺ ">Turkish lira (TRY) - ₺ </option>
+
+
+
+
                       {/* Add more options as needed */}
                     </select>
                   </div>
@@ -171,10 +298,11 @@ const GetAnyMoney = () => {
                     className="mr-2 bg-gray-100"
                   />
                   <label htmlFor="privacyPolicy" className='text-sm md:text-lg'>
-                    I accept the <a href="#" className="text-blue-500 underline">Privacy Policy</a>
+                  I accept the <a href="" onClick={handlePrivacyPolicyClick} className="text-blue-500 underline">Privacy Policy</a>
                   </label>
                 </div>
               </form>
+              <ToastContainer/>
             </div>
           </div>
         </div>
