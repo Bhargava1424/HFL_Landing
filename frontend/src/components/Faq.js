@@ -5,37 +5,39 @@ import { ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/outline'; // En
 const faqs = [
   {
     question: "What services does Hyderabad Forex Ltd provide?",
-    answer: "Hyderebad Forex Ltd usually works with buying and selling different country currencies. The company also helps with international transactions, travel insurance, etc."
+    answer: "Licensed by the Reserve Bank of India, Hyderabad Forex Limited deals in buying and selling of Forex, including currency and travel cards."
   },
   {
-    question: "How much foreign exchange can be taken for a trip abroad?",
-    answer: "Foreign exchange can be taken under private visit category governed by the overall LRS limit of USD 2,50,000 per traveller in a single financial year, as per regulations. However, only USD 3000 of that amount can be carried as currency notes for a particular trip– the balance has to be in the form of prepaid forex cards."
+    question: "How much foreign currency can be carried in cash for travel abroad?",
+    answer: "Travellers going to all countries other than (a) and (b) below are allowed to purchase foreign currency notes/coins only up to USD 3000 per visit. Balance amount can be carried in the form of store value cards, travellers cheque, or banker’s draft. Exceptions to this are (a) travellers proceeding to Iraq and Libya who can draw foreign exchange in the form of foreign currency notes and coins not exceeding USD 5000 or its equivalent per visit; (b) travellers proceeding to the Islamic Republic of Iran, Russian Federation and other Republics of Commonwealth of Independent States who can draw entire foreign exchange (up to USD 250,000) in the form of foreign currency notes or coins. For travellers proceeding for Haj/Umrah pilgrimage, full amount of entitlement (USD 250,000) in cash or up to the cash limit as specified by the Haj Committee of India, may be released by the ADs and FFMCs."
   },
   {
-    question: "Will Hyderabad Forex Ltd help me during banking issues while transferring money abroad?",
-    answer: "Helping customers with their international transactions is one of the significant functions of Hyderabad Forex Ltd. Therefore, you must contact the agent, and they can support you regarding the same."
+    question: "How much foreign exchange can be brought in while visiting India?",
+    answer: "A person coming into India from abroad can bring with him foreign exchange without any limit. However, if the aggregate value of the foreign exchange in the form of currency notes, bank notes, or travellers cheques brought in exceeds USD 10,000 or its equivalent and/or the value of foreign currency alone exceeds USD 5,000 or its equivalent, it should be declared to the Customs Authorities at the Airport in the Currency Declaration Form (CDF), on arrival in India."
   },
   {
-    question: "In which form will the Hyderabad Forex Ltd give me the currency for the other country?",
-    answer: "Many people prefer using Forex cards because of the convience and features. You also have the option to get cash or a traveller's cheque."
+    question: "Can one pay by cash full rupee equivalent of foreign exchange being purchased for travel abroad?",
+    answer: "Foreign exchange for travel abroad can be purchased from an authorized person against rupee payment in cash below Rs.50,000/-. However, if the sale of foreign exchange is for the amount equivalent to Rs 50,000/- and above, the entire payment should be made by way of a crossed cheque, banker’s cheque, pay order, demand draft, debit card, credit card, or prepaid card only."
   },
   {
-    question: "How early before the trip should i get the currency exchanged?",
-    answer: "You must get the currency exchanged 180 days before the date of the trip."
+    question: "Who can pay for forex?",
+    answer: "As per the RBI and income tax acts, payment for forex can be done by the traveler himself or by the traveler’s immediate family. Immediate family includes parents, children, spouse, siblings, and in-laws. KYC of the sponsor is to be provided for all sponsored trips."
   },
   {
-    question: "What are the various documents required to purchase foreign currency?",
-    answer: "Specific documents may vary by provider, but typically include valid ID, travel documents, and proof of address."
+    question: "Is there any time-frame for a traveller who has returned to India to surrender foreign exchange?",
+    answer: "On return from a foreign trip, travellers are required to surrender unspent foreign exchange held in the form of currency notes and travellers cheques within 180 days of return. However, they are free to retain foreign exchange up to USD 2,000, in the form of foreign currency notes or TCs for future use or credit to their Resident Foreign Currency (Domestic) [RFC (Domestic)] Accounts."
   },
   {
-    question: "Can I place my order on a holiday through the WSFx Global Pay App?",
-    answer: "Yes, orders can typically be placed any time via the app, including holidays."
+    question: "What are the documents required for purchase of forex?",
+    answer: "In order to purchase foreign currency, you have to submit KYC documents. As per the guidelines of the RBI, the following documents need to be submitted for purchase of forex as basic KYC requirements: Valid Passport and Visa, onward and return ticket, valid PAN and Aadhaar."
   },
   {
-    question: "What if my trip is cancelled or postponed after buying forex?",
-    answer: "You may be able to return the forex or adjust your order based on the provider's terms and conditions."
+    question: "When can I buy forex?",
+    answer: "Resident Indians travelling abroad can buy forex up to 60 days before the travel date, as indicated on your air ticket."
   }
 ];
+
+
 
 function FAQ() {
   const [activeIndex, setActiveIndex] = useState(null);
