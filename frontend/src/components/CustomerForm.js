@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+
 const CustomerForm = () => {
   const [formType, setFormType] = useState('buy'); // buy, sell, or card
   const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ const CustomerForm = () => {
     e.preventDefault();
     if (!isPrivacyPolicyChecked) {
       toast.error('Please agree to the terms and conditions.', {
-        position: "top-center",
+        containerId: 'form-toast-container',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -42,8 +43,7 @@ const CustomerForm = () => {
         progress: undefined,
         theme: "colored",
       });
-      setTimeout(() => {
-      }, 2000);
+      setTimeout(() => {}, 2000);
       return;
     }
   
@@ -52,7 +52,7 @@ const CustomerForm = () => {
   
     if (!phonePattern.test(formData.phone)) {
       toast.error('Please enter a valid 10-digit phone number.', {
-        position: "top-center",
+        containerId: 'form-toast-container',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -72,7 +72,7 @@ const CustomerForm = () => {
   
     if (!emailPattern.test(formData.email)) {
       toast.error('Please enter a valid email address.', {
-        position: "top-center",
+        containerId: 'form-toast-container',
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -90,20 +90,6 @@ const CustomerForm = () => {
       return;
     }
   
-    if (!isPrivacyPolicyChecked) {
-      toast.error('Please agree to the terms and conditions.', {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-      return;
-    }
-  
     const payload = {
       ...formData,
       formType,
@@ -112,7 +98,7 @@ const CustomerForm = () => {
   
     // Display the success toast
     toast.success('Our HFL team will contact you soon.', {
-      position: "top-center",
+      containerId: 'form-toast-container',
       autoClose: 10000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -138,13 +124,12 @@ const CustomerForm = () => {
       setFormType('buy');
     }, 2000);
   };
-  
 
   return (
     <div className="flex flex-col justify-between mx-auto lg:flex-row md:p-4">
       <div className="mb-4 lg:w-2/5 lg:mb-0">
         <h2 className="mb-1 font-semibold text-black text-kundan md:mb-4">
-          Experience the Best Currency Exchange Service with HFL
+          Experience the Best Currency Exchange Service
         </h2>
         <ul className="pl-5 list-disc space-y-3 md:space-y-7">
           <li className="text-sm font-semibold text-[#d69009] md:mb-1 md:text-2xl">
@@ -154,7 +139,7 @@ const CustomerForm = () => {
             2 Decades of seamless service
           </li>
           <li className="text-sm font-semibold text-[#d69009] md:mb-1 md:text-2xl">
-            Expert team ensures quick, secure and hassle free services
+            Expert team ensures quick, secure and hassle free forex services
           </li>
         </ul>
       </div>
@@ -204,36 +189,30 @@ const CustomerForm = () => {
             <div>
               <label className="block mb-1 text-sm md:text-lg">Currency</label>
               <select
-                      name="currency"
-                      value={formData.currency}
-                      onChange={handleInputChange}
-                      className="w-3/4 p-1 border rounded bg-gray-100 text-sm md:text-lg"
-                    >
-                      <option value="US Dollar (USD) - $">US Dollar (USD) - $</option>
-                      <option value="Euro (EUR) - €">Euro (EUR) - €</option>
-                      <option value="Swiss frank (CHF) - CHF">Swiss frank (CHF) - CHF</option>
-                      <option value="British pound (GBP) - £">British pound (GBP) - £</option>
-                      <option value="Australian dollar (AUD) - A$">Australian dollar (AUD) - A$</option>
-                      <option value="Canadian dollar (CAD) - C$">Canadian dollar (CAD) - C$</option>
-                      <option value="Singapore dollar (SGD) - S$">Singapore dollar (SGD) - S$</option>
-                      <option value="Malaysian ringgit (MYR) - RM">Malaysian ringgit (MYR) - RM</option>
-                      <option value="UAE Dirham (AED) - د.إ">UAE Dirham (AED) - د.إ</option>
-                      <option value="Thai Baht (THB) - ฿ ">Thai Baht (THB) - ฿ </option>
-                      <option value="Japanese yen (JPY) - ¥ ">Japanese yen (JPY) - ¥ </option>
-                      <option value="Chinese yuan (CNY) - ¥ (or 元)">Chinese yuan (CNY) - ¥ (or 元)</option>
-                      <option value="Indonesian rupiah (IDR) - Rp ">Indonesian rupiah (IDR) - Rp </option>
-                      <option value="Thai Baht (THB) - ฿ ">Thai Baht (THB) - ฿ </option>
-                      <option value="Vietnamese Dong (VND) - ₫">Thai Baht (THB) - ฿ </option>
-                      <option value="New Zealand dollar (NZD) - NZ$">New Zealand dollar (NZD) - NZ$</option>
-                      <option value="Hong Kong dollar (HKD) - HK$">Thai Baht (THB) - ฿ </option>
-                      <option value="Saudi riyal (SAR) - ر.س">Saudi riyal (SAR) - ر.س</option>
-                      <option value="Turkish lira (TRY) - ₺ ">Turkish lira (TRY) - ₺ </option>
-
-
-
-
-                      {/* Add more options as needed */}
-                    </select>
+                name="currency"
+                value={formData.currency}
+                onChange={handleInputChange}
+                className="w-3/4 p-1 border rounded bg-gray-100 text-sm md:text-lg"
+              >
+                <option value="US Dollar (USD) - $">US Dollar (USD) - $</option>
+                <option value="Euro (EUR) - €">Euro (EUR) - €</option>
+                <option value="Swiss frank (CHF) - CHF">Swiss frank (CHF) - CHF</option>
+                <option value="British pound (GBP) - £">British pound (GBP) - £</option>
+                <option value="Australian dollar (AUD) - A$">Australian dollar (AUD) - A$</option>
+                <option value="Canadian dollar (CAD) - C$">Canadian dollar (CAD) - C$</option>
+                <option value="Singapore dollar (SGD) - S$">Singapore dollar (SGD) - S$</option>
+                <option value="Malaysian ringgit (MYR) - RM">Malaysian ringgit (MYR) - RM</option>
+                <option value="UAE Dirham (AED) - د.إ">UAE Dirham (AED) - د.إ</option>
+                <option value="Thai Baht (THB) - ฿ ">Thai Baht (THB) - ฿ </option>
+                <option value="Japanese yen (JPY) - ¥ ">Japanese yen (JPY) - ¥ </option>
+                <option value="Chinese yuan (CNY) - ¥ (or 元)">Chinese yuan (CNY) - ¥ (or 元)</option>
+                <option value="Indonesian rupiah (IDR) - Rp ">Indonesian rupiah (IDR) - Rp </option>
+                <option value="Vietnamese Dong (VND) - ₫">Vietnamese Dong (VND) - ₫ </option>
+                <option value="New Zealand dollar (NZD) - NZ$">New Zealand dollar (NZD) - NZ$</option>
+                <option value="Hong Kong dollar (HKD) - HK$">Hong Kong dollar (HKD) - HK$</option>
+                <option value="Saudi riyal (SAR) - ر.س">Saudi riyal (SAR) - ر.س</option>
+                <option value="Turkish lira (TRY) - ₺ ">Turkish lira (TRY) - ₺ </option>
+              </select>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-6 md-1 md:mb-2">
@@ -295,12 +274,12 @@ const CustomerForm = () => {
               onChange={handleCheckboxChange}
               className="mr-2 bg-gray-100"
             />
-                  <label htmlFor="privacyPolicy" className='text-sm md:text-lg'>
-                  I accept the <a href="" onClick={handlePrivacyPolicyClick} className="text-blue-500 underline">Privacy Policy</a>
-                  </label>
+            <label htmlFor="privacyPolicy" className='text-sm md:text-lg'>
+              I accept the <a href="" onClick={handlePrivacyPolicyClick} className="text-blue-500 underline">Privacy Policy</a>
+            </label>
           </div>
+          <ToastContainer containerId="form-toast-container" className="custom-toast-container" />
         </form>
-        <ToastContainer />
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ const ImageSlider = () => {
   return (
     <div>
       <div className="p-1">
-        <div className="relative w-full overflow-hidden h-fit rounded-2xl">
+        <div className="relative w-full overflow-hidden h-[380px] rounded-2xl">
           <div
             className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -50,7 +50,7 @@ const ImageSlider = () => {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="flex-none w-full h-[400px] bg-center bg-cover"
+                className="flex-none w-full h-[380px] bg-center bg-cover"
                 style={{ backgroundImage: `url(${slide})` }}
               ></div>
             ))}

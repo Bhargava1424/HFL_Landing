@@ -78,3 +78,30 @@ code {
   }
 }
 
+/* Custom styles for the toast container */
+.custom-toast-container .Toastify__toast-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 300px; /* Adjust the max width as needed */
+  padding: 0;
+}
+
+.custom-toast-container .Toastify__toast {
+  background-color: #ffcc69; /* Custom background color */
+  color: #000; /* Custom text color */
+  border-radius: 8px; /* Custom border radius */
+  padding: 10px; /* Custom padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Custom shadow */
+}
+
+.custom-toast-container .Toastify__toast-body {
+  display: flex;
+  align-items: center;
+}
+
+.custom-toast-container .Toastify__progress-bar {
+  background: #000; /* Custom progress bar color */
+}
