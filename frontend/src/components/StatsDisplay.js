@@ -31,7 +31,7 @@ const StatsDisplay = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const [count1, completed1] = useCounter(20, 2000, isVisible);
-  const [count2, completed2] = useCounter(20000, 2000, isVisible);
+  const [count2, completed2] = useCounter(50000, 2000, isVisible);
   const [count3, completed3] = useCounter(30, 2000, isVisible);
 
   useEffect(() => {
@@ -87,7 +87,7 @@ const StatsDisplay = () => {
             <div className="flex-1 flex flex-col items-center mb-1 sm:mb-0">
               <div className="flex items-center gap-x-2">
                 <div className="font-bold text-lg sm:text-4xl">{count3}<span style={animatePlus(completed3)}>+</span></div>
-                <div className="">Currencies<br/> Exchanged Everyday</div>
+                <div className="">Destination Currencies<br/> Exchanged Everyday</div>
               </div>
             </div>
           </div>
@@ -102,7 +102,7 @@ const StatsDisplay = () => {
             <div className="flex flex-row justify-between w-full">
               <div className="flex-1 text-center text-xs">Years Of Forex Experience</div>
               <div className="flex-1 text-center text-xs">Happy Customers</div>
-              <div className="flex-1 text-center text-xs">Currencies Exchanged Everyday</div>
+              <div className="flex-1 text-center text-xs">Destination Currencies Exchanged Everyday</div>
             </div>
           </div>
         </div>

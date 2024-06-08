@@ -124,8 +124,7 @@ const Testimony = () => {
 
   return (
     <div className="container mx-auto my-4 py-2 px-2 md:py-4 md:px-4 relative bg-cover bg-center bg-[#ffefd6]" style={{ backgroundImage: `url(${background})` }}>
-      <h2 className="text-lg md:text-2xl lg:text-5xl font-bold mb-1 md:mb-2">Our Customer Feedback</h2>
-      <p className="text-xs md:text-base lg:text-xl text-gray-600 mb-2 md:mb-4">Don't take our word for it. Trust our customers</p>
+      <h2 className="text-lg md:text-2xl lg:text-5xl font-bold mb-1 md:mb-10">Testimonials</h2>
         
       <div className="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 overflow-hidden h-48 md:h-64">
         {testimonials.slice(currentIndex, currentIndex + itemsPerSlide).map((testimonial, index) => (

@@ -47,7 +47,7 @@ const CurrencyScroll = () => {
           We Buy & We Sell
         </div>
 
-        <Marquee speed={60} pauseOnHover direction="right" className="flex overflow-hidden whitespace-nowrap items-center flex-grow mx-3 px-1 py-2">
+        <Marquee speed={60} pauseOnHover direction="left" className="flex overflow-hidden whitespace-nowrap items-center flex-grow mx-3 px-1 py-2">
           {currencies.map((currency, index) => (
             <React.Fragment key={index}>
               <div className="flex items-center mx-1 px-1 py-2 rounded-2xl"> {/* Reduced margin and padding */}

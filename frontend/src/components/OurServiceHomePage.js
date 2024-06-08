@@ -11,20 +11,8 @@ const OurServiceHomePage = () => {
     <div className='py-4 px-1'>
       <div className="container mx-auto my-4 py-2 px-2 md:py-4 md:px-4 relative bg-cover bg-center bg-[#ffefd6]" style={{ backgroundImage: `url(${background})` }}>
         <div className='sm:relative'>
-        <div className='flex flex-col sm:flex-row mt-0 md:mt-4 '>
-        <h1 className="text-black text-2xl font-semibold md:text-5xl">Always Provide The</h1>
-        </div>
-        <div className='flex flex-col sm:flex-row'>
-        <h1 className="text-black text-2xl font-semibold md:text-5xl">Best Service</h1>
-        </div>
         
         <div className="sm:absolute top-0 right-0 mt-2 md:mt-4 w-full sm:w-1/2 pr-8">
-  <div className="mb-0 md:mb-4">
-    <h1 className="text-[#D69009] font-bold text-1xl sm:text-3xl">Our Services</h1>
-    <p className="font-semibold text-[#333539] text-poppins text-xs sm:text-sm mt-1 md:mt-2">Hyderabad Forex offers secure, convenient forex</p>
-    <p className="font-semibold text-[#333539] text-poppins text-xs sm:text-sm">solutions as buy/sell currency, forex cards for travel, and</p>
-    <p className="font-semibold text-[#333539] text-poppins text-xs sm:text-sm">hassle-free tuition fee remittances</p>
-  </div>
 </div>
 </div>
 
@@ -39,7 +27,7 @@ const OurServiceHomePage = () => {
           className="w-12 h-12 sm:w-40 sm:h-40 object-cover mx-auto mb-2 sm:mb-4"
         />
         <h3 className="text-poppins text-xs sm:text-xl font-bold text-[#343434]">We Buy</h3>
-        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify">Purchase foreign currency at competitive rates with seamless transactions</p>
+        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify">Sell your foreign currency easily and get the best rates</p>
         
       </motion.div>
     </div>
@@ -53,7 +41,7 @@ const OurServiceHomePage = () => {
           className="w-12 h-12 sm:w-40 sm:h-40 object-cover mx-auto mb-2 sm:mb-4"
         />
         <h3 className="text-poppins text-xs sm:text-xl font-bold text-[#343434]">We Sell</h3>
-        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify">Sell your foreign currency easily and get the best rates</p>
+        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify">Purchase foreign currency at competitive rates with seamless transactions</p>
         
       </motion.div>
     </div>
@@ -67,7 +55,7 @@ const OurServiceHomePage = () => {
           className="w-12 h-12 sm:w-40 sm:h-40 object-cover mx-auto mb-2 sm:mb-4"
         />
         <h3 className="text-poppins text-xs sm:text-xl font-bold text-[#343434]">Forex Cards</h3>
-        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify">Convenient and secure forex cards for all your travel needs</p>
+        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify">Convenient and secure for all your travel needs</p>
        
       </motion.div>
     </div>
@@ -80,8 +68,8 @@ const OurServiceHomePage = () => {
           alt="Director 1"
           className="w-12 h-12 sm:w-40 sm:h-40 object-cover mx-auto mb-2 sm:mb-4"
         />
-        <h3 className="text-poppins text-xs sm:text-xl font-bold text-[#343434]">Tution Fees</h3>
-        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify">Effortlessly transfer tuition fees and other remittances abroad with Hyderabad Forex</p>
+        <h3 className="text-poppins text-xs sm:text-xl font-bold text-[#343434]">Outward Remittances</h3>
+        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify">Tuition fee, maintenance, gifts and other remittances</p>
         
       </motion.div>
     </div>

@@ -3,6 +3,7 @@ import { isMobile } from 'react-device-detect';
 
 const ImageSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [direction, setDirection] = useState('left');
   const slides = [
     require('../assets/ImageSlider/imageslider1.png'),
     require('../assets/ImageSlider/Imageslider2.jpg'),
@@ -10,10 +11,12 @@ const ImageSlider = () => {
   ];
 
   const nextSlide = () => {
+    setDirection('left');
     setCurrentSlide((prevSlide) => (prevSlide === slides.length - 1 ? 0 : prevSlide + 1));
   };
 
   const prevSlide = () => {
+    setDirection('right');
     setCurrentSlide((prevSlide) => (prevSlide === 0 ? slides.length - 1 : prevSlide - 1));
   };
 
@@ -31,20 +34,27 @@ const ImageSlider = () => {
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
-      nextSlide();
+      if (currentSlide === slides.length - 1) {
+        setDirection('right');
+      } else {
+        setDirection('left');
+      }
+      setCurrentSlide((prevSlide) => (prevSlide === slides.length - 1 ? 0 : prevSlide + 1));
     }, 5000);
 
     return () => {
       clearInterval(slideInterval);
     };
-  }, []);
+  }, [currentSlide, slides.length]);
 
   return (
     <div>
       <div className="p-1">
         <div className="relative w-full overflow-hidden h-[380px] rounded-2xl">
           <div
-            className="flex transition-transform duration-700 ease-in-out"
+            className={`flex transition-transform duration-700 ease-in-out ${
+              direction === 'left' ? 'transform translate-x-0' : 'transform -translate-x-full'
+            }`}
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
             {slides.map((slide, index) => (
