@@ -34,8 +34,12 @@ const CustomerForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isPrivacyPolicyChecked) {
-      setNotification({ message: 'Please agree to the terms and conditions.', type: 'error', show: true });
+    if (!formData.amount) {
+      setNotification({ message: 'Please enter a Forex amount.', type: 'error', show: true });
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        amount: '',
+      }));
       return;
     }
 
@@ -59,6 +63,11 @@ const CustomerForm = () => {
       }));
       return;
     }
+    if (!isPrivacyPolicyChecked) {
+      setNotification({ message: 'Please agree to the terms and conditions.', type: 'error', show: true });
+      return;
+    }
+
 
     const payload = {
       ...formData,

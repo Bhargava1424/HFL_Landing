@@ -8,8 +8,7 @@ import StatsDisplay from './StatsDisplay';
 import PromoBanner from './PromoBanner';
 import Footer from './Footer';
 import backgroundImage from '../assets/GetAnyMoney/BGVEctor.svg'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import CustomNotification from './CustomNotification';
 import PrivacyPolicy from './PrivacyPolicy';
 
 const GetAnyMoney = () => {
@@ -40,103 +39,51 @@ const GetAnyMoney = () => {
   const handleCheckboxChange = (e) => {
     setIsPrivacyPolicyChecked(e.target.checked);
   };
-  
+  const [notification, setNotification] = useState({ message: '', type: '', show: false });
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isPrivacyPolicyChecked) {
-      toast.error('Please agree to the terms and conditions.', {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-      setTimeout(() => {
-      }, 2000);
+    if (!formData.amount) {
+      setNotification({ message: 'Please enter a Forex amount.', type: 'error', show: true });
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        amount: '',
+      }));
       return;
     }
+
+
     const phonePattern = /^\d{10}$/;
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  
+
     if (!phonePattern.test(formData.phone)) {
-      toast.error('Please enter a valid 10-digit phone number.', {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-      setTimeout(() => {
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          phone: '',
-        }));
-      }, 2000);
+      setNotification({ message: 'Please enter a valid 10-digit phone number.', type: 'error', show: true });
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        phone: '',
+      }));
       return;
     }
-  
+
     if (!emailPattern.test(formData.email)) {
-      toast.error('Please enter a valid email address.', {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-      setTimeout(() => {
-        setFormData((prevFormData) => ({
-          ...prevFormData,
-          email: '',
-        }));
-      }, 2000);
+      setNotification({ message: 'Please enter a valid email address.', type: 'error', show: true });
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        email: '',
+      }));
       return;
     }
-  
     if (!isPrivacyPolicyChecked) {
-      toast.error('Please agree to the terms and conditions.', {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      setNotification({ message: 'Please agree to the terms and conditions.', type: 'error', show: true });
       return;
     }
-  
+
     const payload = {
       ...formData,
       formType,
     };
     console.log('Form Payload:', payload);
-  
-    // Display the success toast
-    toast.success('Our HFL team will contact you soon.', {
-      position: "top-center",
-      autoClose: 10000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      style: {
-        backgroundColor: '#ffcc69',
-        color: '#000',
-      },
-    });
-  
-    // Reset the form after 2000ms
+
+    setNotification({ message: 'Thank you for choosing HFL. We will get back to you shortly.', type: 'success', show: true });
     setTimeout(() => {
       setFormData({
         store: 'Somajiguda',
@@ -190,7 +137,14 @@ const GetAnyMoney = () => {
                 </button>
               </div>
 
-              <form onSubmit={handleSubmit} className='border border-[#FF8A1F] border-1 rounded-b-lg rounded-r-lg p-2 bg-white'>
+              <form onSubmit={handleSubmit} className='relative border border-[#FF8A1F] border-1 rounded-b-lg rounded-r-lg p-2 bg-white'>
+              {notification.show && (
+                  <CustomNotification 
+                    message={notification.message} 
+                    type={notification.type} 
+                    onClose={() => setNotification({ ...notification, show: false })} 
+                  />
+                )}
                 <div className="mb-2 md:mb-4 grid grid-cols-2 gap-6">
                   <div>
                     <label className="block mb-1 text-sm md:text-lg">Store Select</label>
@@ -302,7 +256,6 @@ const GetAnyMoney = () => {
                   </label>
                 </div>
               </form>
-              <ToastContainer/>
             </div>
           </div>
         </div>
