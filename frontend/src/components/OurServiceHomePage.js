@@ -62,7 +62,7 @@ const OurServiceHomePage = () => {
     <div className="text-center mb-1 md:mb-4">
       <motion.div 
       whileHover={{ scale: 1.1 }}
-      className="bg-[#FBF8F1] hover: md:py-2 px-4 hover:bg-white hover:shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg  sm:p-6 max-w-xs md:mx-1">
+      className=" bg-[#FBF8F1] hover: py px-2 py-1-md:2 px-md:4 hover:bg-white hover:shadow-lg rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg p-1  sm:p-6 max-w-xs md:mx-1">
         <img
           src={Scholarship}
           alt="Director 1"
