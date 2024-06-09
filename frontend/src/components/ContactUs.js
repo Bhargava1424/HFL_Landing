@@ -143,9 +143,9 @@ const ContactUs = () => {
 
   return (
     <>
-      <header>
+      
         <Navbar />
-      </header>
+      
       <div
         className="pt-16 pb-16  bg-center bg-cover"
         style={{ backgroundImage: `url(${backgroundImage})` }}
