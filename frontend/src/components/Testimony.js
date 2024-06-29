@@ -102,7 +102,7 @@ const Testimony = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 3000);
+    }, 10000);
     return () => clearInterval(interval);
   }, [currentIndex, itemsPerSlide]);
 

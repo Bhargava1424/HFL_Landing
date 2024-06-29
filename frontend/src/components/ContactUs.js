@@ -210,7 +210,7 @@ const ContactUs = () => {
                   <option value="">What Are You Looking About?</option>
                   <option value="inquiry1">Currency Notes</option>
                   <option value="inquiry2">Forex Cards</option>
-                  <option value="inquiry3">Outwards Remettiance</option>
+                  <option value="inquiry3">Outward Remittance</option>
                 </select>
               </div>
               <button
