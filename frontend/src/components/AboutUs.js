@@ -361,6 +361,7 @@ const AboutUs = () => {
         <h1 className='text-lg font-bold sm:text-4xl text-center w-full'>Our Branches in Hyderabad</h1>
         <div className="flex justify-between items-center w-4/5">
     <div className="flex flex-col items-center w-1/2">
+    <h1 className='text-lg font-bold sm:text-4xl flex items-center space-x-2 mt-8 pb-16'>Somajiguda</h1>
       <div className="flex items-center space-x-2 mt-8 pb-16">
         <img src={phoneIcon} alt="Phone" className="h-6 w-6 sm:h-10 sm:w-10" />
         <button onClick={handleContactUs} style={{ cursor: 'pointer' }}>
@@ -382,6 +383,7 @@ const AboutUs = () => {
     </div>
     <div className="w-1 bg-gray-800 h-56"></div>
     <div className="flex flex-col items-center w-1/2">
+    <h1 className='text-lg font-bold sm:text-4xl flex items-center space-x-2 mt-8 pb-16'>Gachibowli</h1>
       <div className="flex items-center space-x-2 mt-8 pb-16">
         <img src={phoneIcon} alt="Phone" className="h-6 w-6 sm:h-10 sm:w-10" />
         <button onClick={handleContactUs2} style={{ cursor: 'pointer' }}>

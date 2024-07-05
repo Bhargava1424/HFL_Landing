@@ -75,10 +75,10 @@ const BankScroll = () => {
               <img src={forexIcon} alt="Forex Card" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
               <p className='text-xs font-bold md:text-xl'>Forex Card</p>
             </div>
-            <div className="flex flex-col items-center flex-1 text-center">
+            {/* <div className="flex flex-col items-center flex-1 text-center">
               <img src={tuitionIcon} alt="Tuition Fees" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
               <p className='text-xs font-bold md:text-xl'>Tuition Fees</p>
-            </div>
+            </div> */}
           </div>
         </div>
 

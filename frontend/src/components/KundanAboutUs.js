@@ -61,6 +61,7 @@ const KundanAboutUs = () => {
         <h1 className='text-4xl text-center w-full'>Our Branches in Hyderabad</h1>
       <div className="flex justify-between items-center w-4/5">
         <div className="flex flex-col items-center w-1/2">
+      
           <div className="flex items-center space-x-2 mt-8 pb-16">
             <img src={phoneIcon} alt="Phone" className="h-10 w-10" />
             <p>NUMBER</p>
