@@ -39,7 +39,7 @@ const BankScroll = () => {
     <div className="flex flex-col items-center">
       <div className="w-full overflow-hidden">
         <div className="px-4 py-3 m-1 md:px-0 rounded-2xl">
-          <h1 className="mb-5 text-2xl font-bold text-center md:text-5xl">Banking Association with</h1>
+          <h1 className="mb-5 text-2xl font-bold text-center md:text-5xl">Our Bankers</h1>
           <Marquee speed={100} pauseOnHover loop={0} className="mb-5">
             {bankLogos.map((logo, index) => (
               <img
@@ -75,10 +75,10 @@ const BankScroll = () => {
               <img src={forexIcon} alt="Forex Card" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
               <p className='text-xs font-bold md:text-xl'>Forex Card</p>
             </div>
-            <div className="flex flex-col items-center flex-1 text-center">
+            {/* <div className="flex flex-col items-center flex-1 text-center">
               <img src={tuitionIcon} alt="Tuition Fees" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
               <p className='text-xs font-bold md:text-xl'>Tuition Fees</p>
-            </div>
+            </div> */}
           </div>
         </div>
 

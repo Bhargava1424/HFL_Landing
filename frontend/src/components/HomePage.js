@@ -20,13 +20,14 @@ const HomePage = () => {
   return (
     
     <div>
-      <header>
+    
       
-        
+  
         <NavBar/>  
-        
         <CurrencyScroll />
-      </header>
+        
+      
+      
       <ImageSlider/>
       <div className='pl-3 pr-3 md:pl-12 md:pr-12'>
         <CustomerForm/>

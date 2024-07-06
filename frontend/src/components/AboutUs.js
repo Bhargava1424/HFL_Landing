@@ -9,9 +9,6 @@ import Payment from "../assets/payment-method.png"
 import School from "../assets/school.png"
 import Card from "../assets/credit-card.png"
 import Company from "../assets/company.png"
-import Euros from "../assets/euros.png"
-import Customer from "../assets/customer-support.png"
-import software from "../assets/software-application.png"
 import { isMobile } from 'react-device-detect';
 import Network from "../assets/networking.png"
 import Avatar from "../assets/undraw_male_avatar_g98d (1).svg"
@@ -25,7 +22,7 @@ import messageIcon from '../assets/AboutUs/whatsapp.png';
 import phoneIcon from '../assets/AboutUs/telephone.png'
 import Footer from './Footer';
 import image from '../assets/AboutUs/image.png'
-
+import alternative from '../assets/AboutUs/Alternative.jpg'
 
 const AboutUs = () => {
   const handleContactUs = () => {
@@ -92,7 +89,7 @@ const AboutUs = () => {
             {/* Image container */}
             <div className="w-full md:w-1/2 flex flex-row md:flex-col items-center md:items-start mb-4 md:mb-0 relative">
             {/* First image */}
-            <img src={image} alt="" className="w-1/2 md:w-auto h-auto mb-0 md:mb-2 mr-2 md:mr-5" />
+            <img src={alternative} alt="" className="w-1/2 md:w-auto h-auto mb-0 md:mb-2 mr-2 md:mr-5" />
             {/* Second image */}
             {/* <img src={SMGD} alt="" className="w-1/2 md:w-auto h-auto md:absolute md:-bottom-1/4 md:right-5" /> */}
         </div>
@@ -263,11 +260,9 @@ const AboutUs = () => {
           alt="Director 1"
           className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
         />
-        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
-        <p className="text-xs sm:text-base text-gray-600">Chairman and MD</p>
-        <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
-          Read More
-        </a>
+        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Raghunath Mudumal</h3>
+        
+        
       </div>
     </div>
     <div className="text-center mb-2 md:mb-4">
@@ -277,11 +272,8 @@ const AboutUs = () => {
           alt="Director 2"
           className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
         />
-        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
-        <p className="text-xs sm:text-base text-gray-600">Chairman and MD</p>
-        <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
-          Read More
-        </a>
+        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Venkata Ramana Kokkalla</h3>
+        
       </div>
     </div>
     <div className="text-center mb-4">
@@ -291,11 +283,8 @@ const AboutUs = () => {
           alt="Director 3"
           className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
         />
-        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
-        <p className="text-xs sm:text-base text-gray-600">Chairman and MD</p>
-        <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
-          Read More
-        </a>
+        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Girish Kulkarni Padmananda</h3>
+        
       </div>
     </div>
     <div className="text-center mb-4">
@@ -305,11 +294,8 @@ const AboutUs = () => {
           alt="Director 4"
           className="w-12 h-12 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-2 sm:mb-4"
         />
-        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Mr Raghunath Mudumal</h3>
-        <p className="text-xs sm:text-base text-gray-600">Chairman and MD</p>
-        <a href="#" className="text-blue-500 hover:text-blue-700 mt-1 sm:mt-2 inline-block text-xs sm:text-sm">
-          Read More
-        </a>
+        <h3 className="text-xs sm:text-xl font-bold text-gray-800">Vinay Kumar Beraar</h3>
+        
       </div>
     </div>
   </div>
@@ -321,7 +307,7 @@ const AboutUs = () => {
 
         <StatsDisplay/>
         <div className="flex flex-col justify-center items-center w-full bg-white rounded-2xl mt-10">
-  <h1 className="text-2xl sm:text-4xl font-semibold text-black mb-2 text-center">Why Buy Forex via HFL AnyMoney?</h1>
+  <h1 className="text-2xl sm:text-4xl font-semibold text-black mb-2 text-center">Why Buy Forex via HFL</h1>
   <div className="flex items-center justify-center w-full mb-5 flex-col sm:flex-row">
     <div className="flex items-center gap-2 mb-4 sm:mb-0 sm:mr-20">
       <img src={rbiIcon} alt="RBI Authorized" className="h-12 sm:h-16 w-12 sm:w-16" />
@@ -333,7 +319,7 @@ const AboutUs = () => {
     <div className="flex items-center gap-2 sm:ml-20">
       <img src={deliveryIcon} alt="Fast Delivery" className="h-12 sm:h-16 w-12 sm:w-16" />
       <p className="flex items-center text-xs sm:text-lg font-medium text-black">
-        Fast Delivery! <span className="text-green-500 text-4xl sm:text-8xl ml-2 sm:ml-4">✓</span>
+        Fast, Secure and Reliable! <span className="text-green-500 text-4xl sm:text-8xl ml-2 sm:ml-4">✓</span>
       </p>
     </div>
   </div>
@@ -375,6 +361,7 @@ const AboutUs = () => {
         <h1 className='text-lg font-bold sm:text-4xl text-center w-full'>Our Branches in Hyderabad</h1>
         <div className="flex justify-between items-center w-4/5">
     <div className="flex flex-col items-center w-1/2">
+    <h1 className='text-lg font-bold sm:text-4xl flex items-center space-x-2 mt-8 pb-16'>Somajiguda</h1>
       <div className="flex items-center space-x-2 mt-8 pb-16">
         <img src={phoneIcon} alt="Phone" className="h-6 w-6 sm:h-10 sm:w-10" />
         <button onClick={handleContactUs} style={{ cursor: 'pointer' }}>
@@ -396,6 +383,7 @@ const AboutUs = () => {
     </div>
     <div className="w-1 bg-gray-800 h-56"></div>
     <div className="flex flex-col items-center w-1/2">
+    <h1 className='text-lg font-bold sm:text-4xl flex items-center space-x-2 mt-8 pb-16'>Gachibowli</h1>
       <div className="flex items-center space-x-2 mt-8 pb-16">
         <img src={phoneIcon} alt="Phone" className="h-6 w-6 sm:h-10 sm:w-10" />
         <button onClick={handleContactUs2} style={{ cursor: 'pointer' }}>
