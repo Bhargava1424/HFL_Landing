@@ -186,9 +186,9 @@ const AboutUs = () => {
             </div>
             <div className="md:w-2/3 md:pl-8">
               <div className='flex justify-center md:justify-end items-center'>
-                <h1 className="text-orange-500 text-3xl md:text-6xl mb-12 font-bold">Company profile</h1>
+                <h1 className="text-orange-500 text-3xl md:text-6xl md:mb-12 font-bold">Company profile</h1>
                 {/* Image next to the heading, only visible on mobile */}
-                <img src={Company} alt="Company" className="w-20 h-20 ml-2 block md:hidden" />
+                {/* <img src={Company} alt="Company" className="w-20 h-20 ml-2 block md:hidden" /> */}
               </div>
               <p className="text-black mb-2 md:mb-4 font-normal text-sm md:text-2xl text-justify">
                 <span className='font-bold text-2xl md:text-4xl'>H</span>yderabad Forex Customer base includes a cream of corporates from IT industry, manufacturing units, service industry and of course individuals who travel abroad frequently on business and for holiday. In addition to this, Hyderabad Forex has strong business relationship with various Banks and Travel agencies.
