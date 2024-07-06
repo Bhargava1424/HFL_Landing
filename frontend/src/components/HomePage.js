@@ -29,8 +29,8 @@ const HomePage = () => {
       
       
       <ImageSlider/>
+      <CustomerForm/>
       <div className='pl-3 pr-3 md:pl-12 md:pr-12'>
-        <CustomerForm/>
         <OurServiceHomePage />
         <RbiComponent/>
         <StatsDisplay/>

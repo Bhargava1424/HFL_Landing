@@ -23,32 +23,20 @@ const Footer = () => {
                         <div className="flex justify-center mt-4 lg:mt-2">
                             <div className="text-center">
                                 <div>
-                                    6-3-1090/A/24, LG - 2, Olbee Centre, Raj Bhavan Rd, Somajiguda, Hyderabad, Telangana 500082
+                                6-3-1090/A/24, LG-2, Olbee Centre, Rajbavan Rd, Somajiguda, Hyderabad, Telangana 500082
                                 </div>
                                 <div>
-                                    # 41st Floor, Telecom Housing Society, Gachibowli, Telangana 500032
+                                Shutter No 4, 1st floor, 2-48/T2, TelecomHousing Society, Gachibowli, Hyderabad, Telangana 500032
                                 </div>
                             </div>
                         </div>
                         <div className="mt-4 text-xs text-center border-t border-black lg:mt-12 lg:text-sm lg:pt-2">
                             <div>CIN L8989787876767512</div>
                             <div>
-                                © 2024 Hyderabad Forex Private Limited. All Rights Reserved |{' '}
-                                <a href="#disclaimer" className="hover:underline">
-                                    Disclaimer
-                                </a>{' '}
-                                |{' '}
-                                <a href="#terms" className="hover:underline">
-                                    Terms & Conditions
-                                </a>{' '}
-                                |{' '}
-                                <a href="#privacy-policy" className="hover:underline">
+                                © 2024 Hyderabad Forex Private Limited | All Rights Reserved |{' '}
+                                <a href="/privacypolicy" className="hover:underline">
                                     Privacy Policy
                                 </a>{' '}
-                                |{' '}
-                                <a href="#privacy-notice" className="hover:underline">
-                                    Privacy Notice
-                                </a>
                             </div>
                         </div>
                     </div>

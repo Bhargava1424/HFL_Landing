@@ -117,7 +117,7 @@ const ContactUs = () => {
   };
 
   const handleContactSomaji = () => {
-    const phoneNumber = '9876543210';
+    const phoneNumber = '9440626779';
 
     if (isMobile) {
       window.location.href = `tel:${phoneNumber}`;
@@ -127,7 +127,7 @@ const ContactUs = () => {
   };
 
   const handleContactGachi = () => {
-    const phoneNumber = '9876543210';
+    const phoneNumber = '9848131798';
 
     if (isMobile) {
       window.location.href = `tel:${phoneNumber}`;
@@ -234,12 +234,12 @@ const ContactUs = () => {
                 />
                 <div className="mt-2">
                   <h3 className="flex justify-center mb-4 text-2xl font-medium">Somajiguda</h3>
-                  <p className='ml-6 mr-6 font-semibold text-justify'>6-3-1090/A/1B/1, C-2, One Centre, Raj Bhavan Rd, Somajiguda, Hyderabad, Telangana 500082</p>
+                  <p className='ml-6 mr-6 font-semibold text-justify'>6-3-1090/A/24, LG-2, Olbee Centre, Rajbavan Rd, Somajiguda, Hyderabad, Telangana 500082</p>
                 </div>
                 <div className="flex justify-center space-x-4">
                   <div>
                     <button onClick={handleContactSomaji} className="flex items-center space-x-2 text-sm font-semibold text-black">
-                      <div role="img" aria-label="phone">📞 9876543210</div>
+                      <div role="img" aria-label="phone">📞 9440626779</div>
                     </button>
                   </div>
                   <div>
@@ -259,12 +259,12 @@ const ContactUs = () => {
                 />
                 <div className="mt-2">
                   <h3 className="flex justify-center mb-4 text-2xl font-medium">Gachibowli</h3>
-                  <p className='ml-6 mr-6 font-semibold text-justify'>95H9+F9P, Gachibowli, Hyderabad, Telangana 500032</p>
+                  <p className='ml-6 mr-6 font-semibold text-justify'>Shutter No 4, 1st floor, 2-48/T2, TelecomHousing Society, Gachibowli, Hyderabad, Telangana 500032</p>
                 </div>
-                <div className="flex justify-center mt-5 space-x-4">
+                <div className="flex justify-center space-x-4">
                   <div>
                     <button onClick={handleContactGachi} className="flex items-center space-x-2 text-sm font-semibold text-black">
-                      <div role="img" aria-label="phone">📞 9876543210</div>
+                      <div role="img" aria-label="phone">📞 9848131798</div>
                     </button>
                   </div>
                   <div>

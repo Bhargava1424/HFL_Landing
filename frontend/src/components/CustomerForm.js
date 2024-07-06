@@ -90,7 +90,8 @@ const CustomerForm = () => {
   };
 
   return (
-    <div className="flex flex-col justify-between mx-auto lg:flex-row md:p-4">
+    <div className='bg-[#FBF8F1] pl-3 pr-3 md:pl-12 md:pr-12'>
+    <div className="flex flex-col justify-between mx-auto lg:flex-row md:p-4 ">
       <div className="mb-4 lg:w-2/5 lg:mb-0">
         <h2 className="mb-1 font-semibold text-black text-kundan md:mb-4">
           Experience the Best Currency Exchange Service
@@ -252,6 +253,7 @@ const CustomerForm = () => {
           
         </form>
       </div>
+    </div>
     </div>
   );
 };

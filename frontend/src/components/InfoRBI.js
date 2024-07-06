@@ -1,8 +1,54 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import bgimage from '../assets/HFLlogo.jpg'
 const InfoRBI = () => {
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
+
   return (
-    <div className="p-4">
+    <div className="relative p-4">
+    <div
+    className='absolute inset-0'
+    style={{
+      backgroundImage: `url(${bgimage})`,
+      backgroundPosition: 'center',
+      opacity: 0.2
+    }}>
+      </div>
+    <div className='relative'>
+          <button
+      onClick={handleBackClick}
+      className="px-6 py-3 bg-gradient-to-r from-[#FCC999] via-[#FBF8F1] to-[#FFB72B] text-black font-bold rounded-full shadow-lg hover:from-[#FFB72B] hover:via-[#FBF8F1] hover:to-[#FCC999] transform hover:scale-105 transition-transform duration-300 mb-2"
+    >
+      Back
+    </button>
       <div className="bg-white shadow-md rounded-lg p-4 mb-4">
         <h2 className="text-xl font-semibold mb-2">Authorised Persons under FEMA 1999</h2>
         <ul className="list-disc list-inside">
@@ -136,6 +182,16 @@ const InfoRBI = () => {
         <h2 className="text-xl font-semibold mb-2">Old Generation '1000 Shillings (Ksh)' Banknotes in Kenya</h2>
         <p>All currency notes of denomination '1000 shillings (Ksh)' ceased to be legal tender from October 1, 2019.</p>
       </div>
+      <button
+      onClick={scrollToTop}
+      className={`fixed bottom-4 right-4 px-6 py-3 bg-gradient-to-r from-[#FCC999] via-[#FBF8F1] to-[#FFB72B] text-black font-bold rounded-full shadow-lg transform transition-transform duration-300 ${
+        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+      }`}
+      style={{ zIndex: 1000 }}
+    >
+      ↑ Top
+    </button>
+    </div>
     </div>
   );
 }

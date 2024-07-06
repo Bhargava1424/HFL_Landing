@@ -26,7 +26,7 @@ import alternative from '../assets/AboutUs/Alternative.jpg'
 
 const AboutUs = () => {
   const handleContactUs = () => {
-    const phoneNumber = '9876543210';
+    const phoneNumber = '9440626779';
 
     if (isMobile) {
         // Redirect to the call app with the phone number
@@ -39,7 +39,7 @@ const AboutUs = () => {
 
 
   const handleContactUs2 = () => {
-    const phoneNumber = '9876543210';
+    const phoneNumber = '9848131798';
 
     if (isMobile) {
         // Redirect to the call app with the phone number
@@ -52,13 +52,13 @@ const AboutUs = () => {
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent("I Need Anymoney Now !!"); 
-    const whatsappUrl = `https://wa.me/918919443874?text=${message}`;
+    const whatsappUrl = `https://wa.me/919440626779?text=${message}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   const handleWhatsApp2 = () => {
     const message = encodeURIComponent("I Need Anymoney Now !!");
-    const whatsappUrl = `https://wa.me/919573691768?text=${message}`;
+    const whatsappUrl = `https://wa.me/919848131798?text=${message}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
   
@@ -169,7 +169,7 @@ const AboutUs = () => {
           </div>
           <div className="flex flex-col items-center">
             <img src={School} alt="Vision Image 2" className="w-12 md:w-24 h-12 md:h-24 mb-1 md:mb-2 md:mr-16 mx-2" />
-            <span className="text-center font-semibold text-xs md:text-base">School</span>
+            <span className="text-center font-semibold text-xs md:text-base">Outward Remittances</span>
           </div>
         </div>
       </div>
@@ -192,13 +192,14 @@ const AboutUs = () => {
               </div>
               <p className="text-black mb-2 md:mb-4 font-normal text-sm md:text-2xl text-justify">
                 <span className='font-bold text-2xl md:text-4xl'>H</span>yderabad Forex Customer base includes a cream of corporates from IT industry, manufacturing units, service industry and of course individuals who travel abroad frequently on business and for holiday. In addition to this, Hyderabad Forex has strong business relationship with various Banks and Travel agencies.
+                <br/>Hyderabad Forex provides you the widest range of foreign exchange products and currencies at the best rates.
               </p>
-              <p className="text-black font-semibold text-sm md:text-1xl text-justify">
+              {/* <p className="text-black font-semibold text-sm md:text-1xl text-justify">
                 Hyderabad Forex provides you the widest range of foreign exchange
               </p>
               <p className='text-black font-semibold text-sm md:text-base text-justify'>
                 products and currencies at the best rates.
-              </p>
+              </p> */}
             </div>
           </div>
         </div>
@@ -365,13 +366,13 @@ const AboutUs = () => {
       <div className="flex items-center space-x-2 mt-8 pb-16">
         <img src={phoneIcon} alt="Phone" className="h-6 w-6 sm:h-10 sm:w-10" />
         <button onClick={handleContactUs} style={{ cursor: 'pointer' }}>
-          NUMBER
+          9440626779
         </button>
       </div>
       <div className="flex items-center space-x-2 pb-16">
         <img src={messageIcon} alt="Message" className="h-6 w-6 sm:h-10 sm:w-10" />
         <button onClick={handleWhatsApp} style={{ cursor: 'pointer' }}>
-          WhatsApp
+          9440626779
         </button>
       </div>
       <div className="flex items-center space-x-2 pb-16">
@@ -387,13 +388,13 @@ const AboutUs = () => {
       <div className="flex items-center space-x-2 mt-8 pb-16">
         <img src={phoneIcon} alt="Phone" className="h-6 w-6 sm:h-10 sm:w-10" />
         <button onClick={handleContactUs2} style={{ cursor: 'pointer' }}>
-          NUMBER
+        9848131798
         </button>
       </div>
       <div className="flex items-center space-x-2 pb-16">
         <img src={messageIcon} alt="Message" className="h-6 w-6 sm:h-10 sm:w-10" />
         <button onClick={handleWhatsApp2} style={{ cursor: 'pointer' }}>
-          WhatsApp
+        9848131798
         </button>
       </div>
       <div className="flex items-center space-x-2 pb-16">

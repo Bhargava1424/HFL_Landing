@@ -1,7 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import bgimage from '../assets/HFLlogo.jpg'
 
 const PrivacyPolicy = () => {
+
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    if (window.pageYOffset > 300) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', toggleVisibility);
+    return () => {
+      window.removeEventListener('scroll', toggleVisibility);
+    };
+  }, []);
+
   return (
+    <div className=' relative p-2'>
+      <div
+    className='absolute inset-0'
+    style={{
+      backgroundImage: `url(${bgimage})`,
+      backgroundPosition: 'center',
+      opacity: 0.06
+    }}>
+      </div>
+      <div className='relative'>
+      <button
+      onClick={handleBackClick}
+      className="px-6 py-3 bg-gradient-to-r from-[#FCC999] via-[#FBF8F1] to-[#FFB72B] text-black font-bold rounded-full shadow-lg hover:from-[#FFB72B] hover:via-[#FBF8F1] hover:to-[#FCC999] transform hover:scale-105 transition-transform duration-300"
+    >
+      Back
+    </button>
     <div className="p-4 max-w-3xl mx-auto bg-white rounded-lg shadow-md">
       <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
 
@@ -80,6 +128,17 @@ const PrivacyPolicy = () => {
       <p className="mb-4">
         We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse. Any information disclosed online is vulnerable to interception and misuse by unauthorized parties. Therefore, we cannot guarantee complete security if you provide personal information.
       </p>
+    </div>
+    <button
+      onClick={scrollToTop}
+      className={`fixed bottom-4 right-4 px-6 py-3 bg-gradient-to-r from-[#FCC999] via-[#FBF8F1] to-[#FFB72B] text-black font-bold rounded-full shadow-lg transform transition-transform duration-300 ${
+        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0'
+      }`}
+      style={{ zIndex: 1000 }}
+    >
+      ↑ Top
+    </button>
+    </div>
     </div>
   );
 };
