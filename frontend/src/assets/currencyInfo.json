@@ -1,0 +1,38 @@
+[
+    {
+      "country": "Canada",
+      "currency": "CAD - Canadian Dollar",
+      "coords": { "left": "10%", "top": "20%" }
+    },
+    {
+      "country": "USA",
+      "currency": "USD - United States Dollar",
+      "coords": { "left": "20%", "top": "30%" }
+    },
+    {
+      "country": "UK",
+      "currency": "GBP - British Pound",
+      "coords": { "left": "40%", "top": "20%" }
+    },
+    {
+      "country": "Russia",
+      "currency": "RUB - Russian Ruble",
+      "coords": { "left": "60%", "top": "20%" }
+    },
+    {
+      "country": "India",
+      "currency": "INR - Indian Rupee",
+      "coords": { "left": "70%", "top": "50%" }
+    },
+    {
+      "country": "Brazil",
+      "currency": "BRL - Brazilian Real",
+      "coords": { "left": "20%", "top": "60%" }
+    },
+    {
+      "country": "Australia",
+      "currency": "AUD - Australian Dollar",
+      "coords": { "left": "80%", "top": "80%" }
+    }
+  ]
+  

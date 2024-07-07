@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Marquee from 'react-fast-marquee';
 
 // Import bank logo images
@@ -17,8 +17,7 @@ import buyIcon from "../assets/checkout.png";
 import sellIcon from "../assets/payment-method.png";
 import forexIcon from "../assets/credit-card.png";
 import tuitionIcon from "../assets/school.png";
-import cashIcon from '../assets/euros.png';
-import MAP from "../assets/banks/Maps.png";
+import MAP from "../assets/banks/map.jpg";
 
 const BankScroll = () => {
   const bankLogos = [
@@ -39,7 +38,7 @@ const BankScroll = () => {
     <div className="flex flex-col items-center">
       <div className="w-full overflow-hidden">
         <div className="px-4 py-3 m-1 md:px-0 rounded-2xl">
-          <h1 className="mb-5 text-2xl font-bold text-center md:text-5xl">Our Bankers</h1>
+          <h1 className="mb-5 text-2xl font-bold text-center md:text-5xl">We are Associated with</h1>
           <Marquee speed={100} pauseOnHover loop={0} className="mb-5">
             {bankLogos.map((logo, index) => (
               <img
@@ -51,61 +50,36 @@ const BankScroll = () => {
             ))}
           </Marquee>
 
-          <h1 className="text-xl font-bold text-center md-1 md:mb-5 md:text-5xl">Plan Your Forex Today with Hyderabad Forex</h1>
+          <h1 className="text-xl font-bold text-center md:mb-5 md:text-5xl">Plan Your Trip Today with Hyderabad Forex</h1>
           <h1 className="text-xl font-bold text-center md:mb-5 md:text-5xl">
             Excellence in <span className='text-orange-500'>Any Money</span> Exchange
           </h1>
           <div className="flex justify-center">
-            <img src={MAP} alt="map" className='w-auto h-auto mt-2 md:mt-8' />
+            <img src={MAP} alt="Map" className='w-3/4 h-auto mt-2 ml-10 mr-10 md:mt-8' />
           </div>
         </div>
 
         <div className="flex flex-col items-center w-full px-4 py-5 bg-white md:px-10">
           <h1 className="mb-10 text-3xl text-center md:text-6xl">Services at HFL AnyMoney</h1>
           <div className="flex flex-wrap items-stretch justify-between w-full pl-4 pr-4 md:pl-8 md:pr-8">
-            <div className="flex flex-col items-center flex-1 text-center md:mb-4 md:mb-0">
+            <div className="flex flex-col items-center flex-1 text-center md:mb-4">
               <img src={buyIcon} alt="We Buy" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
               <p className='text-xs font-bold md:text-xl'>We BUY</p>
             </div>
-            <div className="flex flex-col items-center flex-1 text-center md:mb-4 md:mb-0">
+            <div className="flex flex-col items-center flex-1 text-center md:mb-4">
               <img src={sellIcon} alt="We Sell" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
               <p className='text-xs font-bold md:text-xl'>We SELL</p>
             </div>
-            <div className="flex flex-col items-center flex-1 text-center md:mb-4 md:mb-0">
+            <div className="flex flex-col items-center flex-1 text-center md:mb-4">
               <img src={forexIcon} alt="Forex Card" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
               <p className='text-xs font-bold md:text-xl'>Forex Card</p>
             </div>
-            {/* <div className="flex flex-col items-center flex-1 text-center">
+            <div className="flex flex-col items-center flex-1 text-center">
               <img src={tuitionIcon} alt="Tuition Fees" className="w-8 h-8 mx-auto mb-2 md:h-20 md:w-20" />
-              <p className='text-xs font-bold md:text-xl'>Tuition Fees</p>
-            </div> */}
+              <p className='text-xs font-bold md:text-xl'>Outward Remittance</p>
+            </div>
           </div>
         </div>
-
-        {/* <div className="bg-[#FFD686] p-4 my-4 mx-1 rounded-2xl">
-          <div className="grid grid-cols-3 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3, 4, 5, 6].map((num) => (
-              <div key={num} className="flex flex-col items-center p-2 bg-white md:p-6 rounded-xl">
-                <div className="flex items-center mb-1 md:mb-2">
-                  <img
-                    src={cashIcon}
-                    alt="Currency Notes"
-                    className="w-5 h-5 mr-1 md:w-16 md:h-16 md:mr-2"
-                  />
-                  <h3 className="text-xs font-bold text-center md:text-xl">
-                    Currency Notes
-                  </h3>
-                </div>
-                <p className="mb-1 text-xs text-center md:text-base md:mb-4">
-                  A sufficient amount of foreign currency notes can always come in handy.
-                </p>
-                <button className="px-2 py-1 mt-auto text-xs text-white transition-colors duration-300 bg-[#ffb72b] rounded-md md:text-md md:px-4 md:py-2 hover:bg-[#ffb72b]">
-                  Read More
-                </button>
-              </div>
-            ))}
-          </div>
-        </div> */}
       </div>
     </div>
   );

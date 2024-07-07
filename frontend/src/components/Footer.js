@@ -8,19 +8,19 @@ const Footer = () => {
     return (
         <footer className="bg-[#e3a833] text-black py-2">
             <div className="container px-4 mx-auto text-xs md:text-sm">
-                <div className="flex flex-col lg:flex-row items-center justify-between lg:items-start">
+                <div className="flex flex-col items-center justify-between lg:flex-row lg:items-start">
                     <div className="flex flex-col items-center lg:items-center">
                         <div className="flex flex-col items-center">
                             <div className='flex justify-center'>
                                 <img
                                     src={HFLLogo}
                                     alt="Hyderabad Forex Private Limited"
-                                    className="w-16 md:w-32"
+                                    className="w-16 mt-7 md:w-32"
                                 />
                             </div>
                             <div className="flex justify-center font-bold md:mt-2">Hyderabad Forex Limited</div>
                         </div>
-                        <div className="flex justify-center mt-4 lg:mt-2">
+                        {/* <div className="flex justify-center mt-4 lg:mt-2">
                             <div className="text-center">
                                 <div>
                                 6-3-1090/A/24, LG-2, Olbee Centre, Rajbavan Rd, Somajiguda, Hyderabad, Telangana 500082
@@ -29,9 +29,9 @@ const Footer = () => {
                                 Shutter No 4, 1st floor, 2-48/T2, TelecomHousing Society, Gachibowli, Hyderabad, Telangana 500032
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="mt-4 text-xs text-center border-t border-black lg:mt-12 lg:text-sm lg:pt-2">
-                            <div>CIN L8989787876767512</div>
+                            {/* <div>CIN L8989787876767512</div> */}
                             <div>
                                 © 2024 Hyderabad Forex Private Limited | All Rights Reserved |{' '}
                                 <a href="/privacypolicy" className="hover:underline">
@@ -40,7 +40,7 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-row items-center mt-6 md:pt-8 space-x-6 lg:flex-col lg:items-start lg:space-y-4 lg:space-x-0 lg:mt-0">
+                    <div className="flex flex-row items-center mt-6 space-x-6 md:pt-8 lg:flex-col lg:items-start lg:space-y-4 lg:space-x-0 lg:mt-0">
                         <button onClick={() => navigate('/')} className="flex items-center hover:underline">
                             Home <span className="ml-1">↗</span>
                         </button>
@@ -57,7 +57,7 @@ const Footer = () => {
                             FAQs <span className="ml-1">↗</span>
                         </button>
                     </div>
-                    <div className="flex flex-row items-center mt-6 md:pt-8 space-x-6 lg:flex-col lg:items-start lg:space-y-4 lg:space-x-0 lg:mt-0">
+                    <div className="flex flex-row items-center mt-6 space-x-6 md:pt-8 lg:flex-col lg:items-start lg:space-y-4 lg:space-x-0 lg:mt-0">
                         <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="text-black">
                             <FaFacebookF size={24} />
                         </a>
@@ -71,7 +71,7 @@ const Footer = () => {
                             <FaTwitter size={24} />
                         </a>
                     </div>
-                    <div className="flex flex-row items-center mt-6 md:pt-6 space-x-6 lg:flex-col lg:items-start lg:space-y-4 lg:space-x-0 lg:mt-0">
+                    <div className="flex flex-row items-center mt-6 space-x-6 md:pt-6 lg:flex-col lg:items-start lg:space-y-4 lg:space-x-0 lg:mt-0">
                         <div className="text-center">
                             <span className='font-bold md:text-lg'>Store Locations</span>
                         </div>
@@ -83,7 +83,7 @@ const Footer = () => {
                                 className="flex items-center bg-[#e3c281] text-black px-4 py-2 rounded-md shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:bg-[#eec064]"
                             >
                                 <FaMapMarkerAlt className="text-2xl md:text-5xl" />
-                                <span className="font-medium ml-2">Somajiguda</span>
+                                <span className="ml-2 font-medium">Somajiguda</span>
                             </a>
                             <a
                                 href="https://www.google.com/maps/place/HYDERABAD+FOREX+LIMITED/@17.4358344,78.3642202,17z/data=!3m2!4b1!5s0x3bcb93ec2b90a663:0xfadde25fa15fec9e!4m6!3m5!1s0x3bcb93ec2b8933c7:0xfe8d87caf8af1578!8m2!3d17.4358293!4d78.3668005!16s%2Fg%2F11gghcp0qb?entry=ttu"
@@ -92,7 +92,7 @@ const Footer = () => {
                                 className="flex items-center bg-[#e3c281] text-black px-4 py-2 rounded-md shadow-md transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105 hover:bg-[#eec064]"
                             >
                                 <FaMapMarkerAlt className="text-2xl md:text-5xl" />
-                                <span className="font-medium ml-2">Gachibowli</span>
+                                <span className="ml-2 font-medium">Gachibowli</span>
                             </a>
                         </div>
 
