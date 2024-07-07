@@ -5,8 +5,11 @@ const ImageSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState('left');
   const slides = [
-    require('../assets/ImageSlider/imageslider1.png'),
+    require('../assets/ImageSlider/Image1.jpg'),
     require('../assets/ImageSlider/Imageslider2.jpg'),
+    require('../assets/ImageSlider/Image2.jpg'),
+    require('../assets/ImageSlider/Imageslider3.jpg'),
+    require('../assets/ImageSlider/Imageslider5b.jpg'),
     // Add more slides as needed
   ];
 
@@ -49,8 +52,8 @@ const ImageSlider = () => {
 
   return (
     <div>
-      <div className="p-1 hidden xl:block">
-        <div className="relative w-full overflow-hidden h-[56.25vw] md:h-[380px] rounded-2xl" style={{ aspectRatio: '4 / 3' }}>
+      <div className="hidden p-1 xl:block">
+        <div className="relative w-full overflow-hidden h-[56.25vw] md:h-[300px] rounded-2xl" style={{ aspectRatio: '4 / 3' }}>
           <div
             className={`flex transition-transform duration-700 ease-in-out ${
               direction === 'left' ? 'transform translate-x-0' : 'transform -translate-x-full'
@@ -60,7 +63,7 @@ const ImageSlider = () => {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="flex-none w-full h-[56.25vw] md:h-[380px] bg-center bg-cover"
+                className="flex-none w-full h-[56.25vw] md:h-[300px] bg-center bg-cover"
                 style={{ backgroundImage: `url(${slide})`, aspectRatio: '4 / 3' }}
               ></div>
             ))}
