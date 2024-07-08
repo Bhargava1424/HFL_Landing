@@ -8,8 +8,8 @@ import background from '../assets/Ourservice.png'
 
 const OurServiceHomePage = () => {
   return (
-    <div className='px-1 py-4'>
-      <div className="container mx-auto my-4 py-2 px-2 md:py-4 md:px-4 relative bg-cover bg-center bg-[#ffefd6]" style={{ backgroundImage: `url(${background})` }}>
+    <div className='px-1 py-2'>
+      <div className="container mx-auto my-2 py-2 px-2 md:py-4 md:px-4 relative bg-cover bg-center bg-[#ffefd6]" style={{ backgroundImage: `url(${background})` }}>
         <div className='sm:relative'>
         
         <div className="top-0 right-0 w-full pr-8 mt-2 sm:absolute md:mt-4 sm:w-1/2">
