@@ -243,9 +243,9 @@ const ContactUs = () => {
                     </button>
                   </div>
                   <div>
-                    <button onClick={() => openGmail('hooperations@hflforex.com')} className="flex items-center space-x-2 text-sm font-semibold text-black">
+                    <button onClick={() => openGmail('info@hflforex.com')} className="flex items-center space-x-2 text-sm font-semibold text-black">
                       <span role="img" aria-label="email">📧</span>
-                      <span>hooperations@hflforex.com</span>
+                      <span>info@hflforex.com</span>
                     </button>
                   </div>
                 </div>
@@ -268,9 +268,9 @@ const ContactUs = () => {
                     </button>
                   </div>
                   <div>
-                    <button onClick={() => openGmail('gboperations@hflforex.com')} className="flex items-center space-x-2 text-sm font-semibold text-black">
+                    <button onClick={() => openGmail('info@hflforex.com')} className="flex items-center space-x-2 text-sm font-semibold text-black">
                       <span role="img" aria-label="email">📧</span>
-                      <span>gboperations@hflforex.com</span>
+                      <span>info@hflforex.com</span>
                     </button>
                   </div>
                 </div>

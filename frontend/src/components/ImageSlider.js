@@ -5,11 +5,11 @@ const ImageSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState('left');
   const slides = [
-    require('../assets/ImageSlider/Image1.jpg'),
-    require('../assets/ImageSlider/Imageslider2.jpg'),
-    require('../assets/ImageSlider/Image2.jpg'),
-    require('../assets/ImageSlider/Imageslider3.jpg'),
-    require('../assets/ImageSlider/Imageslider5b.jpg'),
+    require('../assets/ImageSlider/sliderimg1.jpg'),
+    require('../assets/ImageSlider/sliderimg2.jpg'),
+    require('../assets/ImageSlider/sliderimg3.jpg'),
+    require('../assets/ImageSlider/sliderimg4.jpg'),
+    require('../assets/ImageSlider/sliderimg5.jpg'),
     // Add more slides as needed
   ];
 

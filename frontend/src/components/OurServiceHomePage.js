@@ -27,7 +27,7 @@ const OurServiceHomePage = () => {
           className="object-cover w-12 h-12 mx-auto mb-2 sm:w-40 sm:h-40 sm:mb-4"
         />
         <h3 className="text-poppins text-xs sm:text-xl font-bold text-[#343434]">We Buy</h3>
-        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] ">Sell your foreign currency easily and get the best rates</p>
+        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify">Sell your foreign currency easily and get the best rates</p>
         
       </motion.div>
     </div>
@@ -41,7 +41,7 @@ const OurServiceHomePage = () => {
           className="object-cover w-12 h-12 mx-auto mb-2 sm:w-40 sm:h-40 sm:mb-4"
         />
         <h3 className="text-poppins text-xs sm:text-xl font-bold text-[#343434]">We Sell</h3>
-        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] ">Purchase foreign currency at competitive rates with seamless transactions</p>
+        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify ">Purchase foreign currency at competitive rates with seamless transactions</p>
         
       </motion.div>
     </div>
@@ -55,7 +55,7 @@ const OurServiceHomePage = () => {
           className="object-cover w-12 h-12 mx-auto mb-2 sm:w-40 sm:h-40 sm:mb-4"
         />
         <h3 className="text-poppins text-xs sm:text-xl font-bold text-[#343434]">Forex Cards</h3>
-        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] ">Convenient and secure for all your travel needs</p>
+        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify ">Convenient and secure for all your travel needs</p>
        
       </motion.div>
     </div>
@@ -69,7 +69,7 @@ const OurServiceHomePage = () => {
           className="object-cover w-12 h-12 mx-auto mb-2 sm:w-40 sm:h-40 sm:mb-4"
         />
         <h3 className="text-poppins text-xs sm:text-xl font-bold text-[#343434]">Outward Remittances</h3>
-        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] "> International buisness payments, supporting family abroad and other remittances.</p>
+        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify "> International buisness payments, supporting family abroad and other remittances.</p>
         
       </motion.div>
     </div>

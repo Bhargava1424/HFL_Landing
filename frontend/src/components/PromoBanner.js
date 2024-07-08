@@ -3,7 +3,7 @@ import { isMobile } from 'react-device-detect';
 
 const PromoBanner = () => {
   const handleContactUs = () => {
-    const phoneNumber = '9876543210';
+    const phoneNumber = '9440626779';
 
     if (isMobile) {
       // Redirect to the call app with the phone number

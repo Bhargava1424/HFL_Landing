@@ -92,7 +92,7 @@ const CustomerForm = () => {
   return (
     <div className='bg-[#FBF8F1] pl-3 pr-3 md:pl-6 md:pr-6 mx-4 rounded-xl'>
     <div className="flex flex-col justify-between mx-auto lg:flex-row md:p-4 ">
-      <div className="mt-4 mb-4 lg:w-2/5 lg:mb-0">
+      <div className="mt-4 mb-4 lg:w-1/2 lg:mb-0">
         <h2 className="mb-1 font-semibold text-black text-kundan md:mb-6">
           Experience the Best Currency Exchange Service
         </h2>
@@ -109,12 +109,12 @@ const CustomerForm = () => {
         </ul>
       </div>
 
-      <div className="lg:w-3/5 bg-[#FDE5BF] p-2 md:p-3 rounded-lg shadow-lg">
+      <div className="lg:w-1/2 bg-[#FDE5BF] p-2 md:p-3 rounded-lg shadow-lg">
         <div className="flex justify-between w-3/4 h-8 md:h-14">
           <button
             className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
               formType === 'buy' ? 'bg-[#F8A401]' : 'bg-white'
-            } border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
+            } border-2 border-[#FF8A1F] rounded-t-xl font-medium text-xs md:text-lg`}
             onClick={() => setFormType('buy')}
           >
             Buy Forex
@@ -122,7 +122,7 @@ const CustomerForm = () => {
           <button
             className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
               formType === 'sell' ? 'bg-[#F8A401]' : 'bg-white'
-            } border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
+            } border-2 border-[#FF8A1F] rounded-t-xl font-medium text-xs md:text-lg`}
             onClick={() => setFormType('sell')}
           >
             Sell Forex
@@ -130,7 +130,7 @@ const CustomerForm = () => {
           <button
             className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
               formType === 'card' ? 'bg-[#F8A401]' : 'bg-white'
-            } border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
+            } border-2 border-[#FF8A1F] rounded-t-xl font-medium text-xs md:text-lg`}
             onClick={() => setFormType('card')}
           >
             Forex Card
@@ -147,24 +147,24 @@ const CustomerForm = () => {
           )}
           <div className="grid grid-cols-2 gap-6 mb-2 md:mb-4">
             <div>
-              <label className="block mb-1 text-sm md:text-lg">Store Select</label>
+              <label className="block mb-1 text-xs md:text-sm">Store Select</label>
               <select
                 name="store"
                 value={formData.store}
                 onChange={handleInputChange}
-                className="w-3/4 p-1 text-sm bg-gray-100 border rounded md:text-lg"
+                className="w-3/4 p-1 text-xs bg-gray-100 border rounded md:text-sm"
               >
                 <option value="Somajiguda">Somajiguda</option>
                 <option value="Gachibowli">Gachibowli</option>
               </select>
             </div>
             <div>
-              <label className="block mb-1 text-sm md:text-lg">Currency</label>
+              <label className="block mb-1 text-xs md:text-sm">Currency</label>
               <select
                 name="currency"
                 value={formData.currency}
                 onChange={handleInputChange}
-                className="w-3/4 p-1 text-sm bg-gray-100 border rounded md:text-lg"
+                className="w-3/4 p-1 text-xs bg-gray-100 border rounded md:text-sm"
               >
                 <option value="US Dollar (USD) - $">US Dollar (USD) - $</option>
                 <option value="Euro (EUR) - €">Euro (EUR) - €</option>
@@ -189,13 +189,13 @@ const CustomerForm = () => {
           </div>
           <div className="grid grid-cols-2 gap-6 md-1 md:mb-2">
             <div>
-              <label className="block mb-1 text-sm md:text-lg">Forex Amount / Volume</label>
+              <label className="block mb-1 text-xs md:text-sm">Forex Amount / Volume</label>
               <input
                 type="text"
                 name="amount"
                 value={formData.amount}
                 onChange={handleInputChange}
-                className="w-3/4 p-1 text-sm bg-gray-100 border rounded md:text-lg"
+                className="w-3/4 p-1 text-xs bg-gray-100 border rounded md:text-sm"
               />
             </div>
             <div className="w-3/4 p-1 font-semibold bg-gray-100 bg-yellow-100 border rounded text-xxs md:text-xs">
@@ -207,28 +207,28 @@ const CustomerForm = () => {
           </div>
           <div className="flex items-center justify-between md:mb-4">
             <hr className="flex-grow mr-2 border-gray-400 bigger-dots" />
-            <span className="text-sm font-semibold text-gray-700 md:text-lg">Contact Details</span>
+            <span className="text-xs font-semibold text-gray-700 md:text-sm">Contact Details</span>
             <hr className="flex-grow ml-2 border-gray-400 bigger-dots" />
           </div>
           <div className="grid grid-cols-3 gap-6 mb-4 ">
             <div className='content-end'>
-              <label className="block mb-1 text-sm md:text-lg">Phone Number</label>
+              <label className="block mb-1 text-xs md:text-sm">Phone Number</label>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className="w-full p-1 text-sm bg-gray-100 border rounded md:text-lg"
+                className="w-full p-1 text-xs bg-gray-100 border rounded md:text-sm"
               />
             </div>
             <div className='content-end'>
-              <label className="block mb-1 text-sm md:text-lg">Email</label>
+              <label className="block mb-1 text-xs md:text-sm">Email</label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full p-1 text-sm bg-gray-100 border rounded md:text-lg"
+                className="w-full p-1 text-xs bg-gray-100 border rounded md:text-sm"
               />
             </div>
             <div className="content-end mt-7">
@@ -246,7 +246,7 @@ const CustomerForm = () => {
               onChange={handleCheckboxChange}
               className="mr-2 bg-gray-100"
             />
-            <label htmlFor="privacyPolicy" className='text-sm md:text-lg'>
+            <label htmlFor="privacyPolicy" className='text-sm md:text-sm'>
               I accept the <a href="" onClick={handlePrivacyPolicyClick} className="text-blue-500 underline">Privacy Policy</a>
             </label>
           </div>

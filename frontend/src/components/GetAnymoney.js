@@ -118,19 +118,19 @@ const GetAnyMoney = () => {
             <div className="w-full md:w-4/5 bg-[#FDE5BF] p-2 md:p-3 rounded-lg shadow-lg md:mx-auto">
               <div className="flex justify-between w-3/4 h-8 md:h-14">
                 <button
-                  className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${formType === 'buy' ? 'bg-[#F8A401]' : 'bg-white'} border border-2 border-[#FF8A1F] rounded-t-xl`}
+                  className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${formType === 'buy' ? 'bg-[#F8A401]' : 'bg-white'} border border-2 border-[#FF8A1F] rounded-t-xl text-xs md:text-lg`}
                   onClick={() => setFormType('buy')}
                 >
                   Buy Forex
                 </button>
                 <button
-                  className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${formType === 'sell' ? 'bg-[#F8A401]' : 'bg-white'} border border-2 border-[#FF8A1F] rounded-t-xl`}
+                  className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${formType === 'sell' ? 'bg-[#F8A401]' : 'bg-white'} border border-2 border-[#FF8A1F] rounded-t-xl text-xs md:text-lg`}
                   onClick={() => setFormType('sell')}
                 >
                   Sell Forex
                 </button>
                 <button
-                  className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${formType === 'card' ? 'bg-[#F8A401]' : 'bg-white'} border border-2 border-[#FF8A1F] rounded-t-xl`}
+                  className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${formType === 'card' ? 'bg-[#F8A401]' : 'bg-white'} border border-2 border-[#FF8A1F] rounded-t-xl text-xs md:text-lg`}
                   onClick={() => setFormType('card')}
                 >
                   Forex Card
@@ -147,24 +147,24 @@ const GetAnyMoney = () => {
                 )}
                 <div className="mb-2 md:mb-4 grid grid-cols-2 gap-6">
                   <div>
-                    <label className="block mb-1 text-sm md:text-lg">Store Select</label>
+                    <label className="block mb-1 text-xs md:text-lg">Store Select</label>
                     <select
                       name="store"
                       value={formData.store}
                       onChange={handleInputChange}
-                      className="w-3/4 p-1 border rounded bg-gray-100 text-sm md:text-lg"
+                      className="w-3/4 p-1 border rounded bg-gray-100 text-xs md:text-lg"
                     >
                       <option value="Somajiguda">Somajiguda</option>
                       <option value="Gachibowli">Gachibowli</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block mb-1 text-sm md:text-lg">Currency</label>
+                    <label className="block mb-1 text-xs md:text-lg">Currency</label>
                     <select
                       name="currency"
                       value={formData.currency}
                       onChange={handleInputChange}
-                      className="w-3/4 p-1 border rounded bg-gray-100 text-sm md:text-lg"
+                      className="w-3/4 p-1 border rounded bg-gray-100 text-xs md:text-lg"
                     >
                       <option value="US Dollar (USD) - $">US Dollar (USD) - $</option>
                       <option value="Euro (EUR) - €">Euro (EUR) - €</option>
@@ -195,13 +195,13 @@ const GetAnyMoney = () => {
                 </div>
                 <div className="md-1 md:mb-2 grid grid-cols-2 gap-6">
                   <div>
-                    <label className="block mb-1 text-sm md:text-lg">Forex Amount / Volume</label>
+                    <label className="block mb-1 text-xs md:text-lg">Forex Amount / Volume</label>
                     <input
                       type="text"
                       name="amount"
                       value={formData.amount}
                       onChange={handleInputChange}
-                      className="w-3/4 p-1 border rounded bg-gray-100 text-sm md:text-lg"
+                      className="w-3/4 p-1 border rounded bg-gray-100 text-xs md:text-lg"
                     />
                   </div>
                   <div className="p-1 bg-yellow-100 border rounded bg-gray-100 font-semibold text-xxs md:text-xs w-3/4">
@@ -211,28 +211,28 @@ const GetAnyMoney = () => {
                 </div>
                 <div className="md:mb-4 flex justify-between items-center">
                   <hr className="border-gray-400 flex-grow mr-2 bigger-dots" />
-                  <span className="text-gray-700 font-semibold text-sm md:text-lg">Contact Details</span>
+                  <span className="text-gray-700 font-semibold text-xs md:text-lg">Contact Details</span>
                   <hr className="border-gray-400 flex-grow ml-2 bigger-dots" />
                 </div>
                 <div className="mb-4 grid grid-cols-3 gap-6">
                   <div>
-                    <label className="block mb-1 text-sm md:text-lg">Phone Number</label>
+                    <label className="block mb-1 text-xs md:text-lg">Phone Number</label>
                     <input
                       type="text"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full p-1 border rounded bg-gray-100 text-sm md:text-lg"
+                      className="w-full p-1 border rounded bg-gray-100 text-xs md:text-lg"
                     />
                   </div>
                   <div>
-                    <label className="block mb-1 text-sm md:text-lg">Email</label>
+                    <label className="block mb-1 text-xs md:text-lg">Email</label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full p-1 border rounded bg-gray-100 text-sm md:text-lg"
+                      className="w-full p-1 border rounded bg-gray-100 text-xs md:text-lg"
                     />
                   </div>
                   <div className="mt-7">
@@ -251,7 +251,7 @@ const GetAnyMoney = () => {
                     onChange={handleCheckboxChange}
                     className="mr-2 bg-gray-100"
                   />
-                  <label htmlFor="privacyPolicy" className='text-sm md:text-lg'>
+                  <label htmlFor="privacyPolicy" className='text-xs md:text-lg'>
                   I accept the <a href="" onClick={handlePrivacyPolicyClick} className="text-blue-500 underline">Privacy Policy</a>
                   </label>
                 </div>
