@@ -62,12 +62,12 @@ const testimonials = [
     image: image3,
     rating: 5
   },
-  {
-    name: 'K Shiva Prasad',
-    feedback: 'This is the Forex from where I purchased 8000 Us dollars. they charged me around Rs2.50 per dollar as service charge. They were quick and I\'m delighted with their service.',
-    image: image4,
-    rating: 5
-  },
+  // {
+  //   name: 'K Shiva Prasad',
+  //   feedback: 'This is the Forex from where I purchased 8000 Us dollars. they charged me around Rs2.50 per dollar as service charge. They were quick and I\'m delighted with their service.',
+  //   image: image4,
+  //   rating: 5
+  // },
   {
     name: 'MD MUSTAFA',
     feedback: 'I converted Dollars into Indian money at Hyderabad forex and the transaction taken place soon , the service was good and I felt contented.',
@@ -124,17 +124,17 @@ const Testimony = () => {
 
   return (
     <div className="container mx-auto my-4 py-2 px-2 md:py-4 md:px-4 relative bg-cover bg-center bg-[#ffefd6]" style={{ backgroundImage: `url(${background})` }}>
-      <h2 className="text-lg md:text-2xl lg:text-5xl font-bold mb-1 font-sans">Our Customer Feedback</h2>
-      <h3 className="text-lg md:text-lg lg:text-xl mb-1 md:mb-10 md:ml-2 font-serif">Don’t take our word for it. Trust our customers</h3>
+      <h2 className="mb-1 font-sans text-lg font-bold md:text-2xl lg:text-5xl">Our Customer Feedback</h2>
+      <h3 className="mb-1 font-serif text-lg md:text-lg lg:text-xl md:mb-10 md:ml-2">Don’t take our word for it. Trust our customers</h3>
         
-      <div className="flex flex-col md:flex-row justify-center space-y-2 md:space-y-0 md:space-x-4 overflow-hidden h-48 md:h-64">
+      <div className="flex flex-col justify-center h-48 space-y-2 overflow-hidden md:flex-row md:space-y-0 md:space-x-4 md:h-64">
         {testimonials.slice(currentIndex, currentIndex + itemsPerSlide).map((testimonial, index) => (
           <div
             className={`flex flex-col w-full md:max-w-sm rounded overflow-hidden shadow-lg border p-2 md:p-4 transition-transform duration-500 ease-in-out`}
             key={index}
           >
             <div className="flex items-center mb-2 md:mb-4">
-              <img src={testimonial.image} alt={testimonial.name} className="w-8 h-8 md:w-12 md:h-12 rounded-full mr-2 md:mr-4" />
+              <img src={testimonial.image} alt={testimonial.name} className="w-8 h-8 mr-2 rounded-full md:w-12 md:h-12 md:mr-4" />
               <div className="flex items-center">
                 {Array.from({ length: 5 }, (_, i) => (
                   <svg
@@ -148,12 +148,12 @@ const Testimony = () => {
                 ))}
               </div>
             </div>
-            <h3 className="font-bold text-sm md:text-lg">{testimonial.name}</h3>
-            <p className="text-gray-600 flex-grow text-xs md:text-base">{testimonial.feedback}</p>
+            <h3 className="text-sm font-bold md:text-lg">{testimonial.name}</h3>
+            <p className="flex-grow text-xs text-gray-600 md:text-base">{testimonial.feedback}</p>
           </div>
         ))}
       </div>
-      <div className="flex justify-center mt-1 md:mt-4 space-x-2 py-4">
+      <div className="flex justify-center py-4 mt-1 space-x-2 md:mt-4">
         
         {Array.from({ length: getTotalSlides() }, (_, i) => (
           <div
@@ -161,14 +161,14 @@ const Testimony = () => {
             className={`h-1 w-1 md:h-2 md:w-2 rounded-full ${i === getCurrentSlideIndex() ? 'bg-orange-400' : 'bg-gray-300'}`}
           ></div>
         ))}
-        <div className="md:hidden absolute inset-x-0 bottom-7 m-4 mt-2 flex justify-center space-x-2 md:mt-4 mb-2 md:mb-0">
+        <div className="absolute inset-x-0 flex justify-center m-4 mt-2 mb-2 space-x-2 md:hidden bottom-7 md:mt-4 md:mb-0">
           <button className="border rounded px-1 py-0.5 text-xs md:block md:px-4 md:py-2 md:text-base" onClick={prevSlide}>Previous</button>
           <button className="border rounded px-1 py-0.5 text-xs md:block md:px-4 md:py-2 md:text-base" onClick={nextSlide}>Next</button>
         </div>
       </div>
-      <div className="hidden md:flex absolute top-0 right-0 mt-4 mr-4 space-x-2">
-        <button className="border rounded px-4 py-2 text-base" onClick={prevSlide}>Previous</button>
-        <button className="border rounded px-4 py-2 text-base" onClick={nextSlide}>Next</button>
+      <div className="absolute top-0 right-0 hidden mt-4 mr-4 space-x-2 md:flex">
+        <button className="px-4 py-2 text-base border rounded" onClick={prevSlide}>Previous</button>
+        <button className="px-4 py-2 text-base border rounded" onClick={nextSlide}>Next</button>
       </div>
 
       

@@ -72,7 +72,7 @@ const OurServiceHomePage = () => {
           className="object-cover w-12 h-12 mx-auto mb-2 sm:w-40 sm:h-40 sm:mb-4"
         />
         <h3 className="text-poppins text-xs sm:text-xl font-bold text-[#343434]">Outward Remittances</h3>
-        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify "> International buisness payments, supporting family abroad and other remittances.</p>
+        <p className="text-poppins text-xs md:text-base lg:text-xl  text-[#333539] text-justify "> Tution fee payments, supporting family abroad and other remittances.</p>
         
       </motion.div>
     </div>
