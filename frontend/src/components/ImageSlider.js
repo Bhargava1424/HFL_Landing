@@ -52,11 +52,11 @@ const ImageSlider = () => {
 
   return (
     <div>
-      <div className="hidden p-1 xl:block">
+      <div className="hidden p-1 ml-4 mr-4 xl:block">
         <div className="relative w-full overflow-hidden h-[56.25vw] md:h-[300px] rounded-2xl" style={{ aspectRatio: '4 / 3' }}>
           <div
-            className={`flex transition-transform duration-700 ease-in-out ${
-              direction === 'left' ? 'transform translate-x-0' : 'transform -translate-x-full'
+            className={`flex transition-transform duration-1000 ease-in-out ${
+              direction === 'left' ? 'transform translate-x-5' : 'transform -translate-x-full'
             }`}
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >

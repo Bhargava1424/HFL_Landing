@@ -37,7 +37,7 @@ const CurrencyScroll = () => {
   };
 
   return (
-    <div className='px-1'> {/* Consistent padding on left and right */}
+    <div className='px-4'> {/* Consistent padding on left and right */}
       <div className="flex items-center justify-between h-12 max-w-full mx-auto mb-1 overflow-hidden bg-gray-100 shadow-inner rounded-xl ">
         <div className="sm:hidden flex-shrink-0 px-1 py-2 bg-gray-300 z-10  flex flex-col items-center justify-center font-semibold text-[10px] shadow-inner rounded-lg">
           <div>We Buy</div>
@@ -47,12 +47,12 @@ const CurrencyScroll = () => {
           We Buy & We Sell
         </div>
 
-        <Marquee speed={60} pauseOnHover direction="right" className="flex items-center flex-grow px-1 py-2 mx-3 overflow-hidden whitespace-nowrap">
+        <Marquee speed={35} pauseOnHover direction="right" className="flex items-center flex-grow px-1 py-2 mx-3 overflow-hidden whitespace-nowrap">
           {currencies.map((currency, index) => (
             <React.Fragment key={index}>
               <div className="flex items-center px-1 py-2 mx-1 rounded-2xl"> {/* Reduced margin and padding */}
                 <img src={currency.image} alt={currency.name} className="w-12 h-6" /> {/* Adjusted image size */}
-                <div className="font-serif text-xs font-light whitespace-nowrap"> {/* Font size reduced */}
+                <div className="font-sans text-xs font-light whitespace-nowrap"> {/* Font size reduced */}
                   <b>{currency.name}</b>
                 </div>
                 <div className="w-px h-12 mx-2 bg-gray-500"></div> {/* Adjusted divider height and margin */}

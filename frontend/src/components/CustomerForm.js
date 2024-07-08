@@ -96,7 +96,7 @@ const CustomerForm = () => {
         <h2 className="mb-1 font-semibold text-black text-kundan md:mb-4">
           Experience the Best Currency Exchange Service
         </h2>
-        <ul className="pl-5 list-disc space-y-3 md:space-y-7">
+        <ul className="pl-5 space-y-3 list-disc md:space-y-7">
           <li className="text-sm font-semibold text-[#d69009] md:mb-1 md:text-2xl">
             RBI Authorized Money changer
           </li>
@@ -114,7 +114,7 @@ const CustomerForm = () => {
           <button
             className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
               formType === 'buy' ? 'bg-[#F8A401]' : 'bg-white'
-            } border border-2 border-[#FF8A1F] rounded-t-xl`}
+            } border border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
             onClick={() => setFormType('buy')}
           >
             Buy Forex
@@ -122,7 +122,7 @@ const CustomerForm = () => {
           <button
             className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
               formType === 'sell' ? 'bg-[#F8A401]' : 'bg-white'
-            } border border-2 border-[#FF8A1F] rounded-t-xl`}
+            } border border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
             onClick={() => setFormType('sell')}
           >
             Sell Forex
@@ -130,7 +130,7 @@ const CustomerForm = () => {
           <button
             className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
               formType === 'card' ? 'bg-[#F8A401]' : 'bg-white'
-            } border border-2 border-[#FF8A1F] rounded-t-xl`}
+            } border border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
             onClick={() => setFormType('card')}
           >
             Forex Card
@@ -164,7 +164,7 @@ const CustomerForm = () => {
                 name="currency"
                 value={formData.currency}
                 onChange={handleInputChange}
-                className="w-3/4 p-1 border rounded bg-gray-100 text-sm md:text-lg"
+                className="w-3/4 p-1 text-sm bg-gray-100 border rounded md:text-lg"
               >
                 <option value="US Dollar (USD) - $">US Dollar (USD) - $</option>
                 <option value="Euro (EUR) - €">Euro (EUR) - €</option>

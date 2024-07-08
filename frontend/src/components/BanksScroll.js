@@ -38,7 +38,7 @@ const BankScroll = () => {
     <div className="flex flex-col items-center">
       <div className="w-full overflow-hidden">
         <div className="px-4 py-3 m-1 md:px-0 rounded-2xl">
-          <h1 className="mb-5 text-2xl font-bold text-center md:text-5xl">Our Bankers</h1>
+          <h1 className="mb-5 text-lg font-bold text-center md:text-5xl">Our Bankers</h1>
           <Marquee speed={100} pauseOnHover loop={0} className="mb-5">
             {bankLogos.map((logo, index) => (
               <img
@@ -52,7 +52,7 @@ const BankScroll = () => {
 
           <h1 className="text-xl font-bold text-center md:mb-5 md:text-5xl">Plan Your Trip Today with Hyderabad Forex</h1>
           <h1 className="text-xl font-bold text-center md:mb-5 md:text-5xl">
-            Excellence in <span className='text-orange-500'>Any Money</span> Exchange
+            Excellence in <span className='text-amber-500'>Any Money</span> Exchange
           </h1>
           <div className="flex justify-center">
             <img src={MAP} alt="Map" className='w-3/4 h-auto mt-2 ml-10 mr-10 md:mt-8' />

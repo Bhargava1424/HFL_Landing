@@ -36,15 +36,15 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" sticky top-0 left-0 right-0 bg-white z-50 pr-0.5">
-      <div className=" mx-auto px-1 py-2 flex justify-between items-center">
+    <nav className=" sticky top-0 left-0 right-0 bg-white z-50 pr-0.5 drop-shadow-lg px-3">
+      <div className="flex items-center justify-between px-1 py-2 mx-auto ">
         {/* Logo */}
         <Link to='/' className="flex items-center">
-          <img src={Logo} alt="Logo" className="h-9 w-auto" />
-          <div className="border-r border-gray-800 h-9 mx-2"></div>
+          <img src={Logo} alt="Logo" className="w-auto h-16 ml-5" />
+          <div className="mx-2 border-r border-gray-800 h-9"></div>
           <div>
-            <span className="text-gray-800 font-bold block">Hyderabad Forex</span>
-            <span className='text-gray-800 font-bold'>Limited</span>
+            <span className="block font-bold text-gray-800">Hyderabad Forex</span>
+            <span className='font-bold text-gray-800'>Limited</span>
           </div>
         </Link>
 
@@ -69,9 +69,9 @@ const Navbar = () => {
           <div className='absolute inset-0.5 px-2 py-2 ml-4 bg-orange-200 rounded-lg blur'></div>
           <motion.button 
             whileHover={{ scale: 1.05 }}
-            className="relative bg-white text-black hover: py-2 px-2 border border-orange-500 rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg font-semibold button"
+            className="relative px-2 py-2 mr-5 font-semibold text-black bg-white border border-orange-500 rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg hover: button"
             style={{
-              animation: 'glowing 1500ms infinite',
+              animation: 'glowing 1600ms infinite',
             }}
             onClick={handlebuttonclick}
           >
@@ -82,7 +82,7 @@ const Navbar = () => {
         {/* Mobile menu button */}
         <div className={`${isMobile ? 'block' : 'hidden'}`}>
           <button
-            className="lg:hidden text-gray-800 hover:text-orange-500 focus:outline-none"
+            className="text-gray-800 lg:hidden hover:text-orange-500 focus:outline-none"
             onClick={toggleDropdown}
           >
             <svg
@@ -137,7 +137,7 @@ const Navbar = () => {
             </Link>
             <div className='relative'>
               <button
-                className="relative bg-white text-black hover:text-orange-500 py-2 px-4 border border-orange-500 rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg font-semibold"
+                className="relative px-4 py-2 font-semibold text-black bg-white border border-orange-500 rounded-tl-lg rounded-tr-lg rounded-bl-lg rounded-br-lg hover:text-orange-500"
                 onClick={handlebuttonclick}
               >
                 Get AnyMoney Now &rarr;
