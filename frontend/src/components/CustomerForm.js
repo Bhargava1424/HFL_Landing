@@ -92,7 +92,7 @@ const CustomerForm = () => {
   return (
     <div className='bg-[#FBF8F1] pl-3 pr-3 md:pl-6 md:pr-6 mx-4 rounded-xl'>
     <div className="flex flex-col justify-between mx-auto lg:flex-row md:p-4 ">
-      <div className="mb-4 lg:w-2/5 lg:mb-0 mt-12">
+      <div className="mt-4 mb-4 lg:w-2/5 lg:mb-0">
         <h2 className="mb-1 font-semibold text-black text-kundan md:mb-6">
           Experience the Best Currency Exchange Service
         </h2>
@@ -109,7 +109,7 @@ const CustomerForm = () => {
         </ul>
       </div>
 
-      <div className="lg:w-2/5 bg-[#FDE5BF] p-2 md:p-3 rounded-lg shadow-lg">
+      <div className="lg:w-3/5 bg-[#FDE5BF] p-2 md:p-3 rounded-lg shadow-lg">
         <div className="flex justify-between w-3/4 h-8 md:h-14">
           <button
             className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
@@ -231,7 +231,7 @@ const CustomerForm = () => {
                 className="w-full p-1 text-sm bg-gray-100 border rounded md:text-lg"
               />
             </div>
-            <div className="mt-7 content-end">
+            <div className="content-end mt-7">
               <button type="submit" className="w-full custom-get-quote-button">
                 Get Quote
               </button>

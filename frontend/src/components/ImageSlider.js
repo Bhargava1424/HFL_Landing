@@ -52,8 +52,8 @@ const ImageSlider = () => {
 
   return (
     <div>
-      <div className="hidden p-1 ml-4 mr-4 xl:block">
-        <div className="relative w-full overflow-hidden h-[56.25vw] md:h-[300px] rounded-2xl" style={{ aspectRatio: '4 / 3' }}>
+      <div className="hidden p-1 ml-3 mr-3 xl:block">
+        <div className="relative w-full overflow-hidden h-[56.25vw] md:h-[250px] rounded-2xl" style={{ aspectRatio: '4 / 3' }}>
           <div
             className={`flex transition-transform duration-1000 ease-in-out ${
               direction === 'left' ? 'transform translate-x-5' : 'transform -translate-x-full'
@@ -63,7 +63,7 @@ const ImageSlider = () => {
             {slides.map((slide, index) => (
               <div
                 key={index}
-                className="flex-none w-full h-[56.25vw] md:h-[300px] bg-center bg-cover"
+                className="flex-none w-full h-[56.25vw] md:h-[250px] bg-center bg-cover"
                 style={{ backgroundImage: `url(${slide})`, aspectRatio: '4 / 3' }}
               ></div>
             ))}

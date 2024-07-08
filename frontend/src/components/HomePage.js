@@ -24,14 +24,9 @@ const HomePage = () => {
       
   
         <NavBar/>  
-        
-        
-      
-      
-      <ImageSlider/><CurrencyScroll />
-      
-      <CustomerForm/>
-      
+      <ImageSlider/>
+      <CurrencyScroll />
+      <CustomerForm/>  
       <div className='pl-3 pr-3'>
         <OurServiceHomePage />
         <RbiComponent/>
