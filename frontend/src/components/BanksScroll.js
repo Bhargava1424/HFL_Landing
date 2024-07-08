@@ -37,7 +37,7 @@ const BankScroll = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="w-full overflow-hidden">
-        <div className="px-4 py-3 m-1 md:px-0 rounded-2xl">
+        <div className="px-4  py-3 m-1 md:px-0 rounded-2xl">
           <h1 className="mb-5 text-lg font-bold text-center md:text-5xl">Our Bankers</h1>
           <Marquee speed={40} pauseOnHover loop={0} className="mb-5">
             {bankLogos.map((logo, index) => (

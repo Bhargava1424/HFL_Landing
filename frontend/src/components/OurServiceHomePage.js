@@ -15,7 +15,10 @@ const OurServiceHomePage = () => {
         <div className="top-0 right-0 w-full pr-8 mt-2 sm:absolute md:mt-4 sm:w-1/2">
 </div>
 </div>
-
+<div>
+  <h1 className=' font-bold text-[#D69009] text-4xl '>Our Services</h1>
+    <p className='mt-5 text-xs md:text-base lg:text-xl'>Hyderabad Forex offers secure, convenient forex solutions as buy/sell currency, forex cards for travel, and hassle-free remittances</p>
+  </div>
         <div className="grid justify-center grid-cols-2 gap-2 mt-2 sm:grid-cols-4 md:mt-10">
     <div className="mb-1 text-center md:mb-4">
       <motion.div 
