@@ -32,7 +32,7 @@ const HomePage = () => {
       
       <CustomerForm/>
       
-      <div className='pl-3 pr-3 md:pl-12 md:pr-12'>
+      <div className='pl-3 pr-3'>
         <OurServiceHomePage />
         <RbiComponent/>
         <StatsDisplay/>
@@ -43,7 +43,7 @@ const HomePage = () => {
         <div className='pl-3 pr-3 md:pl-0 md:pr-0'>
           <PromoBanner/>
         </div>
-      <Footer/>
+        <Footer/>
 
         
         {/* Rest of the home page content */}

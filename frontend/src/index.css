@@ -60,7 +60,7 @@ code {
 }
 @media (min-width: 768px) {
   .text-kundan {
-    font-size: 3rem; /* Larger size for medium and larger screens */
+    font-size: 2.7rem; /* Larger size for medium and larger screens */
   }
 }
 .custom-get-quote-button {

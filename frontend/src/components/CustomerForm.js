@@ -90,20 +90,20 @@ const CustomerForm = () => {
   };
 
   return (
-    <div className='bg-[#FBF8F1] pl-3 pr-3 md:pl-12 md:pr-12'>
+    <div className='bg-[#FBF8F1] pl-3 pr-3 md:pl-6 md:pr-6 mx-4 rounded-xl'>
     <div className="flex flex-col justify-between mx-auto lg:flex-row md:p-4 ">
-      <div className="mb-4 lg:w-2/5 lg:mb-0">
-        <h2 className="mb-1 font-semibold text-black text-kundan md:mb-4">
+      <div className="mb-4 lg:w-2/5 lg:mb-0 mt-12">
+        <h2 className="mb-1 font-semibold text-black text-kundan md:mb-6">
           Experience the Best Currency Exchange Service
         </h2>
-        <ul className="pl-5 space-y-3 list-disc md:space-y-7">
+        <ul className="pl-5 space-y-3 list-disc md:space-y-4">
           <li className="text-sm font-semibold text-[#d69009] md:mb-1 md:text-2xl">
             RBI Authorized Money changer
           </li>
           <li className="text-sm font-semibold text-[#d69009] md:mb-1 md:text-2xl">
             2 Decades of seamless service
           </li>
-          <li className="text-sm font-semibold text-[#d69009] md:mb-1 md:text-2xl">
+          <li className="text-sm font-semibold text-[#d69009] md:mb-1 md:text-2xl md:w-80">
             Expert team ensures quick, secure and hassle free forex services
           </li>
         </ul>
@@ -114,7 +114,7 @@ const CustomerForm = () => {
           <button
             className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
               formType === 'buy' ? 'bg-[#F8A401]' : 'bg-white'
-            } border border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
+            } border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
             onClick={() => setFormType('buy')}
           >
             Buy Forex
@@ -122,7 +122,7 @@ const CustomerForm = () => {
           <button
             className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
               formType === 'sell' ? 'bg-[#F8A401]' : 'bg-white'
-            } border border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
+            } border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
             onClick={() => setFormType('sell')}
           >
             Sell Forex
@@ -130,7 +130,7 @@ const CustomerForm = () => {
           <button
             className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
               formType === 'card' ? 'bg-[#F8A401]' : 'bg-white'
-            } border border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
+            } border-2 border-[#FF8A1F] rounded-t-xl font-medium`}
             onClick={() => setFormType('card')}
           >
             Forex Card
@@ -210,8 +210,8 @@ const CustomerForm = () => {
             <span className="text-sm font-semibold text-gray-700 md:text-lg">Contact Details</span>
             <hr className="flex-grow ml-2 border-gray-400 bigger-dots" />
           </div>
-          <div className="grid grid-cols-3 gap-6 mb-4">
-            <div>
+          <div className="grid grid-cols-3 gap-6 mb-4 ">
+            <div className='content-end'>
               <label className="block mb-1 text-sm md:text-lg">Phone Number</label>
               <input
                 type="tel"
@@ -221,7 +221,7 @@ const CustomerForm = () => {
                 className="w-full p-1 text-sm bg-gray-100 border rounded md:text-lg"
               />
             </div>
-            <div>
+            <div className='content-end'>
               <label className="block mb-1 text-sm md:text-lg">Email</label>
               <input
                 type="email"
@@ -231,7 +231,7 @@ const CustomerForm = () => {
                 className="w-full p-1 text-sm bg-gray-100 border rounded md:text-lg"
               />
             </div>
-            <div className="mt-7">
+            <div className="mt-7 content-end">
               <button type="submit" className="w-full custom-get-quote-button">
                 Get Quote
               </button>
