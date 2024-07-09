@@ -4,7 +4,7 @@ import { isMobile } from 'react-device-detect';
 const ImageSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState('left');
-  const slides = [
+  const slidesLarge = [
     require('../assets/ImageSlider/sliderimg1.jpg'),
     require('../assets/ImageSlider/sliderimg2.jpg'),
     require('../assets/ImageSlider/sliderimg3.jpg'),
@@ -12,15 +12,23 @@ const ImageSlider = () => {
     require('../assets/ImageSlider/sliderimg5.jpg'),
     // Add more slides as needed
   ];
+  const slidesSmall = [
+    require('../assets/ImageSlider/sliderimg6.jpg'),
+    require('../assets/ImageSlider/sliderimg7.jpg'),
+    require('../assets/ImageSlider/sliderimg8.jpg'),
+    require('../assets/ImageSlider/sliderimg9.jpg'),
+    require('../assets/ImageSlider/sliderimg10.jpg'),
+    // Add more slides as needed
+  ];
 
   const nextSlide = () => {
     setDirection('left');
-    setCurrentSlide((prevSlide) => (prevSlide === slides.length - 1 ? 0 : prevSlide + 1));
+    setCurrentSlide((prevSlide) => (prevSlide === slidesLarge.length - 1 ? 0 : prevSlide + 1));
   };
 
   const prevSlide = () => {
     setDirection('right');
-    setCurrentSlide((prevSlide) => (prevSlide === 0 ? slides.length - 1 : prevSlide - 1));
+    setCurrentSlide((prevSlide) => (prevSlide === 0 ? slidesLarge.length - 1 : prevSlide - 1));
   };
 
   const handleContactUs = () => {
@@ -37,51 +45,86 @@ const ImageSlider = () => {
 
   useEffect(() => {
     const slideInterval = setInterval(() => {
-      if (currentSlide === slides.length - 1) {
+      if (currentSlide === slidesLarge.length - 1) {
         setDirection('right');
       } else {
         setDirection('left');
       }
-      setCurrentSlide((prevSlide) => (prevSlide === slides.length - 1 ? 0 : prevSlide + 1));
+      setCurrentSlide((prevSlide) => (prevSlide === slidesLarge.length - 1 ? 0 : prevSlide + 1));
     }, 5000);
 
     return () => {
       clearInterval(slideInterval);
     };
-  }, [currentSlide, slides.length]);
+  }, [currentSlide, slidesLarge.length]);
 
   return (
     <div>
-      <div className="hidden p-1 ml-3 mr-3 xl:block">
-        <div className="relative w-full overflow-hidden h-[56.25vw] md:h-[250px] rounded-2xl" style={{ aspectRatio: '4 / 3' }}>
+<div>
+  {/* Section for small breakpoints and above */}
+  <div className="hidden p-1 ml-3 mr-3 sm:block">
+    <div className="relative w-full overflow-hidden h-[18.75vw] rounded-2xl">
+      <div
+        className={`flex transition-transform duration-1000 ease-in-out ${
+          direction === 'left' ? 'transform translate-x-5' : 'transform -translate-x-full'
+        }`}
+        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+      >
+        {slidesLarge.map((slide, index) => (
           <div
-            className={`flex transition-transform duration-1000 ease-in-out ${
-              direction === 'left' ? 'transform translate-x-5' : 'transform -translate-x-full'
-            }`}
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {slides.map((slide, index) => (
-              <div
-                key={index}
-                className="flex-none w-full h-[56.25vw] md:h-[250px] bg-center bg-cover"
-                style={{ backgroundImage: `url(${slide})`, aspectRatio: '4 / 3' }}
-              ></div>
-            ))}
-          </div>
-          <button
-            className="absolute p-2 text-xl text-white transform -translate-y-1/2 bg-black bg-opacity-50 border-none cursor-pointer top-1/2 left-2 sm:left-4 sm:text-2xl"
-            onClick={prevSlide}
-          >
-            &lt;
-          </button>
-          <button
-            className="absolute p-2 text-xl text-white transform -translate-y-1/2 bg-black bg-opacity-50 border-none cursor-pointer top-1/2 right-2 sm:right-4 sm:text-2xl"
-            onClick={nextSlide}
-          >
-            &gt;
-          </button>
-        </div>
+            key={index}
+            className="flex-none w-full h-[18.75vw] bg-center md:bg-contain md:bg-no-repeat xl:bg-cover"
+            style={{ backgroundImage: `url(${slide})` }}
+          ></div>
+        ))}
       </div>
+      <button
+        className="absolute p-2 text-xl text-white transform -translate-y-1/2 bg-black bg-opacity-50 border-none cursor-pointer top-1/2 left-2 sm:left-4 sm:text-2xl"
+        onClick={prevSlide}
+      >
+        &lt;
+      </button>
+      <button
+        className="absolute p-2 text-xl text-white transform -translate-y-1/2 bg-black bg-opacity-50 border-none cursor-pointer top-1/2 right-2 sm:right-4 sm:text-2xl"
+        onClick={nextSlide}
+      >
+        &gt;
+      </button>
+    </div>
+  </div>
+
+  {/* Section for smaller breakpoints */}
+  <div className="block p-1 ml-3 mr-3 sm:hidden">
+    <div className="relative w-full overflow-hidden h-[19.5vw] rounded-2xl">
+      <div
+        className={`flex transition-transform duration-1000 ease-in-out ${
+          direction === 'left' ? 'transform translate-x-5' : 'transform -translate-x-full'
+        }`}
+        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+      >
+        {slidesSmall.map((slide, index) => (
+          <div
+            key={index}
+            className="flex-none w-full h-[19.5vw] bg-center bg-contain bg-no-repeat"
+            style={{ backgroundImage: `url(${slide})`}}
+          ></div>
+        ))}
+      </div>
+      <button
+        className="absolute p-2 text-xl text-white transform -translate-y-1/2 bg-black bg-opacity-50 border-none cursor-pointer top-1/2 left-2 sm:left-4 sm:text-2xl"
+        onClick={prevSlide}
+      >
+        &lt;
+      </button>
+      <button
+        className="absolute p-2 text-xl text-white transform -translate-y-1/2 bg-black bg-opacity-50 border-none cursor-pointer top-1/2 right-2 sm:right-4 sm:text-2xl"
+        onClick={nextSlide}
+      >
+        &gt;
+      </button>
+    </div>
+  </div>
+</div>
       
       {/* SVG Example */}
       <div className="absolute top-0 left-0 w-16 h-16">
