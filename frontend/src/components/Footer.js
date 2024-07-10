@@ -1,5 +1,5 @@
 import React from 'react';
-import HFLLogo from '../assets/HFLlogo.jpg';
+import HFLLogo from '../assets/currency exchnage near me.jpg';
 import { useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter, FaMapMarkerAlt } from 'react-icons/fa'; // Importing icons from react-icons
 

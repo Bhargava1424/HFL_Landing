@@ -6,7 +6,7 @@ import CustomNotification from './CustomNotification';
 // import nodemailer from 'nodemailer';
 
 const CustomerForm = () => {
-  const [formType, setFormType] = useState('buy');
+  const [formType, setFormType] = useState('buy forex');
   const [formData, setFormData] = useState({
     store: 'Somajiguda',
     currency: 'USD - Dollar',
@@ -193,7 +193,7 @@ const CustomerForm = () => {
         email: '',
       });
       setIsPrivacyPolicyChecked(false);
-      setFormType('buy');
+      setFormType('buy forex');
       setNotification({ message: '', type: '', show: false });
     }, 2000);
   };
@@ -217,29 +217,20 @@ const CustomerForm = () => {
           </ul>
         </div>
 
-        <div className='my-auto'>
-            <div className="w-full bg-[#FDE5BF] rounded-lg shadow-lg">
-              <div className="flex justify-between w-3/4 h-8 md:h-14">
-                <button
-                  className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${formType === 'buy' ? 'bg-[#F8A401]' : 'bg-white'} border border-2 border-[#FF8A1F] rounded-t-xl text-xs md:text-lg`}
-                  onClick={() => setFormType('buy')}
-                >
-                  Buy Forex
-                </button>
-                <button
-                  className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${formType === 'sell' ? 'bg-[#F8A401]' : 'bg-white'} border border-2 border-[#FF8A1F] rounded-t-xl text-xs md:text-lg`}
-                  onClick={() => setFormType('sell')}
-                >
-                  Sell Forex
-                </button>
-                <button
-                  className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${formType === 'card' ? 'bg-[#F8A401]' : 'bg-white'} border border-2 border-[#FF8A1F] rounded-t-xl text-xs md:text-lg`}
-                  onClick={() => setFormType('card')}
-                >
-                  Forex Card
-                </button>
-              </div>
-            </div>
+        <div className="lg:w-1/2 bg-[#FDE5BF] p-2 md:p-3 rounded-lg shadow-lg">
+        <div className="flex justify-between w-3/4 h-8 md:h-14">
+          {['buy forex', 'sell forex', 'buy forexcard'].map((type) => (
+            <button
+              key={type}
+              className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
+                formType === type ? 'bg-[#F8A401]' : 'bg-white'
+              } border-2 border-[#FF8A1F] rounded-t-xl font-medium text-xs md:text-lg`}
+              onClick={() => setFormType(type)}
+            >
+              {type === 'buy forex' ? 'Buy Forex' : type === 'sell forex' ? 'Sell Forex' : 'Forex Card'}
+            </button>
+          ))}
+        </div>
 
           <form onSubmit={handleSubmit} className="relative border border-[#FF8A1F] border-1 rounded-b-lg rounded-r-lg p-2 bg-white">
             {notification.show && (

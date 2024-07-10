@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import Logo from "../assets/HFLlogo.jpg";
+import Logo from "../assets/currency exchnage near me.jpg";
 import { motion } from "framer-motion";
 import "./NavBar.css";
 

@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import { useNavigate } from 'react-router-dom';
-import centerImage from '../../assets/HFLlogo.jpg';
+import centerImage from '../../assets/currency exchnage near me.jpg';
 
 const steps = ['PAN', 'Passport', 'Aadhar', 'Driving License', 'Ticket'];
 const currencies = ['USD', 'EUR', 'GBP', 'INR'];
@@ -177,27 +177,27 @@ const UploadWizard = () => {
   }, [showModal, navigate]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-6 relative">
+    <div className="relative flex items-center justify-center min-h-screen p-6 bg-gray-100">
       {isLoading && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="loader animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
+        <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-50">
+          <div className="w-32 h-32 border-t-2 border-b-2 border-gray-900 rounded-full loader animate-spin"></div>
         </div>
       )}
 
       {showModal && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-8 rounded-xl shadow-xl max-w-md text-center">
-            <p className="text-lg font-bold mb-4">Thank you for uploading the documents. You will now be redirected to the Hyderabad Forex Limited Official Webpage.</p>
+        <div className="fixed top-0 left-0 z-50 flex items-center justify-center w-full h-full bg-black bg-opacity-50">
+          <div className="max-w-md p-8 text-center bg-white shadow-xl rounded-xl">
+            <p className="mb-4 text-lg font-bold">Thank you for uploading the documents. You will now be redirected to the Hyderabad Forex Limited Official Webpage.</p>
           </div>
         </div>
       )}
 
-      <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-2xl border-2 border-dashed border-gray-400">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
+      <div className="w-full max-w-2xl p-8 bg-white border-2 border-gray-400 border-dashed shadow-xl rounded-xl">
+        <h2 className="mb-8 text-3xl font-bold text-center text-gray-800">
           Create Request & Upload Documents
         </h2>
 
-        <p className="mb-6 text-gray-600 font-semibold" >
+        <p className="mb-6 font-semibold text-gray-600" >
         <img src={centerImage} className="upload-blurred-image" alt="Background" />
           Welcome to the official HFL Foreign Exchange Document Upload Portal. This is an essential RBI-approved step for legally processing your foreign exchange needs. We take pleasure in maintaining the highest levels of professionalism and data security. Please review our <a href="#" className="text-green-500 hover:text-green-700">User Data Protection Regulations</a> to understand our commitment to protecting your personal information.
         </p>
@@ -206,52 +206,52 @@ const UploadWizard = () => {
         {!requestId ? (
           <div className="mb-8">
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">Name</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="block w-full px-4 py-3 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">Phone Number</label>
             <input
               type="text"
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="block w-full px-4 py-3 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">Email</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="block w-full px-4 py-3 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Amount Needed</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">Amount Needed</label>
             <input
               type="number"
               name="amount"
               value={formData.amount}
               onChange={handleChange}
-              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="block w-full px-4 py-3 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Currency</label>
+            <label className="block mb-2 text-sm font-medium text-gray-700">Currency</label>
             <select
               name="currency"
               value={formData.currency}
               onChange={handleChange}
-              className="block w-full text-sm text-gray-900 py-3 px-4 rounded-lg border border-gray-300 bg-white shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="block w-full px-4 py-3 text-sm text-gray-900 bg-white border border-gray-300 rounded-lg shadow-inner focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               {currencies.map((currency) => (
                 <option key={currency} value={currency}>
@@ -262,7 +262,7 @@ const UploadWizard = () => {
           </div>
           <button
             onClick={createRequest}
-            className="mt-4 w-full bg-green-500 text-white py-3 px-4 rounded-lg shadow-md hover:bg-green-600 transition duration-300"
+            className="w-full px-4 py-3 mt-4 text-white transition duration-300 bg-green-500 rounded-lg shadow-md hover:bg-green-600"
           >
             Create Request
           </button>
@@ -270,7 +270,7 @@ const UploadWizard = () => {
         ) : (
           <>
             <div className="mb-8">
-              <div className="flex justify-between items-center mb-4">
+              <div className="flex items-center justify-between mb-4">
                 {steps.map((step, index) => (
                   <div key={index} className="flex flex-col items-center">
                     <div
@@ -286,15 +286,15 @@ const UploadWizard = () => {
               </div>
               <form onSubmit={handleSubmit}> 
                 <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block mb-2 text-sm font-medium text-gray-700">
                     Upload {steps[currentStep]}
                     {files[steps[currentStep].toLowerCase().replace(' ', '')] && (
                       <FaCheckCircle className="inline ml-2 text-green-500" />
                     )}
                   </label>
                   <div className="flex items-center space-x-4">
-                    <label className="block w-full py-2 px-4 border-2 border-dashed border-gray-400 rounded-lg cursor-pointer">
-                      <span className="text-gray-600 text-sm md:text-lg">Choose file</span>
+                    <label className="block w-full px-4 py-2 border-2 border-gray-400 border-dashed rounded-lg cursor-pointer">
+                      <span className="text-sm text-gray-600 md:text-lg">Choose file</span>
                       <input type="file" className="hidden" onChange={onFileChange} />
                     </label>
                     <button
@@ -336,7 +336,7 @@ const UploadWizard = () => {
                           <img
                             src={URL.createObjectURL(file)}
                             alt={`${steps[currentStep]} preview`}
-                            className="mt-4 w-full h-32 object-cover rounded-lg shadow-md"
+                            className="object-cover w-full h-32 mt-4 rounded-lg shadow-md"
                           />
                         )}
                       </div>
@@ -398,13 +398,13 @@ const UploadWizard = () => {
               </form> 
             </div>
             {uploadSuccess && (
-              <div className="mt-4 text-green-600 text-center">
+              <div className="mt-4 text-center text-green-600">
                 Files uploaded successfully!
               </div>
             )}
 
             {uploadError && (
-              <div className="mt-4 text-red-600 text-center">
+              <div className="mt-4 text-center text-red-600">
                 Error uploading files: {uploadError}
               </div>
             )}
