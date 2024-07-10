@@ -218,7 +218,7 @@ const CustomerForm = () => {
         </div>
 
         <div className='my-auto'>
-            <div className="lg:w-1/2 bg-[#FDE5BF] p-2 md:p-3 rounded-lg shadow-lg">
+            <div className="w-full bg-[#FDE5BF] rounded-lg shadow-lg">
               <div className="flex justify-between w-3/4 h-8 md:h-14">
                 <button
                   className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${formType === 'buy' ? 'bg-[#F8A401]' : 'bg-white'} border border-2 border-[#FF8A1F] rounded-t-xl text-xs md:text-lg`}
