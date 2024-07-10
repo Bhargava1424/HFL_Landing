@@ -219,7 +219,7 @@ const CustomerForm = () => {
 
         <div className="lg:w-1/2 bg-[#FDE5BF] p-2 md:p-3 rounded-lg shadow-lg">
           <div className="flex justify-between w-3/4 h-8 md:h-14">
-            {['buy', 'sell', 'card'].map((type) => (
+            {['buy', 'sell', 'Forex'].map((type) => (
               <button
                 key={type}
                 className={`flex-1 pl-1 pr-1 md:pl-3 md:pr-3 md:pt-1 md:pb-1 ${
@@ -227,7 +227,7 @@ const CustomerForm = () => {
                 } border-2 border-[#FF8A1F] rounded-t-xl font-medium text-xs md:text-lg`}
                 onClick={() => setFormType(type)}
               >
-                {type.charAt(0).toUpperCase() + type.slice(1)} Forex
+                {type.charAt(0).toUpperCase() + type.slice(1)} Card
               </button>
             ))}
           </div>
