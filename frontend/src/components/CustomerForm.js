@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import axios from 'axios'; // Import axios for API calls
 import { useNavigate } from 'react-router-dom';
-import CustomNotification from './CustomNotification';
+import CustomNotification from './CustomNotification'; 
+// Import nodemailer for sending emails
+// import nodemailer from 'nodemailer';
 
 const CustomerForm = () => {
   const [formType, setFormType] = useState('buy');
@@ -14,6 +17,73 @@ const CustomerForm = () => {
   const [isPrivacyPolicyChecked, setIsPrivacyPolicyChecked] = useState(false);
   const [notification, setNotification] = useState({ message: '', type: '', show: false });
   const navigate = useNavigate();
+
+  // Replace these with your actual Twilio account SID and auth token
+  const twilioAccountSid = process.env.REACT_APP_TWILIO_ACCOUNT_SID; 
+  const twilioAuthToken = process.env.REACT_APP_TWILIO_AUTH_TOKEN;
+
+  // Function to handle sending the message to WhatsApp
+  const sendWhatsappMessage = async (recipientNumber, message) => {
+    try {
+      const url = `https://api.twilio.com/2010-04-01/Accounts/${twilioAccountSid}/Messages.json`;
+      const data = new URLSearchParams({
+        From: 'whatsapp:+14155238886', // Replace with your Twilio WhatsApp number
+        To: `whatsapp:+${recipientNumber}`, // Construct the recipient's number
+        Body: message,
+      });
+
+      const response = await axios.post(
+        url,
+        data,
+        {
+          auth: {
+            username: twilioAccountSid,
+            password: twilioAuthToken,
+          },
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+        }
+      );
+
+      console.log('WhatsApp Message Sent:', response.data);
+      setNotification({ message: 'Message sent successfully!', type: 'success', show: true });
+    } catch (error) {
+      console.error('Error sending WhatsApp message:', error);
+      setNotification({ message: 'Error sending message.', type: 'error', show: true });
+    }
+  };
+
+  // Email configuration (replace with your credentials)
+  const emailConfig = {
+    host: 'smtpout.secureserver.net', // Replace with your SMTP host
+    port: 465, // Replace with your SMTP port
+    secure: false, // Replace with your secure setting
+    auth: {
+      user: 'hooperations@hflforex.com', // Replace with your email address
+      pass: 'hflanymoney@2024!', // Replace with your email password
+    },
+  };
+
+  // const sendEmail = async (recipientEmail, message) => {
+  //   try {
+  //     const transporter = nodemailer.createTransport(emailConfig);
+  //     const mailOptions = {
+  //       from: 'your_email@example.com', // Sender address
+  //       to: recipientEmail, // Recipient address
+  //       subject: 'New Forex Request', // Subject of the email
+  //       text: message, // Plain text body
+  //     };
+  //     await transporter.sendMail(mailOptions);
+  //     console.log('Email sent successfully!');
+  //     setNotification({ message: 'Email sent successfully!', type: 'success', show: true });
+  //   } catch (error) {
+  //     console.error('Error sending email:', error);
+  //     setNotification({ message: 'Error sending email.', type: 'error', show: true });
+  //   }
+  // };
+
+
 
   const handlePrivacyPolicyClick = (e) => {
     e.preventDefault();
@@ -88,6 +158,31 @@ const CustomerForm = () => {
     const payload = { ...formData, formType };
     console.log('Form Payload:', payload);
 
+    // Get the phone number for the branch from your environment variables
+    let branchPhoneNumber = null; 
+    switch (formData.store) {
+      case 'Somajiguda':
+        branchPhoneNumber = process.env.REACT_APP_SOMAJIGUDA_PHONE_NUMBER; // Replace with actual value
+        break;
+      case 'Gachibowli':
+        branchPhoneNumber = process.env.REACT_APP_GACHIBOWLI_PHONE_NUMBER; // Replace with actual value
+        break;
+      default:
+        break;
+    }
+    console.log('Branch Phone Number:', branchPhoneNumber);
+
+    // Construct the message to send to WhatsApp
+    if (branchPhoneNumber) {
+      const message = `New Request:\nStore: ${formData.store}\nCurrency: ${formData.currency}\nAmount: ${formData.amount}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nForm Type: ${formType}`;
+      sendWhatsappMessage(branchPhoneNumber, message); // Send the message to the branch
+      // await sendEmail("10152002ssb@gmail.com", message); // Send an email to the customer
+    } else {
+      setNotification({ message: 'Branch phone number not found.', type: 'error', show: true });
+      return;
+    }
+    
+    // Update the notification and form state after successful submission
     setNotification({ message: 'Thank you for choosing HFL. We will get back to you shortly.', type: 'success', show: true });
     setTimeout(() => {
       setFormData({
@@ -102,7 +197,6 @@ const CustomerForm = () => {
       setNotification({ message: '', type: '', show: false });
     }, 2000);
   };
-
   return (
     <div className="bg-[#FBF8F1] pl-3 pr-3 md:pl-6 md:pr-6 mx-4 rounded-xl">
       <div className="flex flex-col justify-between mx-auto lg:flex-row md:p-4">
