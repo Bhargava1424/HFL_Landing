@@ -197,11 +197,12 @@ const GetAnyMoney = () => {
                   <div>
                     <label className="block mb-1 text-xs md:text-lg">Forex Amount / Volume</label>
                     <input
-                      type="text"
+                      type="number"
                       name="amount"
                       value={formData.amount}
                       onChange={handleInputChange}
                       className="w-3/4 p-1 border rounded bg-gray-100 text-xs md:text-lg"
+                      min="0"
                     />
                   </div>
                   <div className="p-1 bg-yellow-100 border rounded bg-gray-100 font-semibold text-xxs md:text-xs w-3/4">

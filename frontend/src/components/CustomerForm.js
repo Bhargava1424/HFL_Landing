@@ -291,6 +291,7 @@ const CustomerForm = () => {
                   value={formData.amount}
                   onChange={handleInputChange}
                   className="w-3/4 p-1 text-xs bg-gray-100 border rounded md:text-sm"
+                  min="0"
                 />
               </div>
               <div className="w-3/4 p-1 font-semibold bg-gray-100 bg-yellow-100 border rounded text-xxs md:text-xs">
