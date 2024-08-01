@@ -4,6 +4,7 @@ const Request = require('../models/Request');
 const formidable = require('formidable');
 const ocr = require('../utils/ocr');
 const { Storage } = require('@google-cloud/storage');
+const exp = require('constants');
 const storage = new Storage();
 const fs = require('fs').promises;
 
@@ -187,5 +188,57 @@ const getSignedUrl = async (req, res) => {
   }
 };
 
+const getJsonData = async (req, res) => {
+  const passportNumber = req.body.passportNumber;
 
-module.exports = { createRequest, uploadDocument, getRequests, getRequestById, updateRequest, getSignedUrl };
+  try {
+    const request = await Request.findOne({ 'finalExtractedData.passportNumber': passportNumber });
+    if (!request) {
+      return res.status(404).json({ message: 'Request not found' });
+    }
+
+    const { finalExtractedData } = request;
+
+    const address = finalExtractedData.Address || "";
+    const pattern = /^((?:C\/O:|S\/O:)?\s*[\w\s]+)\s+([\d-/]+(?:,\s*[\w\s]+)?)\s+(.+?)\s+-\s+(\d{6})$/;
+    const match = address.match(pattern);
+
+    let careOf = "", houseNumber = "", street = "", pincode = "";
+    if (match) {
+      [, careOf, houseNumber, street, pincode] = match;
+      careOf = careOf.trim();
+      houseNumber = houseNumber.trim();
+      street = street.trim();
+    }
+
+    const jsonData = {
+      passportNumber: finalExtractedData.PassportNumber || "",
+      placeOfIssue: finalExtractedData.PlaceOfIssue || "",
+      passportName: finalExtractedData.PassportName || "",
+      fatherName: finalExtractedData.FatherName || "",
+      adharNumber: finalExtractedData.AdharNumber || "",
+      houseNumber: houseNumber,
+      street: street,
+      pincode: pincode,
+      panNumber: finalExtractedData.PanNumber || "",
+      email: request.email || "",
+      sponsorPanNumber: finalExtractedData.PanNumber || "",
+      contactNumber: request.phoneNumber || "",
+      ticketNumber: finalExtractedData.TicketNumber || "",
+      airLine: finalExtractedData.AirLine || "",
+      travelDate: finalExtractedData.TravelDate || "",
+      duration: finalExtractedData.Duration || "",
+      expiryDate: finalExtractedData.ExpiryDate || "",
+      issueDate: finalExtractedData.IssueDate || "",
+      destination: finalExtractedData.Destination || "",
+    };
+
+    return res.status(200).json(jsonData);
+  } catch (error) {
+    console.error("Error in getJsonData:", error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+
+module.exports = { createRequest, uploadDocument, getRequests, getRequestById, updateRequest, getSignedUrl, getJsonData };

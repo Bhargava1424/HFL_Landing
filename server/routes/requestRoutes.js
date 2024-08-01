@@ -6,7 +6,8 @@ const {
   updateRequest,  
   uploadDocument,
   getRequests,
-  getSignedUrl
+  getSignedUrl,
+  getJsonData,
 } = require('../controllers/requestController');
 
 router.post('/create', createRequest);  // No authentication for createRequest
@@ -15,5 +16,6 @@ router.post('/getSignedUrl', getSignedUrl); // Protected route
 router.get('/:requestId', getRequestById); // Protected route
 router.put('/:requestId', updateRequest); // Protected route
 router.post('/:requestId/upload', uploadDocument); // Protected route
+router.get('/getJsonData/:passportNumber', getRequestById); // Protected route
 
 module.exports = router;
