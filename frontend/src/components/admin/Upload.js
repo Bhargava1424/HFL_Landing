@@ -83,26 +83,27 @@ const UploadWizard = () => {
       }
       return file;
     }));
-  
+
     const validFiles = compressedFiles.filter(file => file !== null);
-  
+
     if (fileType === 'passport' || fileType === 'others') {
       setFiles(prevFiles => ({
         ...prevFiles,
-        [fileType]: [...prevFiles[fileType], ...validFiles.map(file => ({ ...file, uploaded: false }))]
+        [fileType]: [...prevFiles[fileType], ...validFiles.map(file => ({ file, uploaded: false }))]
       }));
     } else {
       setFiles(prevFiles => ({
         ...prevFiles,
-        [fileType]: validFiles.map(file => ({ ...file, uploaded: false }))
+        [fileType]: validFiles.map(file => ({ file, uploaded: false }))
       }));
     }
-  
+
     setUploadSuccess(false);
     setUploadError(null);
     toast.info("Please ensure the uploaded document is clear and legible. If not, you may need to repeat the process.");
   };
 
+  
   const removeFile = (index) => {
     const currentFileType = steps[currentStep].toLowerCase().replace(' ', '');
     setFiles(prevFiles => ({
@@ -201,6 +202,13 @@ const UploadWizard = () => {
       setUploadError(error.message);
       return false;
     }
+  };
+
+  const createObjectURL = (file) => {
+    if (file && typeof file === 'object' && 'type' in file) {
+      return URL.createObjectURL(file);
+    }
+    return null;
   };
 
   const handleChange = (e) => {
@@ -471,33 +479,33 @@ const UploadWizard = () => {
                     </button>
                   </div>
                 )}
-                {files[steps[currentStep].toLowerCase().replace(' ', '')]?.length > 0 && (
-                  <div className="mt-4">
-                    {files[steps[currentStep].toLowerCase().replace(' ', '')].map((file, index) => (
-                      <div key={index} className="mt-2">
-                        {file.type === 'application/pdf' ? (
-                          <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pdfjsVersion}/build/pdf.worker.min.js`}>
-                            <div style={{ height: '300px' }}>
-                              <Viewer fileUrl={URL.createObjectURL(file)} />
-                            </div>
-                          </Worker>
-                        ) : (
-                          <img
-                            src={URL.createObjectURL(file)}
-                            alt={`${steps[currentStep]} preview ${index + 1}`}
-                            className="object-cover w-full h-32 mt-4 rounded-lg shadow-md"
-                          />
-                        )}
-                        <button
-                          onClick={() => removeFile(index)}
-                          className="mt-2 !bg-red-500 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-red-600 transition duration-300"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                 {files[steps[currentStep].toLowerCase().replace(' ', '')]?.length > 0 && (
+                    <div className="mt-4">
+                      {files[steps[currentStep].toLowerCase().replace(' ', '')].map((fileObj, index) => (
+                        <div key={index} className="mt-2">
+                          {fileObj.file.type === 'application/pdf' ? (
+                            <Worker workerUrl={`https://unpkg.com/pdfjs-dist@${pdfjsVersion}/build/pdf.worker.min.js`}>
+                              <div style={{ height: '300px' }}>
+                                <Viewer fileUrl={createObjectURL(fileObj.file)} />
+                              </div>
+                            </Worker>
+                          ) : (
+                            <img
+                              src={createObjectURL(fileObj.file)}
+                              alt={`${steps[currentStep]} preview ${index + 1}`}
+                              className="object-cover w-full h-32 mt-4 rounded-lg shadow-md"
+                            />
+                          )}
+                          <button
+                            onClick={() => removeFile(index)}
+                            className="mt-2 !bg-red-500 text-white py-2 px-4 rounded-lg shadow-md hover:!bg-red-600 transition duration-300"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 {showPreview && (
                   <div className="mt-4">
                     <img

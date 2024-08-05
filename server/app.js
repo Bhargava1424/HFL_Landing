@@ -12,10 +12,8 @@ const PORT = process.env.PORT || 5000;
 // Connect to database
 connectDB();
 
-app.use(cors({
-    referer: process.env.BaseURL + '/' // Replace 'http://example.com' with the address you want to whitelist
-}));
-console.log(process.env.BaseURL + '/');
+app.use(cors());
+// console.log(process.env.BaseURL + '/');
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true }));
 
