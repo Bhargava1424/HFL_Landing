@@ -28,7 +28,7 @@ const Login = () => {
       } else {
         toast.error('Invalid credentials'); 
       }
-      const response = await axios.post('/api/auth/login', formData);
+      const response = await axios.post(process.env.REACT_APP_SERVER_URL + '/api/auth/login', formData);
       // Store the JWT token in local storage
       localStorage.setItem('token', response.data.token);
 
