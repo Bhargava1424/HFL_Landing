@@ -7,6 +7,8 @@ const { Storage } = require('@google-cloud/storage');
 const exp = require('constants');
 const storage = new Storage();
 const fs = require('fs').promises;
+const mongoose = require('mongoose');
+
 
 const getSignedUrlForFile = async (fileUrl) => {
   const parts = fileUrl.split('/');
@@ -189,28 +191,37 @@ const getSignedUrl = async (req, res) => {
 };
 
 const getJsonData = async (req, res) => {
-  const passportNumber = req.body.passportNumber;
+  const passportNumber = req.params.passportNumber;
 
   try {
-    const request = await Request.findOne({ 'finalExtractedData.passportNumber': passportNumber });
+    console.log("passportNumber", passportNumber)
+    const request = await mongoose.model('Request').findOne({ "finalExtractedData.PassportNumber" : passportNumber });
+    // const request = await Request.findOne({ "finalExtractedData.passportNumber" : passportNumber });
+    console.log("request", request)
     if (!request) {
       return res.status(404).json({ message: 'Request not found' });
     }
 
     const { finalExtractedData } = request;
 
-    const address = finalExtractedData.Address || "";
-    const pattern = /^((?:C\/O:|S\/O:)?\s*[\w\s]+)\s+([\d-/]+(?:,\s*[\w\s]+)?)\s+(.+?)\s+-\s+(\d{6})$/;
+    const address = finalExtractedData.PassportAddress || finalExtractedData.AdharAddress || "";
+    // Updated regex pattern to match the new format
+    const pattern = /^(H\.NO\s+[\d-]+),\s*(.+?)\s*PIN:(\d{6})/i;
+
     const match = address.match(pattern);
 
-    let careOf = "", houseNumber = "", street = "", pincode = "";
-    if (match) {
-      [, careOf, houseNumber, street, pincode] = match;
-      careOf = careOf.trim();
-      houseNumber = houseNumber.trim();
-      street = street.trim();
-    }
+    let houseNumber = "", street = "", pincode = "";
 
+    if (match) {
+        [, houseNumber, street, pincode] = match;
+        houseNumber = houseNumber.replace(/^H\.NO\s+/i, '').trim();
+        street = street.trim();
+        pincode = pincode.trim();
+
+        // Further cleanup of street (remove any remaining house number mention)
+        street = street.replace(new RegExp('^' + houseNumber + ',?\\s*', 'i'), '');
+    }
+    
     const jsonData = {
       passportNumber: finalExtractedData.PassportNumber || "",
       placeOfIssue: finalExtractedData.PlaceOfIssue || "",

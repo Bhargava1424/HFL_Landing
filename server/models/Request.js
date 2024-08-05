@@ -25,7 +25,7 @@ const requestSchema = new mongoose.Schema({
             type: {
                 type: String,
                 required: true,
-                enum: ['pan', 'passport', 'aadhar', 'drivinglicense', 'ticket'],
+                enum: ['pan', 'passport', 'aadhar', 'visa', 'ticket', 'other'],
             },
             file: { type: String, required: true },
             ocrText: { type: String },

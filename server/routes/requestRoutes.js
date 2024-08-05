@@ -16,6 +16,6 @@ router.post('/getSignedUrl', getSignedUrl); // Protected route
 router.get('/:requestId', getRequestById); // Protected route
 router.put('/:requestId', updateRequest); // Protected route
 router.post('/:requestId/upload', uploadDocument); // Protected route
-router.get('/getJsonData/:passportNumber', getRequestById); // Protected route
+router.get('/getJsonData/:passportNumber', getJsonData); // Protected route
 
 module.exports = router;
